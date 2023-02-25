@@ -3,14 +3,15 @@ import bg from "./images/bg.svg";
 export const Hero = () => {
   return (
     <div
-      className="min-h-screen place-items-start bg-black bg-no-repeat bg-cover bg-top"
+      className=" bg-black bg-no-repeat bg-cover bg-top"
       style={{
+        minHeight: "88vh",
         backgroundImage: `url(${bg})`,
       }}
     >
       <div className="">
         <div className="">
-          <h1 className="mb-5 text-2xl md:text-4xl lg:text-5xl text-center font-bold pt-8">
+          <h1 className="mb-5 text-2xl md:text-4xl lg:text-5xl text-center font-bold pt-16">
             „Ein Haus ist eine Arche, um der Flut zu entrinnen“
           </h1>
           <div className="font-catamaran container mx-auto text-xl">

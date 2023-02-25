@@ -1,4 +1,4 @@
-import wi from "./images/wi.svg";
+import wi from "~/images/wi.svg";
 
 export const Footer = () => {
   return (

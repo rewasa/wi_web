@@ -1,3 +1,4 @@
+import { Link, Links } from "@remix-run/react";
 import logo from "./images/logo.svg";
 
 export const Navbar = () => {
@@ -55,18 +56,19 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        {/* <a className="btn btn-ghost normal-case text-xl">daisyUI</a> */}
-        <img
-          src={logo}
-          alt="Wasescha Immobilien Logo"
-          // style logo perfekt on desktop and mobile
-          className="w-[120px] md:w-[150px]  lg:w-[200px]"
-        />
+        <Link to="/">
+          <img
+            src={logo}
+            alt="Wasescha Immobilien Logo"
+            // style logo perfekt on desktop and mobile
+            className="w-[120px] md:w-[150px]  lg:w-[200px]"
+          />
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <Link to="/verkauf">Verkauf</Link>
           </li>
           <li tabIndex={0}>
             <a>

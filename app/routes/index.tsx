@@ -3,9 +3,9 @@ import { Hero } from "~/components/Hero/Hero";
 import { Layout } from "~/components/Layout/Layout";
 import { Services } from "~/components/Services/Services";
 
-import verkaufen from "~/components/Home/images/verkaufen.svg";
-import inserieren from "~/components/Home/images/inserieren.svg";
-import finanzierung from "~/components/Home/images/finanzierung.svg";
+import verkaufen from "~/images/verkaufen.svg";
+import inserieren from "~/images/inserieren.svg";
+import finanzierung from "~/images/finanzierung.svg";
 
 const serviceTitle = "Bei welchem anliegen dürfen wir dich unterstützen?";
 const services = [
