@@ -1,5 +1,5 @@
-import type { LinksFunction, LoaderArgs, MetaFunction } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
+
 import {
   Links,
   LiveReload,
@@ -11,7 +11,6 @@ import {
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
-import { getUser } from "./session.server";
 
 export const links: LinksFunction = () => {
   return [
@@ -25,12 +24,6 @@ export const meta: MetaFunction = () => ({
   title: "WASESCHA Immobilien AG",
   viewport: "width=device-width,initial-scale=1",
 });
-
-export async function loader({ request }: LoaderArgs) {
-  return json({
-    user: await getUser(request),
-  });
-}
 
 export default function App() {
   return (
