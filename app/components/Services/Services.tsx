@@ -45,10 +45,10 @@ export const Services = ({
         ) : null}
         <div className="lg:flex md:flex sm:flex xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around text-white">
           {services?.length
-            ? services.map((service) => {
+            ? services.map((service, index) => {
                 return (
                   <div
-                    key={service.title}
+                    key={index}
                     className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
                   >
                     <div className="">
