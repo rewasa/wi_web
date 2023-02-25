@@ -33,7 +33,7 @@ export const Footer = () => {
             className="w-12 h-12"
           />
           <p>
-            <span className="footer-title">Wasescha Immobilien AG</span>
+            <span className="">Wasescha Immobilien AG</span>
             <br />
             <span className="text-sm">
               Churerstrasse 158, 808 Pfäffikon SZ{" "}
