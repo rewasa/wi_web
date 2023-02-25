@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { NavLink } from "@remix-run/react";
 import logo from "./images/logo.svg";
 
 type MenuProps = Array<{
@@ -58,30 +58,34 @@ export const Navbar = () => {
             {renderMenuList(menu)}
           </ul>
         </div>
-        <Link to="/">
+        <NavLink to="/">
           <img
             src={logo}
             alt="Wasescha Immobilien Logo"
             className="w-[120px] md:w-[150px]  lg:w-[200px]"
           />
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
       </div>
       <div className="navbar-end">
-        <Link
+        <NavLink
           to={"/immobilienbewertung"}
-          className="btn btn-primary btn-xs lg:btn-md"
+          className="btn btn-outline btn-xs lg:btn-md"
         >
           Kostenlose Schätzung
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );
 };
 
 function renderMenuList(menu: MenuProps) {
+  const activeStyle = {
+    backgroundColor: "bg-[#AD9A81]",
+  };
+
   return menu.map((item, index) => {
     if (item.subMenu?.length) {
       return (
@@ -102,7 +106,14 @@ function renderMenuList(menu: MenuProps) {
             {item.subMenu.map((subItem) => {
               return (
                 <li key={subItem.title}>
-                  <Link to={subItem.link || ""}>{subItem.title}</Link>
+                  <NavLink
+                    to={subItem.link || ""}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                  >
+                    {subItem.title}
+                  </NavLink>
                 </li>
               );
             })}
@@ -112,7 +123,12 @@ function renderMenuList(menu: MenuProps) {
     }
     return (
       <li key={item.title}>
-        <Link to={item.link || ""}>{item.title}</Link>
+        <NavLink
+          to={item.link || ""}
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        >
+          {item.title}
+        </NavLink>
       </li>
     );
   });
