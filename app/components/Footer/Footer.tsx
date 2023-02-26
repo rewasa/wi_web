@@ -5,24 +5,23 @@ export const Footer = () => {
     <div className="container mx-auto bottom-0">
       <footer className="footer p-10 text-base-content">
         <div>
-          <span className="footer-title">Services</span>
-          <a className="link link-hover">Branding</a>
-          <a className="link link-hover">Design</a>
-          <a className="link link-hover">Marketing</a>
-          <a className="link link-hover">Advertisement</a>
+          <a className="link link-hover pb-6">Immobilien</a>
+          <a className="link link-hover">Verkaufen</a>
+          <a className="link link-hover">Kaufen</a>
+          <a className="link link-hover">Finanzierung</a>
+          <a className="link link-hover">Inserieren</a>
         </div>
         <div>
-          <span className="footer-title">Company</span>
-          <a className="link link-hover">About us</a>
-          <a className="link link-hover">Contact</a>
-          <a className="link link-hover">Jobs</a>
-          <a className="link link-hover">Press kit</a>
+          <a className="link link-hover pb-6">Unternehmen</a>
+          <a className="link link-hover">über uns</a>
+          <a className="link link-hover">Kontakt</a>
+          <a className="link link-hover">Impressum</a>
+          <a className="link link-hover">AGB</a>
         </div>
         <div>
-          <span className="footer-title">Legal</span>
-          <a className="link link-hover">Terms of use</a>
-          <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <a className="link link-hover pb-6">Benefits</a>
+          <a className="link link-hover">Checklisten</a>
+          <a className="link link-hover">Marktwertrechner</a>
         </div>
       </footer>
       <footer className="footer px-10 py-4 border-t text-base-content border-base-grey">
@@ -30,13 +29,13 @@ export const Footer = () => {
           <img
             src={wi}
             alt="Wasescha Immobilien Logo Klein"
-            className="w-12 h-12"
+            className="w-10 h-10"
           />
           <p>
             <span className="">Wasescha Immobilien AG</span>
             <br />
             <span className="text-sm">
-              Churerstrasse 158, 808 Pfäffikon SZ{" "}
+              Churerstrasse 158, 8808 Pfäffikon SZ
             </span>
           </p>
         </div>

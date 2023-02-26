@@ -3,7 +3,7 @@ import bg from "./images/bg.svg";
 export const Hero = () => {
   return (
     <div
-      className=" bg-black bg-no-repeat bg-cover bg-top"
+      className="bg-black bg-no-repeat bg-cover bg-top"
       style={{
         minHeight: "88vh",
         backgroundImage: `url(${bg})`,
@@ -11,10 +11,10 @@ export const Hero = () => {
     >
       <div className="">
         <div className="">
-          <h1 className="mb-5 text-2xl md:text-4xl lg:text-5xl text-center font-bold pt-16">
+          <h1 className="mb-5 text-2xl md:text-4xl lg:text-5xl text-center font-bold pt-4 md:pt-16">
             „Ein Haus ist eine Arche, um der Flut zu entrinnen“
           </h1>
-          <div className="font-catamaran container mx-auto text-xl">
+          <div className="invisible lg:visible font-catamaran container mx-auto text-xl">
             <div className="chat chat-start pt-6">
               <div className="chat-bubble max-w-sm text-base-content">
                 In jeder Immobilie stecken Geschichten und Emotionen. Von
