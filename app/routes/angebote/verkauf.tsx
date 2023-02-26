@@ -20,6 +20,7 @@ import { Services } from "~/components/Services/Services";
 export default function Verkauf() {
   return (
     <Layout>
+      <Heading className="mt-20" isMain title="Verkaufen" />
       <ContentFeatureContainer
         contentList={[
           "<h1 class='font-sans text-3xl text-bold pb-6'>So gelingt Dir ein erfolgreicher Verkauf Deiner Immobilie, ohne dass es Dich Zeit & Nerven kostet</h1>",
