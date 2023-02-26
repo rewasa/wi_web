@@ -17,7 +17,7 @@ import kundenbewertungen3 from "~/images/kundenbewertungen3.svg";
 import { Heading } from "~/components/Heading/Heading";
 import { Services } from "~/components/Services/Services";
 
-export default function Verkauf() {
+export default function Verkaufen() {
   return (
     <Layout>
       <Heading className="mt-20" isMain title="Verkaufen" />

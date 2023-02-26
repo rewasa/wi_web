@@ -19,7 +19,7 @@ const menu = [
     subMenu: [
       {
         title: "Verkaufen",
-        link: "/angebote/verkauf",
+        link: "/angebote/verkaufen",
       },
       {
         title: "Finanzierung",
@@ -65,7 +65,7 @@ export const Navbar = () => {
 
       <div className="hidden lg:flex navbar-end">
         <NavLink
-          to={"/immobilienbewertung"}
+          to={"/marktwertrechner"}
           className="btn btn-outline btn-xs lg:btn-md"
         >
           Kostenlose Schätzung
