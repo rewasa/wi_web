@@ -49,13 +49,13 @@ const menu = [
 
 export const Navbar = () => {
   return (
-    <nav className="navbar bg-base-100 container mx-auto lg:my-3 z-10">
+    <nav className="navbar bg-base-100 container mx-auto lg:my-3 z-10 scroll-auto">
       <div className="navbar-start">
         <NavLink to="/">
           <img
             src={logo}
             alt="Wasescha Immobilien Logo"
-            className="w-[130px] md:w-[150px] lg:w-[200px]"
+            className="w-[160px] ml-1 lg:w-[200px]"
           />
         </NavLink>
       </div>
@@ -182,7 +182,7 @@ function renderMenuList(menu: MenuProps) {
             </ul>
           </li>
           <div className="flex-inline flex-wrap lg:hidden">
-            <div className="text-bold ml-4">{item.title}</div>
+            <div className="text-bold m-4">{item.title}</div>
             {item.subMenu.map((subItem, index) => {
               if (subItem.subMenu?.length) {
                 return (

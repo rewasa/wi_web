@@ -32,7 +32,7 @@ export const Heading = (props: HeadingProps) => {
           />
         )}
       </div>
-      <Breadcrumbs />
+      {props?.isMain ? <Breadcrumbs /> : null}
     </Container>
   );
 };
