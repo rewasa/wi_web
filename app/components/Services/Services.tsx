@@ -62,11 +62,11 @@ export const Services = ({
                         </div>
                       </div>
                       {service.title && service.description ? (
-                        <div className="py-4 my-16">
+                        <div className="py-4 my-16 text-center">
                           {service.title ? (
                             <h1
                               className={clsx(
-                                "font-bold text-3xl text-center pb-2",
+                                "font-bold text-3xl text-center pb-4",
                                 textColor
                               )}
                             >

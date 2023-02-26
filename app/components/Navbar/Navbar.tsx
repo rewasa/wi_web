@@ -75,7 +75,7 @@ export const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu dropdown-content shadow bg-base-100 rounded-box w-52"
+            className="menu dropdown-content shadow bg-base-100 rounded-box w-60"
           >
             {renderMenuList(menu)}
           </ul>
@@ -93,56 +93,59 @@ function renderMenuList(menu: MenuProps) {
   return menu.map((item, index) => {
     if (item.subMenu?.length) {
       return (
-        <li tabIndex={index} key={index}>
-          <div>
-            {item.title}
-            <svg
-              className="fill-current"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-            >
-              <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-            </svg>
-          </div>
-          <div className="flex flex-wrap ml-10 lg:hidden">
-            {item.subMenu.map((subItem) => {
+        <>
+          <li tabIndex={index} key={item.title + index + 2}>
+            <div>
+              {item.title}
+              <svg
+                className="fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </div>
+
+            <ul className="invisible lg:visible p-2 bg-base-100">
+              {item.subMenu.map((subItem, index) => {
+                return (
+                  <li key={subItem.title + index + 3}>
+                    <NavLink
+                      to={subItem.link || ""}
+                      style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
+                    >
+                      {subItem.title}
+                    </NavLink>
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+          <div className="flex-inline flex-wrap lg:hidden">
+            {item.subMenu.map((subItem, index) => {
               return (
-                <li key={subItem.title}>
+                <li key={subItem.title + index}>
                   <NavLink
                     to={subItem.link || ""}
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
                   >
-                    {subItem.title}
+                    <span className="ml-10">{subItem.title}</span>
                   </NavLink>
                 </li>
               );
             })}
           </div>
-          <ul className="invisible lg:visible p-2 bg-base-100">
-            {item.subMenu.map((subItem) => {
-              return (
-                <li key={subItem.title}>
-                  <NavLink
-                    to={subItem.link || ""}
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                  >
-                    {subItem.title}
-                  </NavLink>
-                </li>
-              );
-            })}
-          </ul>
-        </li>
+        </>
       );
     }
     return (
-      <li key={item.title}>
+      <li key={item.title + index + 1}>
         <NavLink
           to={item.link || ""}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}

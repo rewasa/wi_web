@@ -134,6 +134,6 @@ function renderImages(
   );
 }
 
-function mapBreakDownToClass(breakdownNumber: number) {
+const mapBreakDownToClass = (breakdownNumber: number) => {
   return `md:w-${breakdownNumber}/12`;
-}
+};
