@@ -34,9 +34,9 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="bg-base-100">
+      <div className="bg-base-100 md:hidden">
         <div className="container m-2 mx-auto p-2 text-center">
-          <h1 className="mb-5 pt-4 text-center text-2xl font-bold md:hidden md:pt-16 md:text-4xl lg:text-5xl">
+          <h1 className="mb-5 pt-4 text-center text-2xl font-bold">
             „Ein Haus ist eine Arche, um der Flut zu entrinnen“
           </h1>
           <div className="container mx-auto font-catamaran text-xl">

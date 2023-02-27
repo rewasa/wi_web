@@ -49,13 +49,13 @@ const menu = [
 
 export const Navbar = () => {
   return (
-    <nav className="navbar bg-base-100 container mx-auto lg:my-3 z-10 scroll-auto">
+    <nav className="container navbar z-10 mx-auto scroll-auto bg-base-100 lg:my-3">
       <div className="navbar-start">
         <NavLink to="/">
           <img
             src={logo}
             alt="Wasescha Immobilien Logo"
-            className="w-[160px] ml-1 lg:w-[200px]"
+            className="ml-1 w-[160px] lg:w-[200px]"
           />
         </NavLink>
       </div>
@@ -63,18 +63,18 @@ export const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
       </div>
 
-      <div className="hidden lg:flex navbar-end">
+      <div className="navbar-end hidden lg:flex">
         <NavLink
           to={"/marktwertrechner"}
-          className="btn btn-outline btn-xs lg:btn-md"
+          className="btn-outline btn-xs btn lg:btn-md"
         >
           Kostenlose Schätzung
         </NavLink>
       </div>
 
-      <div className="lg:hidden navbar-end">
-        <div className="dropdown dropdown-bottom dropdown-left">
-          <label tabIndex={0} className="btn btn-ghost">
+      <div className="navbar-end lg:hidden">
+        <div className="dropdown-bottom dropdown-left dropdown">
+          <label tabIndex={0} className="btn-ghost btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -92,7 +92,7 @@ export const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu dropdown-content shadow bg-base-100 rounded-box w-auto"
+            className="dropdown-content menu rounded-box w-auto bg-base-100 shadow"
           >
             {renderMenuList(menu)}
           </ul>
@@ -125,7 +125,7 @@ function renderMenuList(menu: MenuProps) {
               </svg>
             </div>
 
-            <ul className="menu dropdown-content shadow rounded-box w-auto invisible lg:visible p-2 bg-base-100">
+            <ul className="dropdown-content menu rounded-box invisible w-auto bg-base-100 p-2 shadow lg:visible">
               {item.subMenu.map((subItem, index) => {
                 if (subItem.subMenu?.length) {
                   return (
@@ -144,7 +144,7 @@ function renderMenuList(menu: MenuProps) {
                       </NavLink>
                       <ul
                         key={index + 17}
-                        className="invisible lg:visible p-2 bg-base-100"
+                        className="invisible bg-base-100 p-2 lg:visible"
                       >
                         {subItem.subMenu.map((subSubItem, index) => {
                           return (
