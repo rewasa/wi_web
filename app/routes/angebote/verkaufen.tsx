@@ -23,7 +23,7 @@ export default function Verkaufen() {
       <Heading className="mt-20" isMain title="Verkaufen" />
       <ContentFeatureContainer
         contentList={[
-          "<h1 class='font-sans text-3xl text-bold pb-6'>So gelingt Dir ein erfolgreicher Verkauf Deiner Immobilie, ohne dass es Dich Zeit & Nerven kostet</h1>",
+          "<h1 class='text-3xl text-bold pb-6'>So gelingt Dir ein erfolgreicher Verkauf Deiner Immobilie, ohne dass es Dich Zeit & Nerven kostet</h1>",
           "&#8226; Geringer Aufwand für Dich als Eigentümer <br />&#8226; Transparente Preisgestaltung <br />&#8226; Fairer Deal für alle Beteiligten",
           "Weil so ein Hausverkauf mit viel Emotionen, Abklärungen, Terminen verbunden ist - reichen wir Dir die Hand und übernehmen jeglichen Papierkram für Dich.",
           "In aller Ruhe kannst Du dir anschliessend die eingetroffenen Angebote anschauen.",
@@ -39,8 +39,8 @@ export default function Verkaufen() {
       <ContentFeatureContainer
         rowBreakdown={{ content: 8, image: 4 }}
         contentList={[
-          '<h2 class="font-sans text-3xl text-white pb-4">Wir könnten dir jetzt erzählen...</h2>',
-          '<span class="font-sans text-white">...dass wir deine Immobilie zum maximalen preis verkaufen<br />...keinerlei provision verlangen<br />...deine Immobilie nur bei uns in guten Händen ist</h2>',
+          '<h2 class="text-3xl text-white pb-4">Wir könnten dir jetzt erzählen...</h2>',
+          '<span class="text-white">...dass wir deine Immobilie zum maximalen preis verkaufen<br />...keinerlei provision verlangen<br />...deine Immobilie nur bei uns in guten Händen ist</h2>',
           '<span class="text-white">Aber auf diese Standard-Floskeln verzichten wir bewusst. Denn es sind schlichtweg Halbwahrheiten.  Keiner kann dir garantieren, deine Immobilie zum Bestpreis zu verkaufen, dafür müsste sie ja versteigert werden.</span>',
           '<span class="text-white">Wenn dir ein Makler also das Blaue vom Himmel verspricht: Vorsicht! Diese Rechnung geht selten auf.</span>',
         ]}
@@ -57,7 +57,7 @@ export default function Verkaufen() {
         rowBreakdown={{ image: 4, content: 8 }}
         contentLeft={false}
         contentList={[
-          "<h2 class='font-sans text-3xl pb-4'>Befindest Du Dich gerade in folgender Situation?</h2>",
+          "<h2 class='text-3xl pb-4'>Befindest Du Dich gerade in folgender Situation?</h2>",
           `&#8226; Du hast einen lieben Menschen verloren und Immobilien geerbt?<br />
           &#8226; Du hast ein gewisses Alter erreicht und möchtest deshalb verkaufen?<br />
           &#8226; Du möchtest Gewinne realisieren?<br />

@@ -14,7 +14,7 @@ export const Hero = () => {
             <h1 className="mb-5 pt-4 text-center text-2xl font-bold md:pt-16 md:text-4xl lg:text-5xl">
               „Ein Haus ist eine Arche, um der Flut zu entrinnen“
             </h1>
-            <div className="container mx-auto font-catamaran text-xl">
+            <div className="container mx-auto text-xl">
               <div className="chat chat-start pt-6">
                 <div className="chat-bubble max-w-sm text-base-content">
                   In jeder Immobilie stecken Geschichten und Emotionen. Von
@@ -39,7 +39,7 @@ export const Hero = () => {
           <h1 className="mb-5 pt-4 text-center text-2xl font-bold">
             „Ein Haus ist eine Arche, um der Flut zu entrinnen“
           </h1>
-          <div className="container mx-auto font-catamaran text-xl">
+          <div className="container mx-auto text-xl">
             <p className="pb-2 text-base-content">
               In jeder Immobilie stecken Geschichten und Emotionen. Von
               überwältigenden Glücksgefühlen beim Kauf, bis hin zum emotionalen

@@ -4,8 +4,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['"Carrois Gothic SC"', "ui-sans-serif", "system-ui"],
-      catamaran: ["Catamaran", "ui-sans-serif", "system-ui"],
+      sans: ["Questrial", "ui-sans-serif", "system-ui"],
     },
   },
   plugins: [require("daisyui")],

@@ -4,7 +4,7 @@ export const Breadcrumbs = () => {
   const location = useLocation();
 
   return (
-    <div className="flex container mx-auto text-sm breadcrumbs">
+    <div className="container breadcrumbs mx-auto flex text-sm">
       <ul>
         <li>
           <Link to="/">
@@ -14,7 +14,7 @@ export const Breadcrumbs = () => {
               viewBox="0 0 20 20"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-4 h-4"
+              className="h-4 w-4"
             >
               <path
                 stroke-linecap="round"
@@ -30,9 +30,10 @@ export const Breadcrumbs = () => {
             .split("/")
             .slice(0, index + 1)
             .join("/");
+
           return (
             <li key={index}>
-              <Link to={link}>{path}</Link>
+              <Link to={link}>{path.toUpperCase()}</Link>
             </li>
           );
         })}

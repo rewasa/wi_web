@@ -29,56 +29,51 @@ export const Services = ({
 }: ServicesProps) => {
   return (
     <div
-      className="bg-black bg-no-repeat bg-cover bg-center py-20"
+      className="bg-black bg-cover bg-center bg-no-repeat py-20"
       style={{ backgroundImage: `url(${bgImage ? bgImage : bg})` }}
     >
       <div className="container mx-auto">
         {serviceTitle ? (
           <div
             className={clsx(
-              "text-4xl font-bold text-center py-5 text-white",
+              "py-5 text-center text-4xl font-bold text-white",
               textColor
             )}
           >
             {serviceTitle}
           </div>
         ) : null}
-        <div className="lg:flex md:flex sm:flex xl:justify-between flex-wrap md:justify-around sm:justify-around lg:justify-around text-white">
+        <div className="flex-wrap text-white sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between">
           {services?.length
             ? services.map((service, index) => {
                 return (
                   <div
                     key={index}
-                    className="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+                    className="relative mt-16 mb-32 sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
                   >
                     <div className="">
-                      <div className="w-full flex justify-center">
+                      <div className="flex w-full justify-center">
                         <div className="p-3">
                           <img
                             src={service.image}
                             alt={service.title}
-                            className="object-cover h-full w-full"
+                            className="h-full w-full object-cover"
                           />
                         </div>
                       </div>
                       {service.title && service.description ? (
-                        <div className="py-4 my-16 text-center">
+                        <div className="my-16 py-4 text-center">
                           {service.title ? (
                             <h1
                               className={clsx(
-                                "font-bold text-3xl text-center pb-4",
+                                "pb-4 text-center text-3xl font-bold",
                                 textColor
                               )}
                             >
                               {service.title}
                             </h1>
                           ) : null}
-                          <p
-                            className={clsx(
-                              "font-catamaran text-xl px-4",
-                              textColor
-                            )}
-                          >
+                          <p className={clsx("px-4 text-xl", textColor)}>
                             {service.description}
                           </p>
                         </div>
@@ -91,7 +86,7 @@ export const Services = ({
         </div>
 
         {actionButton?.text ? (
-          <div className="font-catamaran text-center pt-5">
+          <div className="pt-5 text-center">
             <Link to={actionButton?.link}>
               <ActionButton>{actionButton.text}</ActionButton>
             </Link>
