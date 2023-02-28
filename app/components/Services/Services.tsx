@@ -18,6 +18,7 @@ type ServicesProps = {
   };
   bgImage?: any;
   textColor?: string;
+  backgroundColor?: string;
 };
 
 export const Services = ({
@@ -26,11 +27,18 @@ export const Services = ({
   actionButton,
   bgImage,
   textColor,
+  backgroundColor,
 }: ServicesProps) => {
+  const styles = backgroundColor
+    ? { backgroundColor: backgroundColor }
+    : bgImage
+    ? { backgroundImage: `url(${bgImage})` }
+    : { backgroundImage: `url(${bg})` };
+
   return (
     <div
       className="bg-black bg-cover bg-center bg-no-repeat py-20"
-      style={{ backgroundImage: `url(${bgImage ? bgImage : bg})` }}
+      style={styles}
     >
       <div className="container mx-auto">
         {serviceTitle ? (
@@ -61,23 +69,27 @@ export const Services = ({
                           />
                         </div>
                       </div>
-                      {service.title && service.description ? (
-                        <div className="my-16 py-4 text-center">
-                          {service.title ? (
-                            <h1
-                              className={clsx(
-                                "pb-4 text-center text-3xl font-bold",
-                                textColor
-                              )}
-                            >
-                              {service.title}
-                            </h1>
-                          ) : null}
-                          <p className={clsx("px-4 text-xl", textColor)}>
-                            {service.description}
-                          </p>
-                        </div>
-                      ) : null}
+
+                      <div
+                        className={clsx(
+                          "text-center",
+                          service.title && "my-16 py-4"
+                        )}
+                      >
+                        {service.title ? (
+                          <h1
+                            className={clsx(
+                              "pb-4 text-center text-3xl font-bold",
+                              textColor
+                            )}
+                          >
+                            {service.title}
+                          </h1>
+                        ) : null}
+                        <p className={clsx("px-4 text-xl", textColor)}>
+                          {service.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 );
