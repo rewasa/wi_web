@@ -1,40 +1,55 @@
 import { Layout } from "~/components/Layout/Layout";
 
 import { Heading } from "~/components/Heading/Heading";
-import { Services } from "~/components/Services/Services";
-
-import serviceFinanzierung1 from "~/images/service-finanzierung1.svg";
-import serviceFinanzierung2 from "~/images/service-finanzierung2.svg";
-import serviceFinanzierung3 from "~/images/service-finanzierung3.svg";
-import finanzierungHome from "~/images/finanzierung-home.svg";
+import { FeatureContainer } from "~/components/Content/FeatureContainer";
+import { Container } from "~/components/Container/Container";
+import { Link } from "@remix-run/react";
+import { ActionButton } from "~/components/Button/ActionButton";
 
 export default function Immobilienrettung() {
   return (
     <Layout>
       <Heading className="mt-20" isMain title="Immobilienrettung" />
-      <Services
-        services={[
+      <Container>
+        <p className="mt-20 text-xl">
+          Eine drohende Zwangsversteigerung lässt sich auf verschiedene Wege
+          abweisen. Vorhergehende Kreditkündigungen und negative Bonitäten
+          limitieren jedoch Ihre Chancen. Aus der Kombination der folgenden vier
+          Fachbereiche ermöglichen wir Ihnen die Rettung Ihrer Immobilie.
+        </p>
+      </Container>
+      <FeatureContainer
+        backgroundColor="bg-[#968D7E]"
+        features={[
           {
-            title: "Projektfinanzierung durch Eigenheim",
+            title: "Kreditmanagement",
             description:
-              "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
-            image: serviceFinanzierung1,
+              "Die WASESCHA Immobilien AG übernimmt in Ihrem Sinne und Namen die Verhandlungen mit den Gläubigern. Geschickte Verhandlungskompetenz und Erfahrung im Kreditmanagement ermöglichen die Reduktion Ihrer Verbindlichkeiten, egal ob betreibender oder nachrangiger Gläubiger, Bank oder Steueramt.",
           },
           {
-            title: "Immobilienrettung",
+            title: "Um-/Anschlussfinanzierung",
             description:
-              "Befinden Sie sich in einer finanziellen Notlage? Wenn die Zwangsversteigerung droht, scheint ein Notverkauf meist als einziger Ausweg. Doch Immobilien sind mehr als nur Objekte. Sie stehen für Sicherheit, Familie und Erinnerungen. Unsere Kernkompetenz liegt in der Rettung Ihrer Immobilie.",
-            image: serviceFinanzierung2,
+              "In Zusammenarbeit mit verschiedenen Banken, Versicherungen und Pensionskassen können wir Ihre bestehenden Kredite neu strukturieren und so eine Um- bzw. Anschlussfinanzierung entsprechend Ihrer finanziellen Situation realisieren.",
           },
           {
-            title: "Zwangsversteigerung",
+            title: "Immobilienverkauf",
             description:
-              "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten Ihnen eine kostenlose Erstberatung an!",
-            image: serviceFinanzierung3,
+              "Kann eine Immobilie aufgrund überhöhter Verschuldung nicht gehalten werden, ist ein vorzeitiger Verkauf von Eigentum ausserhalb der Zwangsversteigerung vorteilhafter. Unsere Partner verfügen über langjährige Erfahrung im Maklerbereich und hohes Verhandlungsgeschick. Gemeinsam stellen wir einen profitablen Verkauf Ihrer Immobilie zu marktspezifischen Konditionen sicher.",
+          },
+          {
+            title: "Forderungsablösung  ",
+            description:
+              "Ist eine Umschuldung nicht möglich, bieten wir mit unserem Modell «Forderungsablösung» eine weitere Alternative zur Rettung Ihrer Immobilie. Dabei übernimmt die WASESCHA Immobilien AG durch einen Rettungskauf die Verbindlichkeit gegenüber Ihrem Gläubiger.  <br /> <span class='btn-link'><a href='/kontakt'>Weitere Informationen zur Forderungsablösung finden Sie hier.</a></span>",
           },
         ]}
       />
-      <img src={finanzierungHome} className="w-full" alt="Finanzierung Home" />
+      <Container>
+        <div className="my-20 grid place-items-center">
+          <Link to="/kontakt">
+            <ActionButton>Hier geht’s zum Kontakt</ActionButton>
+          </Link>
+        </div>
+      </Container>
     </Layout>
   );
 }

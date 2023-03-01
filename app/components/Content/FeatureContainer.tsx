@@ -4,7 +4,7 @@ import { Container } from "~/components/Container/Container";
 type Feature = {
   title: string;
   description: string;
-  image: string;
+  image?: string;
 };
 
 type FeatureContainerProps = {
@@ -27,18 +27,27 @@ export const FeatureContainer = (props: FeatureContainerProps) => {
               key={index}
               className={clsx(
                 "flex w-full flex-col items-center",
-                index < 2 ? "border-b-black md:border-b-2" : "",
-                index % 2 === 0 ? "border-r-black md:border-r-2" : ""
+                index < 2 ? "border-b-[#565555] md:border-b-2" : "",
+                index % 2 === 0 ? "border-r-[#565555] md:border-r-2" : ""
               )}
             >
               <div className="flex flex-col p-10 text-center">
-                <img
-                  className="w-max-[200px] mx-auto"
-                  src={feature.image}
-                  alt={feature.title}
-                />
+                {feature.image ? (
+                  <img
+                    className="w-max-[200px] mx-auto"
+                    src={feature.image}
+                    alt={feature.title}
+                  />
+                ) : null}
                 <h3 className="pb-2 text-2xl font-bold">{feature.title}</h3>
-                <p className="text-xl">{feature.description}</p>
+                {feature.description.includes("<") ? (
+                  <p
+                    className="text-xl"
+                    dangerouslySetInnerHTML={{ __html: feature.description }}
+                  />
+                ) : (
+                  <p className="text-xl">{feature.description}</p>
+                )}
               </div>
             </div>
           );
