@@ -4,7 +4,6 @@ import { Heading } from "~/components/Heading/Heading";
 import { FeatureContainer } from "~/components/Content/FeatureContainer";
 import { Container } from "~/components/Container/Container";
 import { Link } from "@remix-run/react";
-import { ActionButton } from "~/components/Button/ActionButton";
 import förderablösung from "~/images/foerderabloesung.svg";
 import förderablösungHome from "~/images/foerderabloesung-home.svg";
 import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";

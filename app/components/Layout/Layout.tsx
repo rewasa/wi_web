@@ -1,10 +1,16 @@
-import { Breadcrumbs } from "~/components/Content/Breadcrumbs";
+import clsx from "clsx";
 import { Footer } from "~/components/Footer/Footer";
 import { Navbar } from "~/components/Navbar/Navbar";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
   return (
-    <div className="flex h-full flex-col justify-between">
+    <div className={clsx("flex h-full flex-col justify-between", className)}>
       <Navbar />
       <main>{children}</main>
       <Footer />
