@@ -14,7 +14,7 @@ export default function Förderablösung() {
     <Layout>
       <Heading className="mt-20" isMain title="Förderablösung" />
       <Container>
-        <p className="my-20 text-xl">
+        <p className="my-10 text-xl">
           Dieses Modell verspricht eine Abwendung der Zwangsversteigerung. Dabei
           wird die Immobilie zwar verkauft, der bisherige Eigentümer kann sie
           jedoch weiterhin entgeltlich bewohnen und während einer bestimmten
@@ -45,7 +45,7 @@ export default function Förderablösung() {
         button={{ text: "", link: "" }}
       />
       <ContentFeatureContainer
-        bgColor="bg-[#968D7E]"
+        //fbgColor="bg-[#968D7E]"
         contentList={[
           "<h2 class='text-xl font-bold'>Nutzung & Rückkauf</h2>",
           "&#8226; Erfahrung Zwangsvollstreckungsrecht<br />&#8226; Erfahrung im Management komplexer Transaktionen<br />&#8226; Effiziente Abwicklung der Finanzierungsprojekte<br />&#8226; Bankenunabhängigkeit (ohne Basel-III-Restriktionen)<br />&#8226; Flexibilität auch bei hohen Finanzierungsvolumina (100’000-2’500’000 CHF)<br />&#8226; Kundenspezifische Lösung auch bei Kleinprojekten<br />&#8226; Transparente Kosten ohne Strukturierungs- bzw. Ratinggebühren",

@@ -17,7 +17,7 @@ export const FeatureContainer = (props: FeatureContainerProps) => {
     <Container>
       <div
         className={clsx(
-          "my-20 grid grid-cols-1 rounded p-10 md:grid-cols-2",
+          "my-20 grid grid-cols-1 rounded p-4 md:grid-cols-2 md:p-10",
           props.backgroundColor
         )}
       >

@@ -11,7 +11,7 @@ export default function Immobilienrettung() {
     <Layout>
       <Heading className="mt-20" isMain title="Immobilienrettung" />
       <Container>
-        <p className="mt-20 text-xl">
+        <p className="mt-10 text-xl">
           Eine drohende Zwangsversteigerung lässt sich auf verschiedene Wege
           abweisen. Vorhergehende Kreditkündigungen und negative Bonitäten
           limitieren jedoch Ihre Chancen. Aus der Kombination der folgenden vier
@@ -39,7 +39,7 @@ export default function Immobilienrettung() {
           {
             title: "Forderungsablösung  ",
             description:
-              "Ist eine Umschuldung nicht möglich, bieten wir mit unserem Modell «Forderungsablösung» eine weitere Alternative zur Rettung Ihrer Immobilie. Dabei übernimmt die WASESCHA Immobilien AG durch einen Rettungskauf die Verbindlichkeit gegenüber Ihrem Gläubiger.  <br /> <span class='btn-link'><a href='/kontakt'>Weitere Informationen zur Forderungsablösung finden Sie hier.</a></span>",
+              "Ist eine Umschuldung nicht möglich, bieten wir mit unserem Modell «Forderungsablösung» eine weitere Alternative zur Rettung Ihrer Immobilie. Dabei übernimmt die WASESCHA Immobilien AG durch einen Rettungskauf die Verbindlichkeit gegenüber Ihrem Gläubiger.  <br /> <span class='btn-link'><a href='/angebote/finanzierung/immobilienrettung/foerderabloesung'>Weitere Informationen zur Forderungsablösung.</a></span>",
           },
         ]}
       />

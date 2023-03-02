@@ -2,34 +2,34 @@ import wi from "~/images/wi.svg";
 
 export const Footer = () => {
   return (
-    <div className="container mx-auto bottom-0">
+    <div className="container bottom-0 mx-auto">
       <footer className="footer p-10 text-base-content">
         <div>
-          <a className="link link-hover pb-6">Immobilien</a>
-          <a className="link link-hover">Verkaufen</a>
-          <a className="link link-hover">Kaufen</a>
-          <a className="link link-hover">Finanzierung</a>
-          <a className="link link-hover">Inserieren</a>
+          <a className="link-hover link pb-6">Immobilien</a>
+          <a className="link-hover link">Verkaufen</a>
+          <a className="link-hover link">Kaufen</a>
+          <a className="link-hover link">Finanzierung</a>
+          <a className="link-hover link">Inserieren</a>
         </div>
         <div>
-          <a className="link link-hover pb-6">Unternehmen</a>
-          <a className="link link-hover">über uns</a>
-          <a className="link link-hover">Kontakt</a>
-          <a className="link link-hover">Impressum</a>
-          <a className="link link-hover">AGB</a>
+          <a className="link-hover link pb-6">Unternehmen</a>
+          <a className="link-hover link">über uns</a>
+          <a className="link-hover link">Kontakt</a>
+          <a className="link-hover link">Impressum</a>
+          <a className="link-hover link">AGB</a>
         </div>
         <div>
-          <a className="link link-hover pb-6">Benefits</a>
-          <a className="link link-hover">Checklisten</a>
-          <a className="link link-hover">Marktwertrechner</a>
+          <a className="link-hover link pb-6">Benefits</a>
+          <a className="link-hover link">Checklisten</a>
+          <a className="link-hover link">Marktwertrechner</a>
         </div>
       </footer>
-      <footer className="footer px-10 py-4 border-t text-base-content border-base-grey">
-        <div className="items-center grid-flow-col">
+      <footer className="border-base-grey footer border-t px-10 py-4 text-base-content">
+        <div className="grid-flow-col items-center">
           <img
             src={wi}
             alt="Wasescha Immobilien Logo Klein"
-            className="w-10 h-10"
+            className="h-10 w-10"
           />
           <p>
             <span className="">Wasescha Immobilien AG</span>
