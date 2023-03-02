@@ -1,40 +1,37 @@
 import { Layout } from "~/components/Layout/Layout";
 
 import { Heading } from "~/components/Heading/Heading";
-import { Services } from "~/components/Services/Services";
 
-import serviceFinanzierung1 from "~/images/service-finanzierung1.svg";
-import serviceFinanzierung2 from "~/images/service-finanzierung2.svg";
-import serviceFinanzierung3 from "~/images/service-finanzierung3.svg";
-import finanzierungHome from "~/images/finanzierung-home.svg";
+import zwangsversteigerung from "~/images/zwangsversteigerung.svg";
+
+import { Container } from "~/components/Container/Container";
+import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
 
 export default function Zwangsversteigerung() {
   return (
     <Layout>
       <Heading className="mt-20" isMain title="Zwangsversteigerung" />
-      <Services
-        services={[
-          {
-            title: "Projektfinanzierung durch Eigenheim",
-            description:
-              "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
-            image: serviceFinanzierung1,
-          },
-          {
-            title: "Immobilienrettung",
-            description:
-              "Befinden Sie sich in einer finanziellen Notlage? Wenn die Zwangsversteigerung droht, scheint ein Notverkauf meist als einziger Ausweg. Doch Immobilien sind mehr als nur Objekte. Sie stehen für Sicherheit, Familie und Erinnerungen. Unsere Kernkompetenz liegt in der Rettung Ihrer Immobilie.",
-            image: serviceFinanzierung2,
-          },
-          {
-            title: "Zwangsversteigerung",
-            description:
-              "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten Ihnen eine kostenlose Erstberatung an!",
-            image: serviceFinanzierung3,
-          },
+      <Container>
+        <p className="my-20 text-xl">
+          Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist
+          Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten
+          Ihnen eine kostenlose Erstberatung an!
+        </p>
+      </Container>
+      <ContentFeatureContainer
+        contentLeft={false}
+        contentList={[
+          "✓ Ihnen fehlt die Liquidität für ein neues Projekt privat oder beruflich<br />✓ Evtl. haben Sie sogar private Schulden oder offene Forderungen<br />✓ Banken, Investoren und Kreditgesellschaften haben Sie abgelehnt",
+          "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Und befindet sich Ihre Liegenschaft in der Schweiz? Eine drohende Zwangsversteigerung lässt sich auf verschiedene Wege abweisen. Wir finden für Sie eine auf Ihre persönliche Lebenssituation ausgerichtete, massgeschneiderte Lösung.",
         ]}
+        images={[zwangsversteigerung]}
+        imageClassName="max-w-[600px]"
+        button={{
+          text: "Hier geht’s zum Kontakt",
+          link: "/kontakt",
+        }}
+        bgColor="bg-[#AD9A81]"
       />
-      <img src={finanzierungHome} className="w-full" alt="Finanzierung Home" />
     </Layout>
   );
 }
