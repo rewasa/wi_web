@@ -49,7 +49,7 @@ const menu = [
 
 export const Navbar = () => {
   return (
-    <nav className="container navbar z-10 mx-auto scroll-auto lg:py-4">
+    <nav className="container navbar z-10 mx-auto items-center">
       <div className="navbar-start">
         <NavLink to="/">
           <img
@@ -64,10 +64,7 @@ export const Navbar = () => {
       </div>
 
       <div className="navbar-end hidden lg:flex">
-        <NavLink
-          to={"/marktwertrechner"}
-          className="btn-outline btn-xs btn lg:btn-md"
-        >
+        <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
           Kostenlose Schätzung
         </NavLink>
       </div>
@@ -197,7 +194,7 @@ function renderMenuList(menu: MenuProps) {
                           isActive ? activeStyle : undefined
                         }
                       >
-                        <span className="ml-10">{subItem.title}</span>
+                        <span className="ml-6">{subItem.title}</span>
                       </NavLink>
                     </li>
                     {subItem.subMenu.map((subSubItem, index) => {
@@ -227,7 +224,7 @@ function renderMenuList(menu: MenuProps) {
                       isActive ? activeStyle : undefined
                     }
                   >
-                    <span className="ml-10">{subItem.title}</span>
+                    <span className="ml-6">{subItem.title}</span>
                   </NavLink>
                 </li>
               );

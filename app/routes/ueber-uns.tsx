@@ -111,7 +111,7 @@ export default function UeberUns() {
           <div className="my-20 grid place-items-center">
             <Link to="/kontakt">
               <ActionButton className="btn-secondary">
-                Hier geht’s zum Kontakt
+                Hier geht's zum Kontakt
               </ActionButton>
             </Link>
           </div>
