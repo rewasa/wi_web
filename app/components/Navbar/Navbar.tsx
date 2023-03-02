@@ -32,6 +32,12 @@ const menu = [
           {
             title: "Immobilienrettung",
             link: "/angebote/finanzierung/immobilienrettung",
+            subMenu: [
+              {
+                title: "Förderablösung",
+                link: "/angebote/finanzierung/immobilienrettung/foerderabloesung",
+              },
+            ],
           },
           {
             title: "Zwangsversteigerung",

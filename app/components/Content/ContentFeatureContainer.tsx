@@ -29,8 +29,8 @@ export const ContentFeatureContainer = ({
 }: ContentFeatureContainerProps) => {
   return (
     <>
-      <div className={`${bgColor} py-20`}>
-        <div className="md:flex items-center justify-between w-full container mx-auto px-4 py-10">
+      <div className={clsx("py-20", bgColor)}>
+        <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
           {contentLeft ? (
             <>
               {renderContent(contentList, button, contentLeft, rowBreakdown)}
@@ -81,12 +81,12 @@ function renderContent(
             <p
               dangerouslySetInnerHTML={{ __html: content }}
               key={index}
-              className="text-lg my-4"
+              className="my-4 text-lg"
             />
           );
         }
         return (
-          <p key={index} className="text-lg my-4">
+          <p key={index} className="my-4 text-lg">
             {content}
           </p>
         );
@@ -120,11 +120,11 @@ function renderImages(
       {images?.length
         ? images.map((image, index) => {
             return (
-              <div key={index} className={clsx("w-full my-4", imageClassName)}>
+              <div key={index} className={clsx("my-4 w-full", imageClassName)}>
                 <img
                   src={image}
                   alt={alt}
-                  className="md:w-full sm:w-1/2 w-full"
+                  className="w-full sm:w-1/2 md:w-full"
                 />
               </div>
             );
