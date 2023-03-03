@@ -12,7 +12,7 @@ export default function UeberUns() {
     <Layout className="bg-[#CDBDA6]">
       <div className="bg-primary pb-20 text-gray-200">
         <Heading isMain title="Wer wir sind?" className="pt-20" />
-        <p className="container my-10 mx-auto px-4 text-xl">
+        <p className="container mx-auto py-10 px-4 text-xl">
           Wir, Iwan Wasescha und Natalina Schärer, sind ein engagiertes Team,
           mit sowohl langjährigem Unternehmer-Hintergrund, als auch
           umfangreicher Führungserfahrung. In Zusammenarbeit mit unseren
