@@ -6,7 +6,7 @@ import { Services } from "~/components/Services/Services";
 import serviceFinanzierung1 from "~/images/service-finanzierung1.svg";
 import serviceFinanzierung2 from "~/images/service-finanzierung2.svg";
 import serviceFinanzierung3 from "~/images/service-finanzierung3.svg";
-import finanzierungHome from "~/images/finanzierung-home.svg";
+import finanzierungHome from "~/images/finanzierung-home.png";
 
 export default function Finanzierung() {
   return (

@@ -1,11 +1,11 @@
 import { Layout } from "~/components/Layout/Layout";
 
 import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
-import verkauf1 from "~/images/verkauf1.svg";
+import verkauf1 from "~/images/verkauf1.png";
 import verkauf2 from "~/images/verkauf2.svg";
 import verkauf3 from "~/images/verkauf3.svg";
-import verkauf4 from "~/images/verkauf4.svg";
-import verkauf5 from "~/images/verkauf5.svg";
+import verkauf4 from "~/images/verkauf4.png";
+import verkauf5 from "~/images/verkauf5.png";
 import serviceProvision from "~/images/service-provision.svg";
 import serviceEmpathie from "~/images/service-empathie.svg";
 import serviceMaxPreis from "~/images/service-max-preis.svg";

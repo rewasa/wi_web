@@ -1,11 +1,9 @@
 import { Layout } from "~/components/Layout/Layout";
 
 import { Heading } from "~/components/Heading/Heading";
-import { FeatureContainer } from "~/components/Content/FeatureContainer";
 import { Container } from "~/components/Container/Container";
-import { Link } from "@remix-run/react";
-import förderablösung from "~/images/foerderabloesung.svg";
-import förderablösungHome from "~/images/foerderabloesung-home.svg";
+import förderablösung from "~/images/foerderabloesung.png";
+import förderablösungHome from "~/images/foerderabloesung-home.png";
 import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
 
 export default function Förderablösung() {
@@ -40,7 +38,7 @@ export default function Förderablösung() {
           "&#8226; Abwendung der Zwangsversteigerung<br />&#8226; Bereinigung des Grundbuches (hoch wertsteigernd)<br />&#8226; Zeitgewinn in Hinblick einer Um- oder Anschlussfinanzierung<br />&#8226; Immobilie bleibt weiterhin im Einflussbereich des früheren Eigentümers",
         ]}
         images={[förderablösung]}
-        imageClassName="max-w-[350px]"
+        imageClassName="max-w-[450px]"
         button={{ text: "", link: "" }}
       />
       <ContentFeatureContainer
