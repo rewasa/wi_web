@@ -49,7 +49,7 @@ const menu = [
 
 export const Navbar = () => {
   return (
-    <nav className="container navbar z-10 mx-auto items-center">
+    <nav className="container navbar z-20 mx-auto items-center">
       <div className="navbar-start">
         <NavLink to="/">
           <img
