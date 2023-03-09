@@ -8,7 +8,7 @@ import { Link } from "@remix-run/react";
 
 export default function Kontakt() {
   return (
-    <Layout className="bg-[#CDBDA6]">
+    <Layout className="bg-[#CDBDA6]" bgMain="bg-primary">
       <div className="bg-primary pb-20 text-gray-200">
         <Heading
           isMain

@@ -9,7 +9,7 @@ import natalina from "~/images/natalina-schaerer.svg";
 
 export default function UeberUns() {
   return (
-    <Layout className="bg-[#CDBDA6]">
+    <Layout className="bg-[#CDBDA6]" bgMain="bg-primary">
       <div className="bg-primary pb-20 text-gray-200">
         <Heading isMain title="Wer wir sind?" className="pt-20" />
         <p className="container mx-auto py-10 px-4 text-xl">
