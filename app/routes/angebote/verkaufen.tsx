@@ -13,6 +13,7 @@ import kundenbewertungenBg from "~/images/kundenbewertungen-bg.svg";
 import kundenbewertungen1 from "~/images/kundenbewertungen1.svg";
 import kundenbewertungen2 from "~/images/kundenbewertungen2.svg";
 import kundenbewertungen3 from "~/images/kundenbewertungen3.svg";
+import schritt1 from "~/images/schritt1.png";
 
 import { Heading } from "~/components/Heading/Heading";
 import { Services } from "~/components/Services/Services";
@@ -20,7 +21,7 @@ import { Services } from "~/components/Services/Services";
 export default function Verkaufen() {
   return (
     <Layout>
-      <Heading className="mt-20" isMain title="Verkaufen" />
+      <Heading className="pt-20" isMain title="Verkaufen" />
       <ContentFeatureContainer
         contentList={[
           "<h1 class='text-3xl text-bold pb-6'>So gelingt Dir ein erfolgreicher Verkauf Deiner Immobilie, ohne dass es Dich Zeit & Nerven kostet</h1>",
@@ -52,7 +53,11 @@ export default function Verkaufen() {
         }}
         bgColor="bg-[#000]"
       />
-      <Heading hasLogo title="„Ein Haus ist weit mehr als ein gegenstand.“" />
+      <Heading
+        className="py-10"
+        hasLogo
+        title="„Ein Haus ist weit mehr als ein gegenstand.“"
+      />
       <ContentFeatureContainer
         rowBreakdown={{ image: 4, content: 8 }}
         contentLeft={false}
@@ -121,6 +126,26 @@ export default function Verkaufen() {
             image: kundenbewertungen3,
           },
         ]}
+      />
+      <Heading
+        className="py-10"
+        title="Schritt für Schritt zum erfolgreichen Verkauf"
+        hasLogo
+      />
+      <ContentFeatureContainer
+        rowBreakdown={{ image: 4, content: 8 }}
+        contentList={[
+          "<h2 class='text-3xl pb-4'>1. Erstberatung & Marktwertermittlung</h2>",
+          `Bei einem ersten Beratungsgespräch besprechen wir deine Wünsche und Ziele. <br /> <br />Mittels Markt- und Konkurrenzanalyse ermitteln wir kostenfrei wieviel deine Immobilie auf dem Markt wert ist und besprechen unsere Ergebnisse.`,
+        ]}
+        images={[schritt1]}
+        imageClassName="max-w-[350px]"
+        button={{
+          text: "",
+          link: "",
+        }}
+        textColor="text-white"
+        bgColor="bg-black"
       />
     </Layout>
   );

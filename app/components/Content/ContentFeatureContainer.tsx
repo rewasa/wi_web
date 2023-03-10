@@ -11,6 +11,7 @@ type ContentFeatureContainerProps = {
   contentList: string[];
   images: string[];
   imageClassName?: string;
+  textColor?: string;
   bgColor?: string;
   button: {
     text: string;
@@ -24,6 +25,7 @@ export const ContentFeatureContainer = ({
   contentList,
   images,
   imageClassName,
+  textColor,
   bgColor,
   button,
 }: ContentFeatureContainerProps) => {
@@ -33,7 +35,13 @@ export const ContentFeatureContainer = ({
         <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
           {contentLeft ? (
             <>
-              {renderContent(contentList, button, contentLeft, rowBreakdown)}
+              {renderContent(
+                contentList,
+                button,
+                contentLeft,
+                rowBreakdown,
+                textColor
+              )}
               {renderImages(
                 images,
                 contentLeft,
@@ -51,7 +59,13 @@ export const ContentFeatureContainer = ({
                 rowBreakdown,
                 imageClassName
               )}
-              {renderContent(contentList, button, contentLeft, rowBreakdown)}
+              {renderContent(
+                contentList,
+                button,
+                contentLeft,
+                rowBreakdown,
+                textColor
+              )}
             </>
           )}
         </div>
@@ -64,15 +78,16 @@ function renderContent(
   content: string[],
   button: { text: string; link: string },
   contentLeft: boolean,
-  rowBreakdown: { content: number; image: number }
+  rowBreakdown: { content: number; image: number },
+  textColor?: string
 ) {
   return (
     <div
       className={clsx(
-        "font-catamaran",
         contentLeft ? "" : "xl:pl-28",
         mapBreakDownToClass(rowBreakdown.content),
-        "w-full"
+        "w-full",
+        textColor
       )}
     >
       {content.map((content, index) => {

@@ -5,19 +5,56 @@ import { formAction } from "~/form-action.server"; /* path to your custom formAc
 import type { DataFunctionArgs } from "@remix-run/server-runtime";
 import { ContactFormSchema } from "~/schema/ContactFromSchema";
 import { Form } from "~/form";
+import { getDirectusClient } from "~/lib/directus";
 
-const mutation = makeDomainFunction(ContactFormSchema)(
-  async (values) =>
-    console.log(values) /* or anything else, like saveMyValues(values) */
-);
+async function findKnownPerson(email: string) {
+  const directus = await getDirectusClient();
+  const knownPersons = await directus.items("Person").readByQuery({
+    filter: {
+      email: {
+        _eq: email,
+      },
+    },
+  });
+  if (!knownPersons.data || knownPersons.data.length === 0) {
+    return { id: null };
+  }
+  return {
+    id: knownPersons.data[0].id,
+    messages: knownPersons.data[0].messages || ([] as any),
+  };
+}
 
-export const action = async (args: DataFunctionArgs) =>
-  formAction({
+export const action = async (args: DataFunctionArgs) => {
+  const mutation = makeDomainFunction(ContactFormSchema)(async (values) => {
+    const directus = await getDirectusClient();
+    const knownPerson = await findKnownPerson(values.email);
+
+    if (knownPerson.id) {
+      await directus.items("Person").updateOne(knownPerson.id, {
+        ...values,
+        messages: [
+          {
+            message: values.message,
+          },
+          ...knownPerson.messages,
+        ] as any,
+      });
+    } else {
+      await directus.items("Person").createOne({
+        ...values,
+        messages: [{ message: values.message }] as any,
+      });
+    }
+  });
+
+  return formAction({
     request: args.request,
     schema: ContactFormSchema,
     mutation,
     successPath: "/kontakt-erfolgreich",
   });
+};
 
 export default function Kontaktformular() {
   return (
@@ -29,7 +66,7 @@ export default function Kontaktformular() {
             Gerne beraten wir Sie persönlich. Füllen Sie einfach das Formular
             aus und wir melden uns bei Ihnen.
           </p>
-          <Form schema={ContactFormSchema}>
+          <Form schema={ContactFormSchema} className="w-full">
             {({ Field, Errors, Button }) => (
               <>
                 <Field name="firstName">
@@ -39,9 +76,9 @@ export default function Kontaktformular() {
                       <SmartInput
                         type="text"
                         placeholder=""
-                        className="input-bordered input-primary input w-full max-w-xs"
+                        className="input-bordered input-primary input w-full max-w-md text-black"
                       />
-                      <Errors />
+                      <Errors className="text-[#ff0000]" />
                     </>
                   )}
                 </Field>
@@ -52,9 +89,9 @@ export default function Kontaktformular() {
                       <SmartInput
                         type="text"
                         placeholder=""
-                        className="input-bordered input-primary input w-full max-w-xs"
+                        className="input-bordered input-primary input w-full max-w-md text-black"
                       />
-                      <Errors />
+                      <Errors className="text-[#ff0000]" />
                     </>
                   )}
                 </Field>
@@ -65,9 +102,22 @@ export default function Kontaktformular() {
                       <SmartInput
                         type="email"
                         placeholder=""
-                        className="input-bordered input-primary input w-full max-w-xs"
+                        className="input-bordered input-primary input w-full max-w-md text-black"
                       />
-                      <Errors />
+                      <Errors className="text-[#ff0000]" />
+                    </>
+                  )}
+                </Field>
+                <Field name="phone">
+                  {({ Label, SmartInput, Errors }) => (
+                    <>
+                      <Label className="label">Telefon</Label>
+                      <SmartInput
+                        type="phone"
+                        placeholder=""
+                        className="input-bordered input-primary input w-full max-w-md text-black"
+                      />
+                      <Errors className="text-[#ff0000]" />
                     </>
                   )}
                 </Field>
@@ -77,7 +127,7 @@ export default function Kontaktformular() {
                       <Label className="label">Nachricht</Label>
                       <Multiline
                         rows={6}
-                        className="textarea-bordered textarea-primary w-full max-w-xs rounded-md"
+                        className="textarea-bordered textarea-primary w-full max-w-md rounded-md p-2 text-black"
                         placeholder=""
                       />
                       <Errors />
