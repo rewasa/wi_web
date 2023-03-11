@@ -305,10 +305,10 @@ export default function Verkaufen() {
         <Container>
           <div className="-mt-20 flex bg-[#AD9A81] md:min-h-[900px]">
             <div
-              className="mt-56 w-full bg-cover bg-no-repeat pb-20"
+              className="mt-56 mb-20 h-[200px] w-full bg-cover bg-no-repeat md:h-[800px]"
               style={{ backgroundImage: `url(${geldzurueckGarantie})` }}
             >
-              <h3 className="-mt-32 text-center text-2xl md:text-3xl">
+              <h3 className="-mt-36 text-center text-2xl md:text-3xl">
                 “Geld zurück Garantie” <br />
                 brauchst Du nicht...
               </h3>
@@ -319,7 +319,7 @@ export default function Verkaufen() {
           </div>
         </Container>
       </div>
-      <Heading title="? Häufigste Fragen ?" hasLogo className="" />
+      <Heading title="? Häufigste Fragen ?" hasLogo className=" bg-white" />
       <ContentFeatureContainer
         contentList={[
           `<h3 class="font-bold md:text-2xl">Lerne uns unverbindlich kennen, bevor Du uns vertraust</h3>`,
