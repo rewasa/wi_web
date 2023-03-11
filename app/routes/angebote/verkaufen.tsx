@@ -22,12 +22,14 @@ import packet1 from "~/images/packet1.svg";
 import packet2 from "~/images/packet2.svg";
 import packet3 from "~/images/packet3.svg";
 import haus from "~/images/haus.png";
-import iwan from "~/images/iwan-wasescha.svg";
-import natalina from "~/images/natalina-schaerer.svg";
 import iwanundnatalina from "~/images/iwan-und-natalina.svg";
+import geldzurueckGarantie from "~/images/geld-zurueck-garantie-mobile.png";
+import haeufigeFragen from "~/images/haeufige-fragen.png";
+import verkaufCheckliste from "~/images/verkauf-checkliste.svg";
 
 import { Heading } from "~/components/Heading/Heading";
 import { Services } from "~/components/Services/Services";
+import { Container } from "~/components/Container/Container";
 
 export default function Verkaufen() {
   return (
@@ -297,6 +299,73 @@ export default function Verkaufen() {
         }}
         bgColor="bg-black"
         textColor="text-white"
+      />
+      <div className="bg-black">
+        <Heading title="" hasLogo className="bg-white pb-20 md:pb-36" />
+        <Container>
+          <div className="-mt-20 flex bg-[#AD9A81] md:min-h-[900px]">
+            <div
+              className="mt-56 w-full bg-cover bg-no-repeat pb-20"
+              style={{ backgroundImage: `url(${geldzurueckGarantie})` }}
+            >
+              <h3 className="-mt-32 text-center text-2xl md:text-3xl">
+                “Geld zurück Garantie” <br />
+                brauchst Du nicht...
+              </h3>
+              <p className="py-4 text-center md:text-xl">
+                ...denn bei uns bezahlst du erst nach erfolgreichem Verkauf
+              </p>
+            </div>
+          </div>
+        </Container>
+      </div>
+      <Heading title="? Häufigste Fragen ?" hasLogo className="" />
+      <ContentFeatureContainer
+        contentList={[
+          `<h3 class="font-bold md:text-2xl">Lerne uns unverbindlich kennen, bevor Du uns vertraust</h3>`,
+          `1. Wie lange dauert es meine Immobilie zu verkaufen?`,
+
+          `2. Ist mein Objekt gut verkäuflich?`,
+
+          `3. Welcher Verkaufspreis ist realisierbar?`,
+
+          `4. Welche Schritte sind zu tun?`,
+
+          `5. Ich kenne mich damit nicht aus. Was muss ich tun?`,
+
+          `6. Worin unterscheidet ihr euch von einem traditionellen Makler?`,
+
+          `7. Wie schätzt ihr meine Immobilie ein?`,
+        ]}
+        images={[haeufigeFragen]}
+        button={{
+          text: "Ja, ich will eine kompetente Beratung",
+          link: "/kontakt",
+        }}
+        bgColor="bg-black"
+        textColor="text-white"
+      />
+      <Heading
+        title="Egal wie viel Wissen bereits vorhanden ist, hier erhältst Du diverse Ckecklisten für Deinen gelungenen Immobilienverkauf BEVOR Du Dich für einen Makler entscheidest."
+        className=""
+      />
+      <ContentFeatureContainer
+        rowBreakdown={{ image: 4, content: 8 }}
+        contentLeft={false}
+        contentList={[
+          `<span class="text-xl">&#8226; Checkliste Maklersuche<span><br />
+          <span class="text-xl">&#8226; Checkliste Hausverkauf<span><br />
+          <span class="text-xl">&#8226; Checkliste Immobilieninserate<span><br />
+          <span class="text-xl">&#8226; Checkliste benötigte Unterlagen<span><br />
+          <span class="text-xl">&#8226; Checkliste für die Immobilienbesichtigung<span><br />`,
+        ]}
+        images={[verkaufCheckliste]}
+        imageClassName="max-w-[200px]"
+        button={{
+          text: "Kostenfreie PDF’s",
+          link: "/kontakt",
+        }}
+        bgColor="bg-[#AD9A81]"
       />
     </Layout>
   );

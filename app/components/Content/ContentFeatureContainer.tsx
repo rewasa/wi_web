@@ -120,7 +120,7 @@ function renderContent(
 function renderImages(
   images: string[],
   contentLeft: boolean,
-  alt: string = "wasescha immobilien verkauf",
+  alt: string = "Wasescha Immobilien Verkauf",
   rowBreakdown: { content: number; image: number },
   imageClassName?: string
 ) {
