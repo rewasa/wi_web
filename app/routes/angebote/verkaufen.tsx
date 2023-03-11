@@ -146,7 +146,6 @@ export default function Verkaufen() {
         hasLogo
       />
       <ContentFeatureContainer
-        rowBreakdown={{ image: 4, content: 8 }}
         contentList={[
           "<h2 class='text-3xl pb-4'>1. Erstberatung & Marktwertermittlung</h2>",
           `Bei einem ersten Beratungsgespräch besprechen wir deine Wünsche und Ziele. <br /> <br />Mittels Markt- und Konkurrenzanalyse ermitteln wir kostenfrei wieviel deine Immobilie auf dem Markt wert ist und besprechen unsere Ergebnisse.`,
@@ -161,7 +160,6 @@ export default function Verkaufen() {
       />
       <ContentFeatureContainer
         contentLeft={false}
-        rowBreakdown={{ image: 4, content: 8 }}
         contentList={[
           "<h2 class='text-3xl pb-4'> 2. Deine Immobilie wird ins beste Licht gestellt</h2>",
           `Für deine Immobilie erstellen wir hochwertige Verkaufsunterlagen mit ansprechenden Fotos und entwickeln eine individuelle Marketingstrategie.<br /> <br />Damit deine Immobilie auf passende Käufer trifft, wird sie auf sämtlichen Immobilienportalen veröffentlicht.`,
@@ -175,7 +173,6 @@ export default function Verkaufen() {
         bgColor="bg-black"
       />
       <ContentFeatureContainer
-        rowBreakdown={{ image: 4, content: 8 }}
         contentList={[
           "<h2 class='text-3xl pb-4'>3. Besichtigungen vor Ort</h2>",
           `Sobald erste Anfragen eintreffen, ermitteln wir gekonnt, wer wirkliches Kaufinteresse hat. Danach koordinieren wir Besichtigungen vor Ort und führen diese professionell durch. <br /> <br />Natürlich kannst du die Besichtigungen auch selber durchführen.`,
@@ -190,7 +187,6 @@ export default function Verkaufen() {
       />
       <ContentFeatureContainer
         contentLeft={false}
-        rowBreakdown={{ image: 4, content: 8 }}
         contentList={[
           "<h2 class='text-3xl pb-4'>4. Betreuung und Austausch</h2>",
           `FEs ist uns ein grosses Anliegen, dass du stets über den aktuellen Stand informiert bist. 
@@ -209,7 +205,6 @@ export default function Verkaufen() {
         bgColor="bg-black"
       />
       <ContentFeatureContainer
-        rowBreakdown={{ image: 4, content: 8 }}
         contentList={[
           "<h2 class='text-3xl pb-4'>5. Vertragsabschluss</h2>",
           `Sobald Du dich für einen passenden Käufer entscheidest, bereiten wir alle nötigen Unterlagen vor und überprüfen für dich den Kaufvertragsentwurf. 
