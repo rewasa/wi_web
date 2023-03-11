@@ -301,7 +301,7 @@ export default function Verkaufen() {
         textColor="text-white"
       />
       <div className="bg-black">
-        <Heading title="" hasLogo className="bg-white pb-20 md:pb-36" />
+        <Heading title="" hasLogo className="bg-white pb-20 md:pb-24" />
         <Container>
           <div className="-mt-20 flex bg-[#AD9A81] md:min-h-[900px]">
             <div
