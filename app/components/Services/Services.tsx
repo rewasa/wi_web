@@ -54,6 +54,8 @@ export const Services = ({
         <div className="flex-wrap text-white sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between">
           {services?.length
             ? services.map((service, index) => {
+                const descriptionInHtml = service.description?.includes("<");
+
                 return (
                   <div
                     key={index}
@@ -86,9 +88,18 @@ export const Services = ({
                             {service.title}
                           </h1>
                         ) : null}
-                        <p className={clsx("px-4 text-xl", textColor)}>
-                          {service.description}
-                        </p>
+                        {descriptionInHtml ? (
+                          <p
+                            className={clsx("px-4 text-xl", textColor)}
+                            dangerouslySetInnerHTML={{
+                              __html: service.description as string,
+                            }}
+                          ></p>
+                        ) : (
+                          <p className={clsx("px-4 text-xl", textColor)}>
+                            {service.description}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
