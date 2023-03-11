@@ -7,6 +7,7 @@ type Service = {
   title?: string;
   description?: string;
   image: string;
+  link?: string;
 };
 
 type ServicesProps = {
@@ -57,17 +58,18 @@ export const Services = ({
                 const descriptionInHtml = service.description?.includes("<");
 
                 return (
-                  <div
+                  <Link
+                    to={service.link || "#"}
                     key={index}
-                    className="relative mt-16 mb-32 sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
+                    className="relative  sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
                   >
-                    <div className="">
+                    <div className="duration-400 delay-10 transition ease-in-out hover:rounded hover:bg-black">
                       <div className="flex w-full justify-center">
                         <div className="p-3">
                           <img
                             src={service.image}
                             alt={service.title}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-cover p-6"
                           />
                         </div>
                       </div>
@@ -102,7 +104,7 @@ export const Services = ({
                         )}
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })
             : null}

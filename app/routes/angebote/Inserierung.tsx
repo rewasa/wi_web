@@ -15,15 +15,17 @@ export default function Inserierung() {
   return (
     <Layout>
       <Heading
-        className="mt-20"
+        className="mt-10"
         isMain
         title="Spare Zeit und Geld für die Inserierung"
       />
       <ContentFeatureContainer
+        rowBreakdown={{ image: 4, content: 8 }}
         contentLeft={false}
         contentList={[
-          "Wenn Du den verkauf gerne selber in die hand nehmen möchtest, bieten wir dir an, lediglich das Inserat für dich zu schalten.",
-          "Folgende Infos & Dokumente werden dafür benötigt:<br />Fotos<br />Angaben zur Immobilie<br />Grundrissplan",
+          "<h3 class='text-2xl'>Wenn Du den Verkauf gerne selber in die Hand nehmen möchtest, bieten wir dir an, lediglich das Inserat für dich zu schalten.</h3>",
+          "Folgende Infos & Dokumente werden dafür benötigt:",
+          "&#8226; Fotos<br />&#8226; Angaben zur Immobilie<br />&#8226; Grundrissplan",
         ]}
         images={[inserierung]}
         imageClassName="max-w-[300px] md:pl-4"

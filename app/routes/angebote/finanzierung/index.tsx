@@ -23,18 +23,21 @@ export default function Finanzierung() {
             description:
               "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
             image: serviceFinanzierung1,
+            link: "angebote/finanzierung/durch-eigenheim",
           },
           {
             title: "Immobilienrettung",
             description:
               "Befinden Sie sich in einer finanziellen Notlage? Wenn die Zwangsversteigerung droht, scheint ein Notverkauf meist als einziger Ausweg. Doch Immobilien sind mehr als nur Objekte. Sie stehen für Sicherheit, Familie und Erinnerungen. Unsere Kernkompetenz liegt in der Rettung Ihrer Immobilie.",
             image: serviceFinanzierung2,
+            link: "/angebote/finanzierung/immobilienrettung",
           },
           {
             title: "Zwangsversteigerung",
             description:
               "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten Ihnen eine kostenlose Erstberatung an!",
             image: serviceFinanzierung3,
+            link: "/angebote/finanzierung/zwangsversteigerung",
           },
         ]}
       />

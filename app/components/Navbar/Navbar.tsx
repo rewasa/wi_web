@@ -13,7 +13,7 @@ type NavbarProps = {
   subMenu?: Array<NavbarProps>;
 };
 
-const menu = [
+export const menu = [
   {
     title: "Angebote",
     subMenu: [
