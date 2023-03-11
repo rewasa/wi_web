@@ -350,7 +350,7 @@ export default function Verkaufen() {
         className=""
       />
       <ContentFeatureContainer
-        rowBreakdown={{ image: 4, content: 8 }}
+        rowBreakdown={{ image: 2, content: 10 }}
         contentLeft={false}
         contentList={[
           `<span class="text-xl">&#8226; Checkliste Maklersuche<span><br />

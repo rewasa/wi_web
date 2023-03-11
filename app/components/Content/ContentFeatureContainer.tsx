@@ -85,7 +85,11 @@ function renderContent(
     <div
       className={clsx(
         contentLeft ? "" : "xl:pl-28",
-        mapBreakDownToClass(rowBreakdown.content),
+        { "md:w-2/12": rowBreakdown.content === 2 },
+        { "md:w-4/12": rowBreakdown.content === 4 },
+        { "md:w-6/12": rowBreakdown.content === 5 },
+        { "md:w-8/12": rowBreakdown.content === 8 },
+        { "md:w-10/12": rowBreakdown.content === 10 },
         "w-full",
         textColor
       )}
@@ -128,7 +132,11 @@ function renderImages(
     <div
       className={clsx(
         contentLeft ? "xl:pl-28" : "",
-        mapBreakDownToClass(rowBreakdown.image),
+        { "md:w-2/12": rowBreakdown.image === 2 },
+        { "md:w-4/12": rowBreakdown.image === 4 },
+        { "md:w-6/12": rowBreakdown.image === 5 },
+        { "md:w-8/12": rowBreakdown.image === 8 },
+        { "md:w-10/12": rowBreakdown.image === 8 },
         "w-full"
       )}
     >
