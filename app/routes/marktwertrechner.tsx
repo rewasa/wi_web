@@ -6,7 +6,6 @@ export default function Marktwertrechner() {
   useEffect(() => {
     const scriptIazi = document.createElement("script");
     scriptIazi.src = "https://app.iazi.ch/mod/hedolight/interface.js";
-    scriptIazi.async = true;
     document.body.appendChild(scriptIazi);
     const script = document.createElement("script");
     script.text = `
@@ -17,7 +16,6 @@ export default function Marktwertrechner() {
       }, 2000)
     `;
     document.body.appendChild(script);
-    script.async = true;
 
     return () => {
       document.body.removeChild(script);
