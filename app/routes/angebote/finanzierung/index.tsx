@@ -23,7 +23,7 @@ export default function Finanzierung() {
             description:
               "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
             image: serviceFinanzierung1,
-            link: "angebote/finanzierung/durch-eigenheim",
+            link: "/angebote/finanzierung/durch-eigenheim",
           },
           {
             title: "Immobilienrettung",
