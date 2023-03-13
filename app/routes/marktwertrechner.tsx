@@ -28,8 +28,8 @@ export default function Marktwertrechner() {
       <Heading isMain title="Marktwertrechner" />
       <div
         id="iazihedolightcontainer"
-        on-load-language="de"
-        className="h-min-screen w-min-screen"
+        // on-load-language="de"
+        // className="h-min-screen w-min-screen"
       ></div>
     </Layout>
   );
