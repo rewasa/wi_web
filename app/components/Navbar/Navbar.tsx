@@ -89,9 +89,15 @@ export const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="dropdown-content menu rounded-box w-auto bg-base-100 shadow"
+            className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
           >
             {renderMenuList(menu)}
+            <NavLink
+              to={"/marktwertrechner"}
+              className="btn-secondary btn-xs btn m-2"
+            >
+              Kostenlose Schätzung
+            </NavLink>
           </ul>
         </div>
       </div>
@@ -179,7 +185,6 @@ function renderMenuList(menu: MenuProps) {
             </ul>
           </li>
           <div className="flex-inline flex-wrap lg:hidden">
-            <div className="text-bold m-4">{item.title}</div>
             {item.subMenu.map((subItem, index) => {
               if (subItem.subMenu?.length) {
                 return (
@@ -194,7 +199,7 @@ function renderMenuList(menu: MenuProps) {
                           isActive ? activeStyle : undefined
                         }
                       >
-                        <span className="ml-6">{subItem.title}</span>
+                        <span className="">{subItem.title}</span>
                       </NavLink>
                     </li>
                     {subItem.subMenu.map((subSubItem, index) => {
@@ -207,7 +212,7 @@ function renderMenuList(menu: MenuProps) {
                                 isActive ? activeStyle : undefined
                               }
                             >
-                              <span className="ml-20">{subSubItem.title}</span>
+                              <span className="">{subSubItem.title}</span>
                             </NavLink>
                           </li>
                         </>
@@ -224,7 +229,7 @@ function renderMenuList(menu: MenuProps) {
                       isActive ? activeStyle : undefined
                     }
                   >
-                    <span className="ml-6">{subItem.title}</span>
+                    <span className="">{subItem.title}</span>
                   </NavLink>
                 </li>
               );
