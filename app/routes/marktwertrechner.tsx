@@ -50,7 +50,7 @@ export default function Marktwertrechner() {
             {loaderValue}%
           </div>
 
-          <div className={clsx({ visible: loaderValue < 100 })}></div>
+          <div className={clsx({ visible: loaderValue > 100 })}></div>
         </div>
       </Container>
     </Layout>
