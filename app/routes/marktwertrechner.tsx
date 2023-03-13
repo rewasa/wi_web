@@ -23,7 +23,7 @@ export default function Marktwertrechner() {
 
     const interval = setInterval(() => {
       setLoaderValue((loaderValue) => loaderValue + 1);
-    }, 60);
+    }, 50);
 
     if (loaderValue === 100) {
       clearInterval(interval);
@@ -50,7 +50,7 @@ export default function Marktwertrechner() {
             {loaderValue}%
           </div>
 
-          <div className={clsx({ visible: loaderValue > 100 })}>
+          <div className={clsx({ visible: loaderValue >= 100 })}>
             <div id="iazihedolightcontainer"></div>
           </div>
         </div>
