@@ -8,6 +8,16 @@ export default function Marktwertrechner() {
   const [loaderValue, setLoaderValue] = useState(0);
 
   useEffect(() => {
+    const interval = setInterval(() => {
+      setLoaderValue((loaderValue) => loaderValue + 1);
+    }, 50);
+    if (loaderValue > 100) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [loaderValue]);
+
+  useEffect(() => {
     const scriptIazi = document.createElement("script");
     scriptIazi.src = "https://app.iazi.ch/mod/hedolight/interface.js";
     document.body.appendChild(scriptIazi);
@@ -21,18 +31,9 @@ export default function Marktwertrechner() {
     `;
     document.body.appendChild(script);
 
-    const interval = setInterval(() => {
-      setLoaderValue((loaderValue) => loaderValue + 1);
-    }, 50);
-
-    if (loaderValue === 100) {
-      clearInterval(interval);
-    }
-
     return () => {
       document.body.removeChild(script);
       document.body.removeChild(scriptIazi);
-      clearInterval(interval);
     };
   }, []);
 
@@ -43,7 +44,7 @@ export default function Marktwertrechner() {
         <div className="flex min-h-[400px] items-center justify-center">
           <div
             className={clsx("radial-progress text-secondary", {
-              invisible: loaderValue > 100,
+              hidden: loaderValue > 100,
             })}
             style={{ "--value": loaderValue, "--thickness": "5px" } as any}
           >
