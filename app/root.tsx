@@ -11,6 +11,7 @@ import {
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
+import { ExternalScripts } from "remix-utils";
 
 export const links: LinksFunction = () => {
   return [
@@ -35,6 +36,7 @@ export default function App() {
       <body className="h-full">
         <Outlet />
         <ScrollRestoration />
+        <ExternalScripts />
         <Scripts />
         <LiveReload />
       </body>
