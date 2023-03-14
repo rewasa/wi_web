@@ -44,7 +44,7 @@ export default function Marktwertrechner() {
         <div className="flex min-h-[400px] items-center justify-center">
           <div
             className={clsx("radial-progress text-secondary", {
-              hidden: loaderValue > 100,
+              hidden: loaderValue >= 100,
             })}
             style={{ "--value": loaderValue, "--thickness": "5px" } as any}
           >
