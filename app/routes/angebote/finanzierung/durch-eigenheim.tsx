@@ -45,7 +45,7 @@ export default function DurchEigenheim() {
         backgroundColor="#968D7E"
         textColor="text-black"
         actionButton={{
-          text: "Hier geht’s zum Kontakt",
+          text: "Hier geht's zum Kontakt",
           link: "/kontakt",
         }}
         services={[
@@ -121,7 +121,7 @@ export default function DurchEigenheim() {
       <Container>
         <div className="my-20 grid place-items-center">
           <Link to="/kontakt">
-            <ActionButton>Hier geht’s zum Kontakt</ActionButton>
+            <ActionButton>Hier geht's zum Kontakt</ActionButton>
           </Link>
         </div>
       </Container>

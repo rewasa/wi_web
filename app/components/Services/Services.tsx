@@ -63,7 +63,12 @@ export const Services = ({
                     key={index}
                     className="relative  sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
                   >
-                    <div className="duration-400 delay-10 transition ease-in-out hover:rounded hover:bg-black">
+                    <div
+                      className={clsx({
+                        "duration-400 delay-10 transition ease-in-out hover:rounded hover:bg-black":
+                          !backgroundColor && !bgImage,
+                      })}
+                    >
                       <div className="flex w-full justify-center">
                         <div className="p-3">
                           <img

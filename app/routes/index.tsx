@@ -6,7 +6,6 @@ import { Services } from "~/components/Services/Services";
 import verkaufen from "~/images/verkaufen.svg";
 import inserieren from "~/images/inserieren.svg";
 import finanzierung from "~/images/finanzierung.svg";
-import { menu } from "~/components/Navbar/Navbar";
 
 const serviceTitle = "Bei welchem anliegen dürfen wir dich unterstützen?";
 const services = [

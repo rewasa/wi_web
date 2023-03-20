@@ -51,9 +51,21 @@ export interface components {
       readonly bathroom?: number | null;
       readonly garage?: number | null;
       readonly buildYear?: number | null;
-      readonly propertyImages?: string;
+      readonly propertyImages?: readonly (number | components["schemas"]["ItemsPropertyFiles"])[];
       readonly valuations?: readonly (string | components["schemas"]["ItemsValuations"])[];
       readonly "divider-h53ufv"?: string;
+    };
+    readonly ItemsPropertyEigenschafter: {
+      readonly id?: number;
+      /** Format: uuid */
+      readonly Property_id?: string | null;
+      readonly item?: string | null;
+      readonly collection?: string | null;
+    };
+    readonly ItemsPropertyFiles: {
+      readonly id?: number;
+      readonly Property_id?: string | components["schemas"]["ItemsProperty"];
+      readonly directus_files_id?: string | components["schemas"]["Files"];
     };
     readonly ItemsValuations: {
       /** Format: uuid */
