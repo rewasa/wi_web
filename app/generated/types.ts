@@ -12,6 +12,60 @@ export type webhooks = Record<string, never>;
 
 export interface components {
   schemas: {
+    readonly ItemsHeading: {
+      /** Format: uuid */
+      readonly id?: string;
+      readonly status?: string;
+      readonly sort?: number | null;
+      readonly user_created?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_created?: string | null;
+      readonly user_updated?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_updated?: string | null;
+      readonly title?: string | null;
+      readonly hasLogo?: boolean | null;
+      readonly isMain?: boolean | null;
+    };
+    readonly ItemsHero: {
+      /** Format: uuid */
+      readonly id?: string;
+      readonly status?: string;
+      readonly sort?: number | null;
+      readonly user_created?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_created?: string | null;
+      readonly user_updated?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_updated?: string | null;
+      readonly title?: string | null;
+      readonly bg?: string | components["schemas"]["Files"];
+      readonly text1?: string | null;
+      readonly text2?: string | null;
+    };
+    readonly ItemsPages: {
+      /** Format: uuid */
+      readonly id?: string;
+      readonly status?: string;
+      readonly sort?: number | null;
+      readonly user_created?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_created?: string | null;
+      readonly user_updated?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_updated?: string | null;
+      readonly pathname?: string | null;
+      readonly title?: string | null;
+      readonly description?: string | null;
+      readonly SEO?: string;
+      readonly sections?: readonly (number | components["schemas"]["ItemsPagesSections"])[];
+    };
+    readonly ItemsPagesSections: {
+      readonly id?: number;
+      readonly Pages_id?: string | components["schemas"]["ItemsPages"];
+      readonly item?: readonly (Record<string, never>)[] | null;
+      readonly collection?: string | null;
+    };
     readonly ItemsPerson: {
       /** Format: uuid */
       readonly id?: string;
@@ -51,21 +105,26 @@ export interface components {
       readonly bathroom?: number | null;
       readonly garage?: number | null;
       readonly buildYear?: number | null;
-      readonly propertyImages?: readonly (number | components["schemas"]["ItemsPropertyFiles"])[];
+      readonly propertyImages?: string;
       readonly valuations?: readonly (string | components["schemas"]["ItemsValuations"])[];
       readonly "divider-h53ufv"?: string;
     };
-    readonly ItemsPropertyEigenschafter: {
-      readonly id?: number;
+    readonly ItemsServices: {
       /** Format: uuid */
-      readonly Property_id?: string | null;
-      readonly item?: string | null;
-      readonly collection?: string | null;
-    };
-    readonly ItemsPropertyFiles: {
-      readonly id?: number;
-      readonly Property_id?: string | components["schemas"]["ItemsProperty"];
-      readonly directus_files_id?: string | components["schemas"]["Files"];
+      readonly id?: string;
+      readonly status?: string;
+      readonly sort?: number | null;
+      readonly user_created?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_created?: string | null;
+      readonly user_updated?: string | components["schemas"]["Users"];
+      /** Format: timestamp */
+      readonly date_updated?: string | null;
+      readonly services?: Record<string, unknown> | null;
+      readonly title?: string | null;
+      readonly text?: Record<string, unknown> | null;
+      readonly link?: string | null;
+      readonly actionButton?: string;
     };
     readonly ItemsValuations: {
       /** Format: uuid */
