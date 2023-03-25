@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { json, LinksFunction, MetaFunction } from "@remix-run/node";
 
 import {
   Links,
@@ -7,11 +7,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
 import { ExternalScripts } from "remix-utils";
+import { loadPages, Pages } from "~/page.server";
+import { PageContext } from "~/utils/pageContext";
+import { Layout } from "~/components/Layout/Layout";
 
 export const links: LinksFunction = () => {
   return [
@@ -26,7 +30,13 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+export async function loader() {
+  const { pages } = await loadPages();
+  return json(pages);
+}
+
 export default function App() {
+  const { data: pages } = useLoaderData() as Pages;
   return (
     <html lang="de" className="h-full">
       <head>
@@ -34,7 +44,11 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
-        <Outlet />
+        <PageContext.Provider value={pages}>
+          <Layout>
+            <Outlet />
+          </Layout>
+        </PageContext.Provider>
         <ScrollRestoration />
         <ExternalScripts />
         <Scripts />

@@ -6,8 +6,9 @@ import { Services } from "~/components/Services/Services";
 import verkaufen from "~/images/verkaufen.svg";
 import inserieren from "~/images/inserieren.svg";
 import finanzierung from "~/images/finanzierung.svg";
+import { getDirectusClient } from "~/lib/directus";
+import { components } from "~/generated/types";
 import { usePage } from "~/utils/pageContext";
-import { SectionRenderer } from "~/renderer/Section";
 
 const serviceTitle = "Bei welchem anliegen dürfen wir dich unterstützen?";
 const services = [
@@ -34,13 +35,12 @@ const services = [
   },
 ];
 
-export default function Index() {
+export default function Page() {
   const pages = usePage();
-  const homePage = pages.find((page) => page.slug === "/home");
 
-  return homePage?.sections?.map((section) => (
-    <section key={section.item.id}>
-      <SectionRenderer section={section} />
-    </section>
-  ));
+  return (
+    <Layout>
+      <div>page </div>
+    </Layout>
+  );
 }

@@ -3,10 +3,11 @@ import type { components } from "~/generated/types";
 
 type DirectusSchemas = components["schemas"];
 
-type DirectusClient = {
+export type DirectusClient = {
   Person: DirectusSchemas["ItemsPerson"];
   Property: DirectusSchemas["ItemsProperty"];
   Valuations: DirectusSchemas["ItemsValuations"];
+  Pages: DirectusSchemas["ItemsPages"];
 };
 
 const directus = new Directus<DirectusClient>(

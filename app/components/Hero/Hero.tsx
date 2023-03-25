@@ -1,34 +1,46 @@
+import { getAssetUrl } from "~/utils/getAssetsUrl";
 import bg from "./images/bg.png";
-
-export const Hero = () => {
+export type HeroProps = {
+  title?: string;
+  text1?: string;
+  text2?: string;
+  backgroundImage?: {
+    id: string;
+  };
+};
+export const Hero = (props: HeroProps) => {
+  const bgImage = props?.backgroundImage?.id
+    ? getAssetUrl(props?.backgroundImage?.id)
+    : bg;
   return (
     <>
       <div
         className="h-56 bg-black bg-cover bg-top bg-no-repeat md:h-screen"
         style={{
-          backgroundImage: `url(${bg})`,
+          backgroundImage: `url(${bgImage})`,
         }}
       >
         <div className="invisible md:visible">
           <div className="">
             <h1 className="mb-5 pt-4 text-center text-2xl font-bold md:pt-16 md:text-4xl lg:text-5xl">
-              „Ein Haus ist eine Arche, um der Flut zu entrinnen“
+              {props?.title}
             </h1>
             <div className="container mx-auto text-xl">
               <div className="chat chat-start pt-6">
-                <div className="chat-bubble max-w-sm text-base-content">
-                  In jeder Immobilie stecken Geschichten und Emotionen. Von
-                  überwältigenden Glücksgefühlen beim Kauf, bis hin zum
-                  emotionalen Abschied beim Verkauf.
-                </div>
+                {props.text1 && (
+                  <div
+                    className="chat-bubble max-w-sm text-base-content"
+                    dangerouslySetInnerHTML={{ __html: props.text1 }}
+                  ></div>
+                )}
               </div>
               <div className="chat chat-end">
-                <div className="chat-bubble text-base-content">
-                  Mit diesem Bewusstsein gehen wir <br /> auf deine persönliche
-                  Situation ein. <br />
-                  Egal ob ein Verkauf oder Kauf bevorsteht, <br />
-                  wir kennen den Wert deiner eigenen vier Wände.
-                </div>
+                {props.text2 && (
+                  <div
+                    className="chat-bubble text-base-content"
+                    dangerouslySetInnerHTML={{ __html: props.text2 }}
+                  ></div>
+                )}
               </div>
             </div>
           </div>
@@ -37,21 +49,12 @@ export const Hero = () => {
       <div className="bg-base-100 md:hidden">
         <div className="container m-2 mx-auto p-2 text-center">
           <h1 className="mb-5 pt-4 text-center text-2xl font-bold">
-            „Ein Haus ist eine Arche, um der Flut zu entrinnen“
+            {props.title}
           </h1>
           <div className="container mx-auto text-xl">
-            <p className="pb-2 text-base-content">
-              In jeder Immobilie stecken Geschichten und Emotionen. Von
-              überwältigenden Glücksgefühlen beim Kauf, bis hin zum emotionalen
-              Abschied beim Verkauf.
-            </p>
+            <p className="pb-2 text-base-content">{props.text1}</p>
 
-            <p className="pb-2 text-base-content">
-              Mit diesem Bewusstsein gehen wir <br /> auf deine persönliche
-              Situation ein. <br />
-              Egal ob ein Verkauf oder Kauf bevorsteht, <br />
-              wir kennen den Wert deiner eigenen vier Wände.
-            </p>
+            <p className="pb-2 text-base-content">{props.text2}</p>
           </div>
         </div>
       </div>

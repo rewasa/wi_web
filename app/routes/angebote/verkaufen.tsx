@@ -126,7 +126,7 @@ export default function Verkaufen() {
           text: "Ja, ich will eine kompetente Beratung",
           link: "/kontakt",
         }}
-        bgImage={kundenbewertungenBg}
+        backgroundImage={kundenbewertungenBg}
         textColor="text-black"
         services={[
           {

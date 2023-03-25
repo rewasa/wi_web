@@ -5,7 +5,6 @@
  * Do not make direct changes to the file.
  */
 
-
 export type paths = Record<string, never>;
 
 export type webhooks = Record<string, never>;
@@ -54,16 +53,19 @@ export interface components {
       readonly user_updated?: string | components["schemas"]["Users"];
       /** Format: timestamp */
       readonly date_updated?: string | null;
-      readonly pathname?: string | null;
       readonly title?: string | null;
       readonly description?: string | null;
+      readonly slug?: string | null;
       readonly SEO?: string;
-      readonly sections?: readonly (number | components["schemas"]["ItemsPagesSections"])[];
+      readonly sections?: readonly (
+        | number
+        | components["schemas"]["ItemsPagesSections"]
+      )[];
     };
     readonly ItemsPagesSections: {
       readonly id?: number;
       readonly Pages_id?: string | components["schemas"]["ItemsPages"];
-      readonly item?: readonly (Record<string, never>)[] | null;
+      readonly item?: readonly Record<string, never>[] | null;
       readonly collection?: string | null;
     };
     readonly ItemsPerson: {
@@ -79,7 +81,10 @@ export interface components {
       readonly email?: string | null;
       readonly phone?: string | null;
       readonly messages?: Record<string, unknown> | null;
-      readonly properties?: readonly (string | components["schemas"]["ItemsProperty"])[];
+      readonly properties?: readonly (
+        | string
+        | components["schemas"]["ItemsProperty"]
+      )[];
     };
     readonly ItemsProperty: {
       /** Format: uuid */
@@ -106,7 +111,10 @@ export interface components {
       readonly garage?: number | null;
       readonly buildYear?: number | null;
       readonly propertyImages?: string;
-      readonly valuations?: readonly (string | components["schemas"]["ItemsValuations"])[];
+      readonly valuations?: readonly (
+        | string
+        | components["schemas"]["ItemsValuations"]
+      )[];
       readonly "divider-h53ufv"?: string;
     };
     readonly ItemsServices: {
@@ -120,10 +128,10 @@ export interface components {
       readonly user_updated?: string | components["schemas"]["Users"];
       /** Format: timestamp */
       readonly date_updated?: string | null;
-      readonly services?: Record<string, unknown> | null;
       readonly title?: string | null;
       readonly text?: Record<string, unknown> | null;
       readonly link?: string | null;
+      readonly services?: string;
       readonly actionButton?: string;
     };
     readonly ItemsValuations: {
@@ -136,48 +144,48 @@ export interface components {
     };
     readonly Files: {
       /**
-       * @description Unique identifier for the file. 
+       * @description Unique identifier for the file.
        * @example 8cbb43fe-4cdf-4991-8352-c461779cec02
        */
       readonly id?: string;
       /**
-       * @description Where the file is stored. Either `local` for the local filesystem or the name of the storage adapter (for example `s3`). 
+       * @description Where the file is stored. Either `local` for the local filesystem or the name of the storage adapter (for example `s3`).
        * @example local
        */
       readonly storage?: string;
       /**
-       * @description Name of the file on disk. By default, Directus uses a random hash for the filename. 
+       * @description Name of the file on disk. By default, Directus uses a random hash for the filename.
        * @example a88c3b72-ac58-5436-a4ec-b2858531333a.jpg
        */
       readonly filename_disk?: string;
       /**
-       * @description How you want to the file to be named when it's being downloaded. 
+       * @description How you want to the file to be named when it's being downloaded.
        * @example avatar.jpg
        */
       readonly filename_download?: string;
       /**
-       * @description Title for the file. Is extracted from the filename on upload, but can be edited by the user. 
+       * @description Title for the file. Is extracted from the filename on upload, but can be edited by the user.
        * @example User Avatar
        */
       readonly title?: string;
       /**
-       * @description MIME type of the file. 
+       * @description MIME type of the file.
        * @example image/jpeg
        */
       readonly type?: string;
       /**
-       * @description Virtual folder where this file resides in. 
+       * @description Virtual folder where this file resides in.
        * @example null
        */
       readonly folder?: string | components["schemas"]["Folders"];
       /**
-       * @description Who uploaded the file. 
+       * @description Who uploaded the file.
        * @example 63716273-0f29-4648-8a2a-2af2948f6f78
        */
       readonly uploaded_by?: string | components["schemas"]["Users"];
       /**
-       * Format: date-time 
-       * @description When the file was uploaded. 
+       * Format: date-time
+       * @description When the file was uploaded.
        * @example 2019-12-03T00:10:15+00:00
        */
       readonly uploaded_on?: string;
@@ -185,32 +193,32 @@ export interface components {
       /** Format: timestamp */
       readonly modified_on?: string;
       /**
-       * @description Character set of the file. 
+       * @description Character set of the file.
        * @example binary
        */
       readonly charset?: string | null;
       /**
-       * @description Size of the file in bytes. 
+       * @description Size of the file in bytes.
        * @example 137862
        */
       readonly filesize?: number;
       /**
-       * @description Width of the file in pixels. Only applies to images. 
+       * @description Width of the file in pixels. Only applies to images.
        * @example 800
        */
       readonly width?: number | null;
       /**
-       * @description Height of the file in pixels. Only applies to images. 
+       * @description Height of the file in pixels. Only applies to images.
        * @example 838
        */
       readonly height?: number | null;
       /**
-       * @description Duration of the file in seconds. Only applies to audio and video. 
+       * @description Duration of the file in seconds. Only applies to audio and video.
        * @example 0
        */
       readonly duration?: number | null;
       /**
-       * @description Where the file was embedded from. 
+       * @description Where the file was embedded from.
        * @example null
        */
       readonly embed?: string | null;
@@ -219,7 +227,7 @@ export interface components {
       /** @description Where the file was created. Is automatically populated based on EXIF data for images. */
       readonly location?: string | null;
       /** @description Tags for the file. Is automatically populated based on EXIF data for images. */
-      readonly tags?: readonly (string)[] | null;
+      readonly tags?: readonly string[] | null;
       /** @description IPTC, EXIF, and ICC metadata extracted from file */
       readonly metadata?: Record<string, unknown> | null;
       readonly storage_divider?: string;
