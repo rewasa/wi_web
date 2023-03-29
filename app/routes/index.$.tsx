@@ -1,46 +1,31 @@
-import { Link, useLoaderData } from "@remix-run/react";
-import { Hero } from "~/components/Hero/Hero";
-import { Layout } from "~/components/Layout/Layout";
-import { Services } from "~/components/Services/Services";
+import { useLocation } from "@remix-run/react";
+import { NotFoundPage } from "~/renderer/404";
+import { SectionRenderer } from "~/renderer/Section";
 
-import verkaufen from "~/images/verkaufen.svg";
-import inserieren from "~/images/inserieren.svg";
-import finanzierung from "~/images/finanzierung.svg";
-import { getDirectusClient } from "~/lib/directus";
-import { components } from "~/generated/types";
 import { usePage } from "~/utils/pageContext";
 
-const serviceTitle = "Bei welchem anliegen dürfen wir dich unterstützen?";
-const services = [
-  {
-    title: "Verkaufen",
-    description:
-      "Befinden Sie sich in einer finanziellen Notlage? Wenn die Zwangsversteigerung droht, scheint ein Notverkauf meist als einziger Ausweg. Doch Immobilien sind mehr als nur Objekte. Sie stehen für Sicherheit, Familie und Erinnerungen. Unsere Kernkompetenz liegt in der Rettung Ihrer Immobilie.",
-    image: verkaufen,
-    link: "/angebote/verkaufen",
-  },
-  {
-    title: "Finanzierung",
-    description:
-      "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
-    image: finanzierung,
-    link: "/angebote/finanzierung",
-  },
-  {
-    title: "Inserieren",
-    description:
-      "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten Ihnen eine kostenlose Erstberatung an!",
-    image: inserieren,
-    link: "/angebote/inserierung",
-  },
-];
-
 export default function Page() {
+  const location = useLocation();
   const pages = usePage();
 
-  return (
-    <Layout>
-      <div>page </div>
-    </Layout>
+  console.log(JSON.stringify(pages, null, 2));
+
+  const routePage = pages.find(
+    (page) =>
+      page.status === "published" && page.slug.startsWith(location.pathname)
   );
+
+  if (!routePage) {
+    return (
+      <section>
+        <NotFoundPage />
+      </section>
+    );
+  }
+
+  return routePage.sections?.map((section) => (
+    <section key={section.item.id}>
+      <SectionRenderer section={section} />
+    </section>
+  ));
 }

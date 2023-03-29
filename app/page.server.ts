@@ -14,7 +14,7 @@ export interface Page {
 }
 
 export interface Section {
-  collection: "Hero" | "Services"; // add more
+  collection: "Heading" | "Hero" | "Services" | "ContentFeature"; // add more
   item: Item;
 }
 
@@ -63,7 +63,13 @@ export async function loadPages() {
       "sections.item.text1",
       "sections.item.text2",
       "sections.item.backgroundImage.id",
+      "sections.item.textColor",
+      "sections.item.backgroundColor",
+      "sections.item.rowBreakdown",
+      "sections.item.contentLeft",
       "sections.item.link",
+      "sections.item.contentList.*",
+      "sections.item.images.*",
       "sections.item.*.collection",
       "sections.item.*.item.id",
       "sections.item.*.item.title",

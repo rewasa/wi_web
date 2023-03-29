@@ -1,6 +1,6 @@
 import { Layout } from "~/components/Layout/Layout";
 
-import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
+import { ContentFeature } from "~/components/Content/ContentFeature";
 import verkauf1 from "~/images/verkauf1.png";
 import verkauf2 from "~/images/verkauf2.svg";
 import verkauf3 from "~/images/verkauf3.svg";
@@ -35,7 +35,7 @@ export default function Verkaufen() {
   return (
     <Layout>
       <Heading className="pt-20" isMain title="Verkaufen" />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           "<h1 class='text-3xl text-bold pb-6'>So gelingt Dir ein erfolgreicher Verkauf Deiner Immobilie, ohne dass es Dich Zeit & Nerven kostet</h1>",
           "&#8226; Geringer Aufwand für Dich als Eigentümer <br />&#8226; Transparente Preisgestaltung <br />&#8226; Fairer Deal für alle Beteiligten",
@@ -50,7 +50,7 @@ export default function Verkaufen() {
         }}
         bgColor="bg-[#AD9A81]"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         rowBreakdown={{ content: 8, image: 4 }}
         contentList={[
           '<h2 class="text-3xl text-white pb-4">Wir könnten dir jetzt erzählen...</h2>',
@@ -71,7 +71,7 @@ export default function Verkaufen() {
         hasLogo
         title="„Ein Haus ist weit mehr als ein gegenstand.“"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         rowBreakdown={{ image: 4, content: 8 }}
         contentLeft={false}
         contentList={[
@@ -145,7 +145,7 @@ export default function Verkaufen() {
         title="Schritt für Schritt zum erfolgreichen Verkauf"
         hasLogo
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           "<h2 class='text-3xl pb-4'>1. Erstberatung & Marktwertermittlung</h2>",
           `Bei einem ersten Beratungsgespräch besprechen wir deine Wünsche und Ziele. <br /> <br />Mittels Markt- und Konkurrenzanalyse ermitteln wir kostenfrei wieviel deine Immobilie auf dem Markt wert ist und besprechen unsere Ergebnisse.`,
@@ -158,7 +158,7 @@ export default function Verkaufen() {
         textColor="text-white"
         bgColor="bg-black"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentLeft={false}
         contentList={[
           "<h2 class='text-3xl pb-4'> 2. Deine Immobilie wird ins beste Licht gestellt</h2>",
@@ -172,7 +172,7 @@ export default function Verkaufen() {
         textColor="text-white"
         bgColor="bg-black"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           "<h2 class='text-3xl pb-4'>3. Besichtigungen vor Ort</h2>",
           `Sobald erste Anfragen eintreffen, ermitteln wir gekonnt, wer wirkliches Kaufinteresse hat. Danach koordinieren wir Besichtigungen vor Ort und führen diese professionell durch. <br /> <br />Natürlich kannst du die Besichtigungen auch selber durchführen.`,
@@ -185,7 +185,7 @@ export default function Verkaufen() {
         textColor="text-white"
         bgColor="bg-black"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentLeft={false}
         contentList={[
           "<h2 class='text-3xl pb-4'>4. Betreuung und Austausch</h2>",
@@ -204,7 +204,7 @@ export default function Verkaufen() {
         textColor="text-white"
         bgColor="bg-black"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           "<h2 class='text-3xl pb-4'>5. Vertragsabschluss</h2>",
           `Sobald Du dich für einen passenden Käufer entscheidest, bereiten wir alle nötigen Unterlagen vor und überprüfen für dich den Kaufvertragsentwurf. 
@@ -256,7 +256,7 @@ export default function Verkaufen() {
         title="“Es ist schon verrückt, wie unbedacht die meisten Eigentümer ein solch wichtiges Mandat vergeben.”"
         className="py-10"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           `Oder würdest du dein Mandat bei einem wichtigen Gerichtsfall pauschal dem günstigsten Anwalt in die Hände geben? 
         <br /> <br />
@@ -276,7 +276,7 @@ export default function Verkaufen() {
         hasLogo
         className="-mb-20 bg-black text-white md:-mb-32"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           `<h3 class="font-bold md:text-2xl">Lerne uns unverbindlich kennen, bevor Du uns vertraust</h3>`,
           `Wir sind.....<br />
@@ -315,7 +315,7 @@ export default function Verkaufen() {
         </Container>
       </div>
       <Heading title="? Häufigste Fragen ?" hasLogo className=" bg-white" />
-      <ContentFeatureContainer
+      <ContentFeature
         contentList={[
           `<h3 class="font-bold md:text-2xl">Lerne uns unverbindlich kennen, bevor Du uns vertraust</h3>`,
           `1. Wie lange dauert es meine Immobilie zu verkaufen?`,
@@ -344,7 +344,7 @@ export default function Verkaufen() {
         title="Egal wie viel Wissen bereits vorhanden ist, hier erhältst Du diverse Ckecklisten für Deinen gelungenen Immobilienverkauf BEVOR Du Dich für einen Makler entscheidest."
         className=""
       />
-      <ContentFeatureContainer
+      <ContentFeature
         rowBreakdown={{ image: 2, content: 10 }}
         contentLeft={false}
         contentList={[

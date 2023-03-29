@@ -4,7 +4,7 @@ import { Heading } from "~/components/Heading/Heading";
 import { Container } from "~/components/Container/Container";
 import förderablösung from "~/images/foerderabloesung.png";
 import förderablösungHome from "~/images/foerderabloesung-home.png";
-import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
+import { ContentFeature } from "~/components/Content/ContentFeature";
 
 export default function Förderablösung() {
   return (
@@ -23,7 +23,7 @@ export default function Förderablösung() {
           der Forderungsablösung.
         </p>
       </Container>
-      <ContentFeatureContainer
+      <ContentFeature
         rowBreakdown={{ content: 8, image: 4 }}
         contentLeft={false}
         bgColor="bg-[#968D7E]"
@@ -41,8 +41,7 @@ export default function Förderablösung() {
         imageClassName="max-w-[450px]"
         button={{ text: "", link: "" }}
       />
-      <ContentFeatureContainer
-        //fbgColor="bg-[#968D7E]"
+      <ContentFeature //fbgColor="bg-[#968D7E]"
         contentList={[
           "<h2 class='text-xl font-bold'>Nutzung & Rückkauf</h2>",
           "&#8226; Erfahrung Zwangsvollstreckungsrecht<br />&#8226; Erfahrung im Management komplexer Transaktionen<br />&#8226; Effiziente Abwicklung der Finanzierungsprojekte<br />&#8226; Bankenunabhängigkeit (ohne Basel-III-Restriktionen)<br />&#8226; Flexibilität auch bei hohen Finanzierungsvolumina (100’000-2’500’000 CHF)<br />&#8226; Kundenspezifische Lösung auch bei Kleinprojekten<br />&#8226; Transparente Kosten ohne Strukturierungs- bzw. Ratinggebühren",

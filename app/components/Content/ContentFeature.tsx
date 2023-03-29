@@ -1,43 +1,54 @@
 import { Link } from "@remix-run/react";
 import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
+import { getAssetUrl } from "~/utils/getAssetsUrl";
 
-type ContentFeatureContainerProps = {
-  rowBreakdown?: {
-    content: number; // 1-12
-    image: number; // 1-12
-  };
+export type ContentFeatureProps = {
+  rowBreakdown?: number;
   contentLeft?: boolean;
-  contentList: string[];
-  images: string[];
+  contentList: Array<{
+    text?: string;
+  }>;
+  images: Array<{
+    directus_files_id: string;
+  }>;
   imageClassName?: string;
   textColor?: string;
-  bgColor?: string;
-  button: {
-    text: string;
-    link: string;
-  };
+  backgroundColor?: string;
+  text: string;
+  link: string;
 };
 
-export const ContentFeatureContainer = ({
-  rowBreakdown = { content: 6, image: 6 },
+export const ContentFeature = ({
+  rowBreakdown = 6,
   contentLeft = true,
   contentList,
   images,
   imageClassName,
   textColor,
-  bgColor,
-  button,
-}: ContentFeatureContainerProps) => {
+  backgroundColor,
+  text,
+  link,
+}: ContentFeatureProps) => {
   return (
     <>
-      <div className={clsx("py-20", bgColor)}>
+      <div
+        className={clsx(
+          "py-20",
+          `bg-[${
+            backgroundColor?.includes("000000")
+              ? backgroundColor.replace("000000", "000")
+              : backgroundColor
+          }]`
+        )}
+      >
         <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
           {contentLeft ? (
             <>
               {renderContent(
                 contentList,
-                button,
+                text,
+                link,
                 contentLeft,
                 rowBreakdown,
                 textColor
@@ -45,7 +56,7 @@ export const ContentFeatureContainer = ({
               {renderImages(
                 images,
                 contentLeft,
-                button.text,
+                text,
                 rowBreakdown,
                 imageClassName
               )}
@@ -55,13 +66,14 @@ export const ContentFeatureContainer = ({
               {renderImages(
                 images,
                 contentLeft,
-                button.text,
+                text,
                 rowBreakdown,
                 imageClassName
               )}
               {renderContent(
                 contentList,
-                button,
+                text,
+                link,
                 contentLeft,
                 rowBreakdown,
                 textColor
@@ -75,45 +87,46 @@ export const ContentFeatureContainer = ({
 };
 
 function renderContent(
-  content: string[],
-  button: { text: string; link: string },
-  contentLeft: boolean,
-  rowBreakdown: { content: number; image: number },
+  content: Array<{ text?: string }>,
+  text?: string,
+  link?: string,
+  contentLeft?: boolean,
+  rowBreakdown?: number,
   textColor?: string
 ) {
   return (
     <div
       className={clsx(
         contentLeft ? "" : "xl:pl-28",
-        { "md:w-2/12": rowBreakdown.content === 2 },
-        { "md:w-4/12": rowBreakdown.content === 4 },
-        { "md:w-6/12": rowBreakdown.content === 5 },
-        { "md:w-8/12": rowBreakdown.content === 8 },
-        { "md:w-10/12": rowBreakdown.content === 10 },
-        "w-full",
-        textColor
+        { "md:w-2/12": rowBreakdown === 2 },
+        { "md:w-4/12": rowBreakdown === 4 },
+        { "md:w-6/12": rowBreakdown === 6 },
+        { "md:w-8/12": rowBreakdown === 8 },
+        { "md:w-10/12": rowBreakdown === 10 },
+        "w-full"
       )}
     >
       {content.map((content, index) => {
-        if (content.includes("<")) {
+        if (content?.text?.includes("<")) {
           return (
-            <p
-              dangerouslySetInnerHTML={{ __html: content }}
+            <div
+              dangerouslySetInnerHTML={{ __html: content.text }}
               key={index}
+              style={{ color: textColor }}
               className="my-4 text-lg"
             />
           );
         }
         return (
-          <p key={index} className="my-4 text-lg">
-            {content}
+          <p key={index} style={{ color: textColor }} className="my-4 text-lg">
+            {content.text}
           </p>
         );
       })}
       <div className="my-10">
-        {button.text ? (
-          <Link to={button.link}>
-            <ActionButton>{button.text}</ActionButton>
+        {text ? (
+          <Link to={link || "#"}>
+            <ActionButton>{text}</ActionButton>
           </Link>
         ) : null}
       </div>
@@ -122,30 +135,39 @@ function renderContent(
 }
 
 function renderImages(
-  images: string[],
+  images: Array<{
+    directus_files_id: string;
+  }>,
   contentLeft: boolean,
   alt: string = "Wasescha Immobilien Verkauf",
-  rowBreakdown: { content: number; image: number },
+  rowBreakdown?: number,
   imageClassName?: string
 ) {
   return (
     <div
       className={clsx(
         contentLeft ? "xl:pl-28" : "",
-        { "md:w-2/12": rowBreakdown.image === 2 },
-        { "md:w-4/12": rowBreakdown.image === 4 },
-        { "md:w-6/12": rowBreakdown.image === 5 },
-        { "md:w-8/12": rowBreakdown.image === 8 },
-        { "md:w-10/12": rowBreakdown.image === 8 },
+        { "md:w-2/12": rowBreakdown === 10 },
+        { "md:w-4/12": rowBreakdown === 8 },
+        { "md:w-6/12": rowBreakdown === 6 },
+        { "md:w-8/12": rowBreakdown === 4 },
+        { "md:w-10/12": rowBreakdown === 2 },
         "w-full"
       )}
     >
       {images?.length
         ? images.map((image, index) => {
             return (
-              <div key={index} className={clsx("my-4 w-full", imageClassName)}>
+              <div
+                key={image.directus_files_id}
+                className={clsx(
+                  "my-4",
+                  `h-[${images.length === 1 ? "555" : "55"}px]`,
+                  imageClassName
+                )}
+              >
                 <img
-                  src={image}
+                  src={getAssetUrl(image.directus_files_id)}
                   alt={alt}
                   className="w-full sm:w-1/2 md:w-full"
                 />
@@ -156,7 +178,3 @@ function renderImages(
     </div>
   );
 }
-
-const mapBreakDownToClass = (breakdownNumber: number) => {
-  return `md:w-${breakdownNumber}/12`;
-};

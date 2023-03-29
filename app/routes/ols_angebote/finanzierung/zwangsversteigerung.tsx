@@ -5,7 +5,7 @@ import { Heading } from "~/components/Heading/Heading";
 import zwangsversteigerung from "~/images/zwangsversteigerung.svg";
 
 import { Container } from "~/components/Container/Container";
-import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
+import { ContentFeature } from "~/components/Content/ContentFeature";
 
 export default function Zwangsversteigerung() {
   return (
@@ -18,7 +18,7 @@ export default function Zwangsversteigerung() {
           Ihnen eine kostenlose Erstberatung an!
         </p>
       </Container>
-      <ContentFeatureContainer
+      <ContentFeature
         contentLeft={false}
         contentList={[
           "✓ Ihnen fehlt die Liquidität für ein neues Projekt privat oder beruflich<br />✓ Evtl. haben Sie sogar private Schulden oder offene Forderungen<br />✓ Banken, Investoren und Kreditgesellschaften haben Sie abgelehnt",

@@ -3,7 +3,7 @@ import { Container } from "~/components/Container/Container";
 import { Breadcrumbs } from "~/components/Content/Breadcrumbs";
 import wi from "~/images/wi.svg";
 
-type HeadingProps = {
+export type HeadingProps = {
   isMain?: boolean;
   title: string;
   hasLogo?: boolean;
@@ -13,7 +13,7 @@ type HeadingProps = {
 export const Heading = (props: HeadingProps) => {
   return (
     <>
-      <div className={clsx("py-4 md:py-10", props.className)}>
+      <div className={clsx("py-4 md:py-10 md:pt-20", props.className)}>
         <Container>
           <div className="flex flex-wrap items-center justify-between">
             {props?.isMain ? (

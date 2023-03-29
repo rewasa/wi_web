@@ -41,8 +41,8 @@ export const Services = ({
         {title ? (
           <div
             className={clsx(
-              "py-5 text-center text-4xl font-bold text-white",
-              textColor
+              "py-5 text-center text-4xl font-bold",
+              textColor ? `text-[${textColor}]` : "text-white"
             )}
           >
             {title}
@@ -87,23 +87,25 @@ export const Services = ({
                       >
                         {service.item.title ? (
                           <h1
-                            className={clsx(
-                              "pb-4 text-center text-3xl font-bold",
-                              textColor
-                            )}
+                            style={{ color: textColor }}
+                            className="pb-4 text-center text-3xl font-bold"
                           >
                             {service.item.title}
                           </h1>
                         ) : null}
                         {descriptionInHtml ? (
                           <div
-                            className={clsx("px-4 text-xl", textColor)}
+                            style={{ color: textColor }}
+                            className="px-4 text-xl"
                             dangerouslySetInnerHTML={{
                               __html: service.item.description || "",
                             }}
                           ></div>
                         ) : (
-                          <p className={clsx("px-4 text-xl", textColor)}>
+                          <p
+                            style={{ color: textColor }}
+                            className="px-4 text-xl"
+                          >
                             {service.item.description}
                           </p>
                         )}
