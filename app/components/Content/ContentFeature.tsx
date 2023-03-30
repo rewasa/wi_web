@@ -165,25 +165,29 @@ function renderImages(
             return (
               <div
                 key={image.directus_files_id}
-                className={clsx("py-4", imageClassName)}
+                className={clsx({ "py-4": images.length > 1 }, imageClassName)}
               >
                 {image?.directus_files_id && (
                   <img
                     src={getAssetUrl(image.directus_files_id)}
                     alt={alt}
-                    className={clsx("m-auto", imageClassName, {
-                      "h-[100px] w-auto": imageHeight === "100",
-                      "h-[150px] w-auto": imageHeight === "150",
-                      "h-[200px] w-auto": imageHeight === "200",
-                      "h-[250px] w-auto": imageHeight === "250",
-                      "h-[300px] w-auto": imageHeight === "300",
-                      "h-[350px] w-auto": imageHeight === "350",
-                      "h-[400px] w-auto": imageHeight === "400",
-                      "h-[450px] w-auto": imageHeight === "450",
-                      "h-[500px] w-auto": imageHeight === "500",
-                      "h-[550px] w-auto": imageHeight === "550",
-                      "h-[600px] w-auto": imageHeight === "600",
-                    })}
+                    className={clsx(
+                      "object-cover m-auto w-full",
+                      imageClassName,
+                      {
+                        "md:h-[100px] md:w-auto": imageHeight === "100",
+                        "md:h-[150px] md:w-auto": imageHeight === "150",
+                        "md:h-[200px] md:w-auto": imageHeight === "200",
+                        "md:h-[250px] md:w-auto": imageHeight === "250",
+                        "md:h-[300px] md:w-auto": imageHeight === "300",
+                        "md:h-[350px] md:w-auto": imageHeight === "350",
+                        "md:h-[400px] md:w-auto": imageHeight === "400",
+                        "md:h-[450px] md:w-auto": imageHeight === "450",
+                        "md:h-[500px] md:w-auto": imageHeight === "500",
+                        "md:h-[550px] md:w-auto": imageHeight === "550",
+                        "md:h-[600px] md:w-auto": imageHeight === "600",
+                      }
+                    )}
                   />
                 )}
               </div>
