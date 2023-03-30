@@ -52,9 +52,19 @@ export const Hero = (props: HeroProps) => {
             {props.title}
           </h1>
           <div className="container mx-auto text-xl">
-            <p className="pb-2 text-base-content">{props.text1}</p>
+            {props.text1 && (
+              <div
+                className="pb-2 text-base-content"
+                dangerouslySetInnerHTML={{ __html: props.text1 }}
+              ></div>
+            )}
 
-            <p className="pb-2 text-base-content">{props.text2}</p>
+            {props.text2 && (
+              <div
+                className="pb-2 text-base-content"
+                dangerouslySetInnerHTML={{ __html: props.text2 }}
+              ></div>
+            )}
           </div>
         </div>
       </div>
