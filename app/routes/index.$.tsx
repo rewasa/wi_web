@@ -1,4 +1,5 @@
 import { useLocation } from "@remix-run/react";
+import { Layout } from "~/components/Layout/Layout";
 import { NotFoundPage } from "~/renderer/404";
 import { SectionRenderer } from "~/renderer/Section";
 
@@ -17,15 +18,21 @@ export default function Page() {
 
   if (!routePage) {
     return (
-      <section>
-        <NotFoundPage />
-      </section>
+      <Layout>
+        <section>
+          <NotFoundPage />
+        </section>
+      </Layout>
     );
   }
 
-  return routePage.sections?.map((section) => (
-    <section key={section.item.id}>
-      <SectionRenderer section={section} />
-    </section>
-  ));
+  return (
+    <Layout>
+      {routePage.sections?.map((section) => (
+        <section key={section.item.id}>
+          <SectionRenderer section={section} />
+        </section>
+      ))}
+    </Layout>
+  );
 }

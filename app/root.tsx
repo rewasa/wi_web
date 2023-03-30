@@ -45,9 +45,7 @@ export default function App() {
       </head>
       <body className="h-full">
         <PageContext.Provider value={pages}>
-          <Layout>
-            <Outlet />
-          </Layout>
+          <Outlet />
         </PageContext.Provider>
         <ScrollRestoration />
         <ExternalScripts />
