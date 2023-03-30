@@ -177,6 +177,12 @@ function renderImages(
                       "h-[200px] w-auto": imageHeight === "200",
                       "h-[250px] w-auto": imageHeight === "250",
                       "h-[300px] w-auto": imageHeight === "300",
+                      "h-[350px] w-auto": imageHeight === "350",
+                      "h-[400px] w-auto": imageHeight === "400",
+                      "h-[450px] w-auto": imageHeight === "450",
+                      "h-[500px] w-auto": imageHeight === "500",
+                      "h-[550px] w-auto": imageHeight === "550",
+                      "h-[600px] w-auto": imageHeight === "600",
                     })}
                   />
                 )}
