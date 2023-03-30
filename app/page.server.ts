@@ -33,6 +33,8 @@ export interface Item {
   };
   textColor?: string;
   backgroundColor?: string;
+  images?: any[];
+  imageHeight?: string;
 }
 
 export interface Service {
@@ -70,6 +72,7 @@ export async function loadPages() {
       "sections.item.link",
       "sections.item.contentList.*",
       "sections.item.images.*",
+      "sections.item.imageHeight",
       "sections.item.*.collection",
       "sections.item.*.item.id",
       "sections.item.*.item.title",

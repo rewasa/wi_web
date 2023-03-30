@@ -1,4 +1,5 @@
-import { json, LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 
 import {
   Links,
@@ -13,9 +14,9 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
 import { ExternalScripts } from "remix-utils";
-import { loadPages, Pages } from "~/page.server";
+import type { Pages } from "~/page.server";
+import { loadPages } from "~/page.server";
 import { PageContext } from "~/utils/pageContext";
-import { Layout } from "~/components/Layout/Layout";
 
 export const links: LinksFunction = () => {
   return [

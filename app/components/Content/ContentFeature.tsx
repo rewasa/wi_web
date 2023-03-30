@@ -12,6 +12,7 @@ export type ContentFeatureProps = {
   images: Array<{
     directus_files_id: string;
   }>;
+  imageHeight?: string;
   imageClassName?: string;
   textColor?: string;
   backgroundColor?: string;
@@ -25,6 +26,7 @@ export const ContentFeature = ({
   contentList,
   images,
   imageClassName,
+  imageHeight,
   textColor,
   backgroundColor,
   text,
@@ -58,7 +60,8 @@ export const ContentFeature = ({
                 contentLeft,
                 text,
                 rowBreakdown,
-                imageClassName
+                imageClassName,
+                imageHeight
               )}
             </>
           ) : (
@@ -68,7 +71,8 @@ export const ContentFeature = ({
                 contentLeft,
                 text,
                 rowBreakdown,
-                imageClassName
+                imageClassName,
+                imageHeight
               )}
               {renderContent(
                 contentList,
@@ -141,7 +145,8 @@ function renderImages(
   contentLeft: boolean,
   alt: string = "Wasescha Immobilien Verkauf",
   rowBreakdown?: number,
-  imageClassName?: string
+  imageClassName?: string,
+  imageHeight?: string
 ) {
   return (
     <div
@@ -160,17 +165,21 @@ function renderImages(
             return (
               <div
                 key={image.directus_files_id}
-                className={clsx(
-                  "my-4",
-                  `h-[${images.length === 1 ? "555" : "55"}px]`,
-                  imageClassName
-                )}
+                className={clsx("py-4", imageClassName)}
               >
-                <img
-                  src={getAssetUrl(image.directus_files_id)}
-                  alt={alt}
-                  className="w-full sm:w-1/2 md:w-full"
-                />
+                {image?.directus_files_id && (
+                  <img
+                    src={getAssetUrl(image.directus_files_id)}
+                    alt={alt}
+                    className={clsx("m-auto", imageClassName, {
+                      "h-[100px] w-auto": imageHeight === "100",
+                      "h-[150px] w-auto": imageHeight === "150",
+                      "h-[200px] w-auto": imageHeight === "200",
+                      "h-[250px] w-auto": imageHeight === "250",
+                      "h-[300px] w-auto": imageHeight === "300",
+                    })}
+                  />
+                )}
               </div>
             );
           })
