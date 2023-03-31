@@ -73,6 +73,7 @@ export async function loadPages() {
       "sections.item.contentList.*",
       "sections.item.images.*",
       "sections.item.imageHeight",
+      "sections.item.html",
       "sections.item.*.collection",
       "sections.item.*.item.id",
       "sections.item.*.item.title",
