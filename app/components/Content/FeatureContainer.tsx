@@ -13,6 +13,7 @@ type FeatureContainerProps = {
 };
 
 export const FeatureContainer = (props: FeatureContainerProps) => {
+  console.log("fjdlfjkd", props.features);
   return (
     <Container>
       <div

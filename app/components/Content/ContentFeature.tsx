@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
 import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
+import { Container } from "~/components/Container/Container";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
 
 export type ContentFeatureProps = {
@@ -18,12 +19,22 @@ export type ContentFeatureProps = {
   backgroundColor?: string;
   text: string;
   link: string;
+  features?: Feature[];
+};
+
+type Feature = {
+  item: {
+    id: string;
+    title: string;
+    description: string;
+    image?: string;
+  };
 };
 
 export const ContentFeature = ({
   rowBreakdown = 6,
   contentLeft = true,
-  contentList,
+  contentList = [],
   images,
   imageClassName,
   imageHeight,
@@ -31,61 +42,66 @@ export const ContentFeature = ({
   backgroundColor,
   text,
   link,
+  features = [],
 }: ContentFeatureProps) => {
   return (
     <>
-      <div
-        className={clsx(
-          "py-20",
-          `bg-[${
-            backgroundColor?.includes("000000")
-              ? backgroundColor.replace("000000", "000")
-              : backgroundColor
-          }]`
-        )}
-      >
-        <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
-          {contentLeft ? (
-            <>
-              {renderContent(
-                contentList,
-                text,
-                link,
-                contentLeft,
-                rowBreakdown,
-                textColor
-              )}
-              {renderImages(
-                images,
-                contentLeft,
-                text,
-                rowBreakdown,
-                imageClassName,
-                imageHeight
-              )}
-            </>
-          ) : (
-            <>
-              {renderImages(
-                images,
-                contentLeft,
-                text,
-                rowBreakdown,
-                imageClassName,
-                imageHeight
-              )}
-              {renderContent(
-                contentList,
-                text,
-                link,
-                contentLeft,
-                rowBreakdown,
-                textColor
-              )}
-            </>
+      {features?.length ? (
+        containerFeatures(features, backgroundColor, text, link)
+      ) : (
+        <div
+          className={clsx(
+            "py-20",
+            `bg-[${
+              backgroundColor?.includes("000000")
+                ? backgroundColor.replace("000000", "000")
+                : backgroundColor
+            }]`
           )}
+        >
+          <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
+            {contentLeft ? (
+              <>
+                {renderContent(
+                  contentList,
+                  text,
+                  link,
+                  contentLeft,
+                  rowBreakdown,
+                  textColor
+                )}
+                {renderImages(
+                  images,
+                  contentLeft,
+                  text,
+                  rowBreakdown,
+                  imageClassName,
+                  imageHeight
+                )}
+              </>
+            ) : (
+              <>
+                {renderImages(
+                  images,
+                  contentLeft,
+                  text,
+                  rowBreakdown,
+                  imageClassName,
+                  imageHeight
+                )}
+                {renderContent(
+                  contentList,
+                  text,
+                  link,
+                  contentLeft,
+                  rowBreakdown,
+                  textColor
+                )}
+              </>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
@@ -110,7 +126,7 @@ function renderContent(
         "w-full"
       )}
     >
-      {content.map((content, index) => {
+      {content?.map((content, index) => {
         if (content?.text?.includes("<")) {
           return (
             <div
@@ -195,5 +211,64 @@ function renderImages(
           })
         : null}
     </div>
+  );
+}
+
+function containerFeatures(
+  features: Feature[],
+  backgroundColor: string,
+  text: string,
+  link: string
+) {
+  const featuresServices = features?.[0]?.ContentFeature_id?.features?.[0]?.item
+    ?.services as Feature[];
+  return (
+    <Container>
+      <div
+        className={clsx(
+          "my-20 grid grid-cols-1 rounded p-4 md:grid-cols-2 md:p-10 bg-[#968D7E]",
+          backgroundColor
+        )}
+      >
+        {featuresServices?.map((feature: Feature, index) => {
+          return (
+            <div
+              key={feature.item.id}
+              className={clsx(
+                "flex w-full flex-col items-center",
+                index < 2 ? "border-b-[#565555] md:border-b-2" : "",
+                index % 2 === 0 ? "border-r-[#565555] md:border-r-2" : ""
+              )}
+            >
+              <div className="flex flex-col p-10 text-center">
+                {feature.item.image ? (
+                  <img
+                    className="w-max-[200px] mx-auto"
+                    src={getAssetUrl(feature.item.image)}
+                    alt={feature.item.title}
+                  />
+                ) : null}
+                <h3 className="pb-2 text-2xl font-bold">
+                  {feature.item.title}
+                </h3>
+
+                <div
+                  className="text-xl"
+                  dangerouslySetInnerHTML={{ __html: feature.item.description }}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {text ? (
+        <div className="my-20 grid place-items-center">
+          <Link to={link || "*"}>
+            <ActionButton>{text}</ActionButton>
+          </Link>
+        </div>
+      ) : null}
+    </Container>
   );
 }

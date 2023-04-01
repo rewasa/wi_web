@@ -42,7 +42,7 @@ export default function DurchEigenheim() {
         bgColor="bg-[#AD9A81]"
       />
       <Services
-        backgroundColor="#968D7E"
+        backgroundColor=" "
         textColor="text-black"
         actionButton={{
           text: "Hier geht's zum Kontakt",
