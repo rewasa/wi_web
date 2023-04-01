@@ -1,3 +1,3 @@
 export function getAssetUrl(id: string) {
-  return `https://cms.wasescha.immobilien/assets/${id}.jpeg?fix=contain&quality=50`;
+  return `https://cms.wasescha.immobilien/assets/${id}.jpeg?fix=contain&quality=10`;
 }
