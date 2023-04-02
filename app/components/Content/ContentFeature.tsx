@@ -2,6 +2,8 @@ import { Link } from "@remix-run/react";
 import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
 import { Container } from "~/components/Container/Container";
+import type { Size } from "~/hooks/useWindowSize";
+import { useWindowSize } from "~/hooks/useWindowSize";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
 
 export type ContentFeatureProps = {
@@ -44,6 +46,7 @@ export const ContentFeature = ({
   link,
   features = [],
 }: ContentFeatureProps) => {
+  const size: Size = useWindowSize();
   return (
     <>
       {features?.length ? (
@@ -60,7 +63,7 @@ export const ContentFeature = ({
           )}
         >
           <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
-            {contentLeft ? (
+            {contentLeft || (size.width && size.width <= 640) ? (
               <>
                 {renderContent(
                   contentList,
@@ -264,7 +267,7 @@ function containerFeatures(
 
       {text ? (
         <div className="my-20 grid place-items-center">
-          <Link to={link || "*"}>
+          <Link to={link || "#"}>
             <ActionButton>{text}</ActionButton>
           </Link>
         </div>

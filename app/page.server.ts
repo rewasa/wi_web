@@ -11,6 +11,7 @@ export interface Page {
   title: string;
   description: string;
   sections: Section[];
+  darkMode: boolean;
 }
 
 export interface Section {
@@ -59,6 +60,7 @@ export async function loadPages() {
       "slug",
       "title",
       "description",
+      "darkMode",
       "sections.collection",
       "sections.item.title",
       "sections.item.text",

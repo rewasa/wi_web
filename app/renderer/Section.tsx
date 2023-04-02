@@ -23,7 +23,7 @@ type SectionProps = {
 };
 
 export const SectionRenderer = (props: SectionProps) => {
-  console.log(JSON.stringify(props, null, 2));
+  //console.log(JSON.stringify(props, null, 2));
   const section = props.section;
   const component = sectionTypes[section.collection];
   if (!component) {

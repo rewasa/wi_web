@@ -1,4 +1,5 @@
 import { useLocation } from "@remix-run/react";
+import clsx from "clsx";
 import { Layout } from "~/components/Layout/Layout";
 import { useRevalidateOnFocus } from "~/hooks/useRevalidateOnFocus";
 import { NotFoundPage } from "~/renderer/404";
@@ -11,7 +12,7 @@ export default function Page() {
   const pages = usePage();
   useRevalidateOnFocus({ enabled: true });
 
-  console.log(JSON.stringify(pages, null, 2));
+  //console.log(JSON.stringify(pages, null, 2));
 
   const routePage = pages.find(
     (page) =>
@@ -29,9 +30,20 @@ export default function Page() {
   }
 
   return (
-    <Layout>
+    <Layout
+      className={clsx({
+        "bg-[#CDBDA6]": routePage.darkMode,
+      })}
+      bgMain={routePage.darkMode ? "bg-primary" : ""}
+    >
       {routePage.sections?.map((section) => (
-        <section key={section.item.id}>
+        <section
+          key={section.item.id}
+          className={clsx({
+            "bg-primary": routePage.darkMode,
+            "text-gray-200": routePage.darkMode,
+          })}
+        >
           <SectionRenderer section={section} />
         </section>
       ))}
