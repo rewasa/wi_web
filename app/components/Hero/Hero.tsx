@@ -18,24 +18,24 @@ export const Hero = (props: HeroProps) => {
       <div role="contentinfo" className="w-full lg:w-2/3 m-4 md:pl-36 md:mr-20">
         <p
           tabIndex={0}
-          className="text-secondary uppercase text-xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] text-right"
+          className="invisible md:visible text-secondary uppercase text-xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] md:text-right"
         >
           Wasescha Immobilien
         </p>
         <h1
           tabIndex={0}
-          className="text-3xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] text-right"
+          className="text-3xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] md:text-right"
         >
           {props?.title}
         </h1>
         <div
           tabIndex={0}
-          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] text-right md:pl-36"
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] md:text-right md:pl-36"
           dangerouslySetInnerHTML={{ __html: props.text1 as string }}
         ></div>
         <div
           tabIndex={0}
-          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] text-right md:pl-36"
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] md:text-right md:pl-36"
           dangerouslySetInnerHTML={{ __html: props.text2 as string }}
         ></div>
         <div className="bg-white lg:mt-16 py-4 px-4 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
@@ -54,7 +54,7 @@ export const Hero = (props: HeroProps) => {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/3 h-full pb-10 pr-4">
+      <div className="w-full lg:w-2/3 h-full md:pb-10 md:pr-4">
         <img
           tabIndex={0}
           aria-label="people smiling"
