@@ -1,4 +1,4 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, useLocation } from "@remix-run/react";
 import logo from "./images/logo.svg";
 
 type MenuProps = Array<{
@@ -48,9 +48,10 @@ export const menu = [
 ];
 
 export const Navbar = () => {
+  const location = useLocation();
   return (
     <nav className="container navbar z-20 mx-auto items-center">
-      <div className="navbar-start">
+      <div className="navbar-start md:ml-12">
         <NavLink to="/">
           <img
             src={logo}
@@ -63,11 +64,13 @@ export const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
       </div>
 
-      <div className="navbar-end hidden lg:flex">
-        <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
-          Kostenlose Schätzung
-        </NavLink>
-      </div>
+      {location.pathname !== "/" ? (
+        <div className="navbar-end hidden lg:flex">
+          <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
+            Kostenlose Schätzung
+          </NavLink>
+        </div>
+      ) : null}
 
       <div className="navbar-end lg:hidden">
         <div className="dropdown-bottom dropdown-left dropdown">
