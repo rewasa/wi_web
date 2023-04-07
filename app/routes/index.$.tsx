@@ -1,13 +1,26 @@
+import type { V2_MetaArgs } from "@remix-run/node";
 import { useLocation } from "@remix-run/react";
 import clsx from "clsx";
 import { Layout } from "~/components/Layout/Layout";
 import { useRevalidateOnFocus } from "~/hooks/useRevalidateOnFocus";
 import { NotFoundPage } from "~/renderer/404";
 import { SectionRenderer } from "~/renderer/Section";
-
+import { metaData } from "~/utils/metaData";
 import { usePage } from "~/utils/pageContext";
+import type { Page } from "~/page.server";
 
-export default function Page() {
+export const meta = (meta: V2_MetaArgs) => {
+  const pageData = (meta.matches[0].data || meta.matches?.[1].data) as {
+    data: Page[];
+  };
+  const pageMeta = pageData.data?.find((page) =>
+    page.slug.startsWith(meta.location.pathname)
+  );
+
+  return metaData(pageMeta);
+};
+
+export default function Pages() {
   const location = useLocation();
   const pages = usePage();
   useRevalidateOnFocus({ enabled: true });

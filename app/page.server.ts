@@ -10,6 +10,9 @@ export interface Page {
   slug: string;
   title: string;
   description: string;
+  ogImage?: {
+    id: string;
+  };
   sections: Section[];
   darkMode: boolean;
 }
@@ -60,6 +63,7 @@ export async function loadPages() {
       "slug",
       "title",
       "description",
+      "ogImage.id",
       "darkMode",
       "sections.collection",
       "sections.item.title",

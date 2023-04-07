@@ -1,4 +1,8 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  MetaFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 
 import {
@@ -24,13 +28,6 @@ export const links: LinksFunction = () => {
     { rel: "stylesheet", href: appStyles },
   ];
 };
-
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "WASESCHA Immobilien AG",
-  viewport: "width=device-width,initial-scale=1",
-  robots: "noindex", // TODO: Remove this line when you're ready to go live
-});
 
 export async function loader() {
   const { pages } = await loadPages();

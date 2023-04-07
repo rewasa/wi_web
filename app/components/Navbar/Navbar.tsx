@@ -51,7 +51,7 @@ export const Navbar = () => {
   const location = useLocation();
   return (
     <nav className="container navbar z-20 mx-auto items-center">
-      <div className="navbar-start md:ml-12">
+      <div className="navbar-start">
         <NavLink to="/">
           <img
             src={logo}
@@ -60,7 +60,7 @@ export const Navbar = () => {
           />
         </NavLink>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex md:ml-12">
         <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
       </div>
 
