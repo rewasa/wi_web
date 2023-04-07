@@ -42,7 +42,7 @@ export const menu = [
       { title: "Inserierung", link: "/angebote/inserierung" },
     ],
   },
-  { title: "Immobilien", link: "/immobilien" },
+  // { title: "Immobilien", link: "/immobilien" },
   { title: "Über uns", link: "/ueber-uns" },
   { title: "Kontakt", link: "/kontakt" },
 ];
@@ -95,10 +95,7 @@ export const Navbar = () => {
             className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
           >
             {renderMenuList(menu)}
-            <NavLink
-              to={"/marktwertrechner"}
-              className="btn-secondary btn-xs btn m-2"
-            >
+            <NavLink to={"/marktwertrechner"} className="btn-secondary btn m-2">
               Kostenlose Schätzung
             </NavLink>
           </ul>
@@ -119,7 +116,7 @@ function renderMenuList(menu: MenuProps) {
         <>
           <li tabIndex={0} key={item.title + index + 2}>
             <div className="hidden lg:flex">
-              {item.title}
+              <span className="text-xl">{item.title}</span>
               <svg
                 className="fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +134,7 @@ function renderMenuList(menu: MenuProps) {
                   return (
                     <li tabIndex={0} key={item.title + index + 2}>
                       <NavLink to={subItem.link || ""}>
-                        {subItem.title}
+                        <span className="text-xl">{subItem.title}</span>
                         <svg
                           className="fill-current"
                           xmlns="http://www.w3.org/2000/svg"
@@ -162,7 +159,9 @@ function renderMenuList(menu: MenuProps) {
                                     isActive ? activeStyle : undefined
                                   }
                                 >
-                                  {subSubItem.title}
+                                  <span className="text-xl">
+                                    {subSubItem.title}
+                                  </span>
                                 </NavLink>
                               </li>
                             </>
@@ -180,14 +179,15 @@ function renderMenuList(menu: MenuProps) {
                         isActive ? activeStyle : undefined
                       }
                     >
-                      {subItem.title}
+                      <span className="text-xl">{subItem.title}</span>
                     </NavLink>
                   </li>
                 );
               })}
             </ul>
           </li>
-          <div className="flex-inline flex-wrap lg:hidden">
+          {/* Mobile menu */}
+          <div className="flex-inline flex-wrap lg:hidden mt-10 sm:mt-0">
             {item.subMenu.map((subItem, index) => {
               if (subItem.subMenu?.length) {
                 return (
@@ -202,7 +202,7 @@ function renderMenuList(menu: MenuProps) {
                           isActive ? activeStyle : undefined
                         }
                       >
-                        <span className="">{subItem.title}</span>
+                        <span className="text-xl">{subItem.title}</span>
                       </NavLink>
                     </li>
                     {subItem.subMenu.map((subSubItem, index) => {
@@ -215,7 +215,9 @@ function renderMenuList(menu: MenuProps) {
                                 isActive ? activeStyle : undefined
                               }
                             >
-                              <span className="">{subSubItem.title}</span>
+                              <span className="text-xl">
+                                {subSubItem.title}
+                              </span>
                             </NavLink>
                           </li>
                         </>
@@ -232,7 +234,7 @@ function renderMenuList(menu: MenuProps) {
                       isActive ? activeStyle : undefined
                     }
                   >
-                    <span className="">{subItem.title}</span>
+                    <span className="text-xl">{subItem.title}</span>
                   </NavLink>
                 </li>
               );
@@ -247,7 +249,7 @@ function renderMenuList(menu: MenuProps) {
           to={item.link || ""}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
-          {item.title}
+          <span className="text-xl">{item.title}</span>
         </NavLink>
       </li>
     );
