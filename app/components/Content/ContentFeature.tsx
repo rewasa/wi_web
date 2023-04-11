@@ -2,6 +2,7 @@ import { Link } from "@remix-run/react";
 import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
 import { Container } from "~/components/Container/Container";
+import ImageLoader, { ImagePlaceholder } from "~/components/Image/Image";
 import type { Size } from "~/hooks/useWindowSize";
 import { useWindowSize } from "~/hooks/useWindowSize";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
@@ -187,11 +188,11 @@ function renderImages(
                 className={clsx({ "py-4": images.length > 1 }, imageClassName)}
               >
                 {image?.directus_files_id && (
-                  <img
-                    src={getAssetUrl(image.directus_files_id)}
+                  <ImageLoader
+                    assetId={image.directus_files_id}
                     alt={alt}
                     className={clsx(
-                      "object-cover m-auto w-full",
+                      "object-cover m-auto w-full h-auto",
                       imageClassName,
                       {
                         "md:h-[100px] md:w-auto": imageHeight === "100",
@@ -208,6 +209,27 @@ function renderImages(
                       }
                     )}
                   />
+                  // <img
+                  //   src={getAssetUrl(image.directus_files_id)}
+                  //   alt={alt}
+                  //   className={clsx(
+                  //     "object-cover m-auto w-full",
+                  //     imageClassName,
+                  //     {
+                  //       "md:h-[100px] md:w-auto": imageHeight === "100",
+                  //       "md:h-[150px] md:w-auto": imageHeight === "150",
+                  //       "md:h-[200px] md:w-auto": imageHeight === "200",
+                  //       "md:h-[250px] md:w-auto": imageHeight === "250",
+                  //       "md:h-[300px] md:w-auto": imageHeight === "300",
+                  //       "md:h-[350px] md:w-auto": imageHeight === "350",
+                  //       "md:h-[400px] md:w-auto": imageHeight === "400",
+                  //       "md:h-[450px] md:w-auto": imageHeight === "450",
+                  //       "md:h-[500px] md:w-auto": imageHeight === "500",
+                  //       "md:h-[550px] md:w-auto": imageHeight === "550",
+                  //       "md:h-[600px] md:w-auto": imageHeight === "600",
+                  //     }
+                  //   )}
+                  // />
                 )}
               </div>
             );

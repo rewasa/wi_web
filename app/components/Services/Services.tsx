@@ -4,6 +4,7 @@ import { ActionButton } from "~/components/Button/ActionButton";
 import type { Service } from "~/page.server";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
 import bg from "./images/bg.svg";
+import ImageLoader, { ImagePlaceholder } from "~/components/Image/Image";
 
 export type ServicesProps = {
   title?: string;
@@ -68,14 +69,17 @@ export const Services = ({
                       })}
                     >
                       {service.item?.image ? (
-                        <div className="flex w-full justify-center ">
-                          <div className="p-3">
-                            <img
-                              src={getAssetUrl(service.item.image)}
-                              alt={service.item.title}
-                              className="aspect-square rounded-full object-cover p-6"
-                            />
-                          </div>
+                        <div className="flex w-full justify-center">
+                          <ImageLoader
+                            assetId={service.item.image}
+                            alt="Haus mit pool"
+                            className="mx-auto lg:rounded"
+                          />
+                          {/* <img
+                            src={getAssetUrl(service.item.image)}
+                            alt={service.item.title}
+                            className="aspect-square rounded-full object-cover p-6"
+                          /> */}
                         </div>
                       ) : null}
 

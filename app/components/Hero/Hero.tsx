@@ -1,6 +1,7 @@
 import { Link } from "@remix-run/react";
-import { getAssetUrl } from "~/utils/getAssetsUrl";
+import { getAssetUrl, getAssetUrlQuality } from "~/utils/getAssetsUrl";
 import bg from "./images/bg.png";
+import ImageLoader from "~/components/Image/Image";
 export type HeroProps = {
   title?: string;
   text1?: string;
@@ -55,14 +56,14 @@ export const Hero = (props: HeroProps) => {
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/3 h-full lg:pb-10 ">
-        <img
-          tabIndex={0}
-          aria-label="haus mit pool"
-          className="mx-auto lg:rounded"
-          src={bgImage}
-          alt="haus mit pool"
-        />
+      <div className="w-full lg:w-2/3 h-full lg:pb-10">
+        {props?.backgroundImage?.id && (
+          <ImageLoader
+            assetId={props.backgroundImage.id}
+            alt="Haus mit pool"
+            className="mx-auto lg:rounded"
+          />
+        )}
       </div>
     </div>
   );
