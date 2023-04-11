@@ -9,11 +9,19 @@ interface Props {
 
 const ImageLoader: React.FC<Props> = ({ assetId, alt, className }) => {
   const [loaded, setLoaded] = useState(false);
+  const [imageHighQualityDimension, setImageHighQualityDimension] = useState<{
+    width: number;
+    height: number;
+  }>();
 
   useEffect(() => {
     const imageHighQuality = document.getElementById(
       assetId
     ) as HTMLImageElement;
+    setImageHighQualityDimension({
+      width: imageHighQuality.width,
+      height: imageHighQuality.height,
+    });
     if (imageHighQuality.complete) {
       setLoaded(true);
     }
@@ -51,6 +59,8 @@ const ImageLoader: React.FC<Props> = ({ assetId, alt, className }) => {
           height: "100%",
         }}
         onLoad={handleLoad}
+        width={imageHighQualityDimension?.width}
+        height={imageHighQualityDimension?.height}
       />
     </div>
   );
