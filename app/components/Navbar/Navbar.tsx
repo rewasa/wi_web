@@ -132,7 +132,7 @@ function renderMenuList(menu: MenuProps) {
               {item.subMenu.map((subItem, index) => {
                 if (subItem.subMenu?.length) {
                   return (
-                    <li tabIndex={0} key={item.title + index + 2}>
+                    <li tabIndex={0} key={item.title + index + 3}>
                       <NavLink to={subItem.link || ""}>
                         <span className="text-xl">{subItem.title}</span>
                         <svg
@@ -192,10 +192,10 @@ function renderMenuList(menu: MenuProps) {
               if (subItem.subMenu?.length) {
                 return (
                   <div
-                    key={index + 10}
+                    key={index + 100}
                     className="flex-inline flex-wrap lg:hidden"
                   >
-                    <li key={subItem.title + index}>
+                    <li key={subItem.title + index + 1000}>
                       <NavLink
                         to={subItem.link || ""}
                         style={({ isActive }) =>
@@ -208,7 +208,7 @@ function renderMenuList(menu: MenuProps) {
                     {subItem.subMenu.map((subSubItem, index) => {
                       return (
                         <>
-                          <li key={subSubItem.title + index}>
+                          <li key={subSubItem.title + index + 20000}>
                             <NavLink
                               to={subSubItem.link || ""}
                               style={({ isActive }) =>
@@ -227,7 +227,7 @@ function renderMenuList(menu: MenuProps) {
                 );
               }
               return (
-                <li key={subItem.title + index}>
+                <li key={subItem.title + index + 30000}>
                   <NavLink
                     to={subItem.link || ""}
                     style={({ isActive }) =>
@@ -244,7 +244,7 @@ function renderMenuList(menu: MenuProps) {
       );
     }
     return (
-      <li key={item.title + index + 1}>
+      <li key={item.title + index + 50000}>
         <NavLink
           to={item.link || ""}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}

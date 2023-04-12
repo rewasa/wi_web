@@ -7,9 +7,9 @@ import { metaData } from "~/utils/metaData";
 
 export const meta = (meta: V2_MetaArgs) => {
   const pageData = (meta.matches[0].data || meta.matches?.[1].data) as {
-    data: Page[];
+    pages: { data: Page[] };
   };
-  const homeMeta = pageData.data.find((page) => page.slug === "/home");
+  const homeMeta = pageData.pages.data.find((page) => page.slug === "/home");
 
   return metaData(homeMeta);
 };

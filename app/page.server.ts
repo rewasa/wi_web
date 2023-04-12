@@ -19,10 +19,10 @@ export interface Page {
 
 export interface Section {
   collection: "Heading" | "Hero" | "Services" | "ContentFeature"; // add more
-  item: Item;
+  item: CodeItem;
 }
 
-export interface Item {
+export interface CodeItem {
   id: string;
   title: string;
   text1?: string;
@@ -52,6 +52,26 @@ export interface ServiceItem {
   description: string;
   image: string;
   link?: string;
+}
+
+export interface Settings {
+  settings: SettingsClass;
+}
+
+export interface SettingsClass {
+  data: ScriptsData[];
+}
+
+export interface ScriptsData {
+  scripts: Script[];
+}
+
+export interface Script {
+  item: CodeItem;
+}
+
+export interface CodeItem {
+  code: string;
 }
 
 export async function loadPages() {
@@ -92,7 +112,10 @@ export async function loadPages() {
       "sections.item.*.item.link",
     ],
   });
-  // cache the pages
 
-  return { pages };
+  const settings = await directus.items("Settings").readByQuery({
+    fields: ["scripts.item.code"],
+  });
+
+  return { pages, settings };
 }

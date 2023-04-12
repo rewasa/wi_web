@@ -11,9 +11,9 @@ import type { Page } from "~/page.server";
 
 export const meta = (meta: V2_MetaArgs) => {
   const pageData = (meta.matches[0].data || meta.matches?.[1].data) as {
-    data: Page[];
+    pages: { data: Page[] };
   };
-  const pageMeta = pageData.data?.find((page) =>
+  const pageMeta = pageData.pages.data?.find((page) =>
     page.slug.startsWith(meta.location.pathname)
   );
 

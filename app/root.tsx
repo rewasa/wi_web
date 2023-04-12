@@ -18,7 +18,7 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
 import { ExternalScripts } from "remix-utils";
-import type { Pages } from "~/page.server";
+import type { Page, Script, Settings } from "~/page.server";
 import { loadPages } from "~/page.server";
 import { PageContext } from "~/utils/pageContext";
 
@@ -30,12 +30,16 @@ export const links: LinksFunction = () => {
 };
 
 export async function loader() {
-  const { pages } = await loadPages();
-  return json(pages);
+  const { pages, settings } = await loadPages();
+  return json({ pages, settings });
 }
 
 export default function App() {
-  const { data: pages } = useLoaderData() as Pages;
+  const loaderData = useLoaderData<typeof loader>();
+  const pages = loaderData.pages.data as unknown as Page[];
+  const settings = loaderData.settings.data as [{ scripts: Script[] }];
+  const scripts = settings?.[0].scripts;
+
   return (
     <html lang="de" className="h-full">
       <head>
@@ -43,6 +47,13 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full">
+        {scripts.map((script) => (
+          <script
+            key={script.item.id}
+            dangerouslySetInnerHTML={{ __html: script.item.code }}
+          />
+        ))}
+
         <PageContext.Provider value={pages}>
           <Outlet />
         </PageContext.Provider>

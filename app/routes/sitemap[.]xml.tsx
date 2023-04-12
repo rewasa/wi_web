@@ -8,7 +8,7 @@ export const loader = () => {
       </url>
     </urlset>
     `;
-  // TODO: Add more URLs
+  // TODO: Add more URLs and set the lastmod date to the last time the page was updated
   return new Response(content, {
     status: 200,
     headers: {
