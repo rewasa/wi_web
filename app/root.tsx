@@ -18,7 +18,7 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
 import { ExternalScripts } from "remix-utils";
-import type { Page, Script, Settings } from "~/page.server";
+import type { FooterLink, Page, Script } from "~/page.server";
 import { loadPages } from "~/page.server";
 import { PageContext } from "~/utils/pageContext";
 
@@ -37,8 +37,13 @@ export async function loader() {
 export default function App() {
   const loaderData = useLoaderData<typeof loader>();
   const pages = loaderData.pages.data as unknown as Page[];
-  const settings = loaderData.settings.data as [{ scripts: Script[] }];
-  const scripts = settings?.[0].scripts;
+  const settings = loaderData.settings.data as unknown as {
+    scripts: Script[];
+    footerLinks: FooterLink[];
+  };
+  const scripts = settings.scripts;
+  const footerLinks = settings.footerLinks;
+  // TODO: Add footer links to footer
 
   return (
     <html lang="de" className="h-full">

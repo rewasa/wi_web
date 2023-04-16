@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 import type { Page } from "~/page.server";
 
 export const PageContext = createContext<null | Page[]>(null);
+export const FooterContext = createContext<null | any>(null);
 
 export function usePage(): Page[] {
   const pages = useContext(PageContext);
