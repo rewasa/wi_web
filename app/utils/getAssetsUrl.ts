@@ -7,6 +7,6 @@ export function getAssetUrlQuality(id: string) {
   return {
     low: `${assetUrl}1`,
     medium: `${assetUrl}50`,
-    high: `${assetUrl}100`,
+    high: `${assetUrl}99`,
   };
 }

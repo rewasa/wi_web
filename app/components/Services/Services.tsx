@@ -72,14 +72,12 @@ export const Services = ({
                         <div className="flex w-full justify-center">
                           <ImageLoader
                             assetId={service.item.image}
-                            alt="Haus mit pool"
-                            className="mx-auto lg:rounded"
+                            alt={
+                              service.item.title ||
+                              "Wasescha Immobilien Service"
+                            }
+                            className="mx-auto lg:rounded py-4"
                           />
-                          {/* <img
-                            src={getAssetUrl(service.item.image)}
-                            alt={service.item.title}
-                            className="aspect-square rounded-full object-cover p-6"
-                          /> */}
                         </div>
                       ) : null}
 

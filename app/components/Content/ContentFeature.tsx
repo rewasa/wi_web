@@ -2,7 +2,7 @@ import { Link } from "@remix-run/react";
 import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
 import { Container } from "~/components/Container/Container";
-import ImageLoader, { ImagePlaceholder } from "~/components/Image/Image";
+import ImageLoader from "~/components/Image/Image";
 import type { Size } from "~/hooks/useWindowSize";
 import { useWindowSize } from "~/hooks/useWindowSize";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
@@ -53,16 +53,7 @@ export const ContentFeature = ({
       {features?.length ? (
         containerFeatures(features, backgroundColor, text, link)
       ) : (
-        <div
-          className={clsx(
-            "py-20",
-            `bg-[${
-              backgroundColor?.includes("000000")
-                ? backgroundColor.replace("000000", "000")
-                : backgroundColor
-            }]`
-          )}
-        >
+        <div className="md:py-10" style={{ backgroundColor: backgroundColor }}>
           <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
             {contentLeft || (size.width && size.width <= 640) ? (
               <>
@@ -192,22 +183,23 @@ function renderImages(
                     assetId={image.directus_files_id}
                     alt={alt}
                     className={clsx(
-                      "object-cover m-auto w-full h-auto",
-                      imageClassName,
-                      {
-                        "md:h-[100px] md:w-auto": imageHeight === "100",
-                        "md:h-[150px] md:w-auto": imageHeight === "150",
-                        "md:h-[200px] md:w-auto": imageHeight === "200",
-                        "md:h-[250px] md:w-auto": imageHeight === "250",
-                        "md:h-[300px] md:w-auto": imageHeight === "300",
-                        "md:h-[350px] md:w-auto": imageHeight === "350",
-                        "md:h-[400px] md:w-auto": imageHeight === "400",
-                        "md:h-[450px] md:w-auto": imageHeight === "450",
-                        "md:h-[500px] md:w-auto": imageHeight === "500",
-                        "md:h-[550px] md:w-auto": imageHeight === "550",
-                        "md:h-[600px] md:w-auto": imageHeight === "600",
-                      }
+                      "object-cover max-w-full h-auto",
+                      imageClassName
+                      // {
+                      //   "md:h-[100px] md:w-auto": imageHeight === "100",
+                      //   "md:h-[150px] md:w-auto": imageHeight === "150",
+                      //   "md:h-[200px] md:w-auto": imageHeight === "200",
+                      //   "md:h-[250px] md:w-auto": imageHeight === "250",
+                      //   "md:h-[300px] md:w-auto": imageHeight === "300",
+                      //   "md:h-[350px] md:w-auto": imageHeight === "350",
+                      //   "md:h-[400px] md:w-auto": imageHeight === "400",
+                      //   "md:h-[450px] md:w-auto": imageHeight === "450",
+                      //   "md:h-[500px] md:w-auto": imageHeight === "500",
+                      //   "md:h-[550px] md:w-auto": imageHeight === "550",
+                      //   "md:h-[600px] md:w-auto": imageHeight === "600",
+                      // }
                     )}
+                    //style={{ maxHeight: `${imageHeight}px` }}
                   />
                   // <img
                   //   src={getAssetUrl(image.directus_files_id)}
@@ -250,10 +242,8 @@ function containerFeatures(
   return (
     <Container>
       <div
-        className={clsx(
-          "my-20 grid grid-cols-1 rounded p-4 md:grid-cols-2 md:p-10 bg-[#968D7E]",
-          backgroundColor
-        )}
+        className="my-20 grid grid-cols-1 rounded p-4 md:grid-cols-2 md:p-10 bg-[#968D7E]"
+        style={{ backgroundColor }}
       >
         {featuresServices?.map((feature: Feature, index) => {
           return (
