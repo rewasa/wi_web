@@ -1,5 +1,4 @@
 import { Link } from "@remix-run/react";
-import { getAssetUrl, getAssetUrlQuality } from "~/utils/getAssetsUrl";
 import bg from "./images/bg.png";
 import ImageLoader from "~/components/Image/Image";
 export type HeroProps = {
@@ -11,13 +10,12 @@ export type HeroProps = {
   };
 };
 export const Hero = (props: HeroProps) => {
-  const bgImage = props?.backgroundImage?.id
-    ? `https://cms.wasescha.immobilien/assets/${props.backgroundImage.id}.jpeg
-  `
-    : bg;
   return (
-    <div className="lg:flex items-center h-full">
-      <div role="contentinfo" className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20">
+    <div className="md:flex items-center h-full">
+      <div
+        role="contentinfo"
+        className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20 container mx-auto"
+      >
         <p
           tabIndex={0}
           className="invisible lg:visible text-secondary uppercase text-xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
@@ -26,7 +24,7 @@ export const Hero = (props: HeroProps) => {
         </p>
         <h1
           tabIndex={0}
-          className="text-3xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="text-2xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
         >
           {props?.title}
         </h1>
