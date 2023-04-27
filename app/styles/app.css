@@ -17,29 +17,22 @@
       url("../fonts/questrial-v18-latin-regular.svg#Questrial") format("svg"); /* Legacy iOS */
 }
 
-.placeholder {
-  background-color: #222;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
+ul {
+  list-style: none;
 }
 
-.placeholder img {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  transition: opacity 1s linear;
+.text-lg li::before {
+  content: "";
+  display: inline-block;
+  background-image: url(/wi.svg);
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
 }
 
-.placeholder img.loaded {
-  opacity: 1;
-}
+.text-lg li {
+  line-height: 1.5;
 
-.img-small {
-  /* filter: blur(50px); */
-  /* this is needed so Safari keeps sharp edges */
-  transform: scale(1);
+  margin-bottom: 1rem;
 }
