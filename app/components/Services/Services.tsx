@@ -4,7 +4,7 @@ import { ActionButton } from "~/components/Button/ActionButton";
 import type { Service } from "~/page.server";
 import { getAssetUrl } from "~/utils/getAssetsUrl";
 import bg from "./images/bg.svg";
-import ImageLoader, { ImagePlaceholder } from "~/components/Image/Image";
+import ImageLoader from "~/components/Image/Image";
 
 export type ServicesProps = {
   title?: string;
@@ -57,8 +57,7 @@ export const Services = ({
                   service.item.description?.includes("<");
 
                 return (
-                  <Link
-                    to={linkTo}
+                  <div
                     key={service.item.id}
                     className="relative  sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
                   >
@@ -68,52 +67,62 @@ export const Services = ({
                           !backgroundColor && !backgroundImage?.id,
                       })}
                     >
-                      {service.item?.image ? (
+                      <Link to={linkTo}>
+                        {service.item?.image ? (
+                          <div className="flex w-full justify-center">
+                            <ImageLoader
+                              assetId={service.item.image}
+                              alt={
+                                service.item.title ||
+                                "Wasescha Immobilien Service"
+                              }
+                              className="mx-auto lg:rounded py-4"
+                            />
+                          </div>
+                        ) : null}
+
+                        <div
+                          className={clsx(
+                            "text-center",
+                            service.item.title && "my-16 py-4"
+                          )}
+                        >
+                          {service.item.title ? (
+                            <h1
+                              style={{ color: textColor }}
+                              className="pb-4 text-center text-3xl font-bold"
+                            >
+                              {service.item.title}
+                            </h1>
+                          ) : null}
+                          {descriptionInHtml ? (
+                            <div
+                              style={{ color: textColor }}
+                              className="px-4 text-xl"
+                              dangerouslySetInnerHTML={{
+                                __html: service.item.description || "",
+                              }}
+                            ></div>
+                          ) : (
+                            <p
+                              style={{ color: textColor }}
+                              className="px-4 text-xl"
+                            >
+                              {service.item.description}
+                            </p>
+                          )}
+                        </div>
+                      </Link>
+                      {service.item.detailDescription ? (
                         <div className="flex w-full justify-center">
-                          <ImageLoader
-                            assetId={service.item.image}
-                            alt={
-                              service.item.title ||
-                              "Wasescha Immobilien Service"
-                            }
-                            className="mx-auto lg:rounded py-4"
-                          />
+                          <label htmlFor="detail-modal" className="btn">
+                            Mehr erfahren
+                          </label>
+                          <>{renderModal(service.item.detailDescription)}</>
                         </div>
                       ) : null}
-
-                      <div
-                        className={clsx(
-                          "text-center",
-                          service.item.title && "my-16 py-4"
-                        )}
-                      >
-                        {service.item.title ? (
-                          <h1
-                            style={{ color: textColor }}
-                            className="pb-4 text-center text-3xl font-bold"
-                          >
-                            {service.item.title}
-                          </h1>
-                        ) : null}
-                        {descriptionInHtml ? (
-                          <div
-                            style={{ color: textColor }}
-                            className="px-4 text-xl"
-                            dangerouslySetInnerHTML={{
-                              __html: service.item.description || "",
-                            }}
-                          ></div>
-                        ) : (
-                          <p
-                            style={{ color: textColor }}
-                            className="px-4 text-xl"
-                          >
-                            {service.item.description}
-                          </p>
-                        )}
-                      </div>
                     </div>
-                  </Link>
+                  </div>
                 );
               })
             : null}
@@ -130,3 +139,22 @@ export const Services = ({
     </div>
   );
 };
+
+function renderModal(content: string) {
+  return (
+    <>
+      <input type="checkbox" id="detail-modal" className="modal-toggle" />
+      <div className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box bg-black">
+          <div dangerouslySetInnerHTML={{ __html: content }} />
+
+          <div className="modal-action">
+            <label htmlFor="detail-modal" className="btn">
+              Schliessen
+            </label>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}

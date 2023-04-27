@@ -50,6 +50,7 @@ export interface ServiceItem {
   id: string;
   title: string;
   description: string;
+  detailDescription?: string;
   image: string;
   link?: string;
 }
@@ -110,12 +111,14 @@ export async function loadPages() {
       "sections.item.html",
       "sections.item.features.*.features.item.services.item.title",
       "sections.item.features.*.features.item.services.item.description",
+      "sections.item.features.*.features.item.services.item.detailDescription",
       "sections.item.features.*.features.item.services.item.image",
       "sections.item.features.*.features.item.services.item.link",
       "sections.item.*.collection",
       "sections.item.*.item.id",
       "sections.item.*.item.title",
       "sections.item.*.item.description",
+      "sections.item.*.item.detailDescription",
       "sections.item.*.item.image",
       "sections.item.*.item.link",
     ],

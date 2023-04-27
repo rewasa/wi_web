@@ -150,13 +150,14 @@ function renderContent(
         );
       })}
       {questionsAndAnswers?.length ? (
-        <div tabIndex={0} className="collapse collapse-arrow cursor-pointer">
+        <div>
           {questionsAndAnswers.map((questionAndAnswer, index) => {
             return (
-              <div key={index} className="my-4">
+              <div key={index} tabIndex={0} className="collapse collapse-arrow">
+                <input type="checkbox" />
                 {questionAndAnswer?.question && (
                   <div
-                    className="text-lg font-bold my-4 collapse-title"
+                    className="text-xl font-bold my-4 collapse-title"
                     style={{ color: textColor }}
                     dangerouslySetInnerHTML={{
                       __html: questionAndAnswer.question,
@@ -166,7 +167,7 @@ function renderContent(
                 {questionAndAnswer?.answer && (
                   <div
                     tabIndex={0}
-                    className="my-4 text-lg collapse-content"
+                    className="my-4 text-xl collapse-content"
                     style={{ color: textColor }}
                     dangerouslySetInnerHTML={{
                       __html: questionAndAnswer.answer,
