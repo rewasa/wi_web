@@ -104,6 +104,7 @@ export async function loadPages() {
       "sections.item.contentLeft",
       "sections.item.link",
       "sections.item.contentList.*",
+      "sections.item.questionsAndAnswers.*",
       "sections.item.images.*",
       "sections.item.imageHeight",
       "sections.item.html",

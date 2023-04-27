@@ -13,6 +13,10 @@ export type ContentFeatureProps = {
   contentList: Array<{
     text?: string;
   }>;
+  questionsAndAnswers?: Array<{
+    question?: string;
+    answer?: string;
+  }>;
   images: Array<{
     directus_files_id: string;
   }>;
@@ -38,6 +42,7 @@ export const ContentFeature = ({
   rowBreakdown = 6,
   contentLeft = true,
   contentList = [],
+  questionsAndAnswers = [],
   images,
   imageClassName,
   imageHeight,
@@ -63,7 +68,8 @@ export const ContentFeature = ({
                   link,
                   contentLeft,
                   rowBreakdown,
-                  textColor
+                  textColor,
+                  questionsAndAnswers
                 )}
                 {renderImages(
                   images,
@@ -90,7 +96,8 @@ export const ContentFeature = ({
                   link,
                   contentLeft,
                   rowBreakdown,
-                  textColor
+                  textColor,
+                  questionsAndAnswers
                 )}
               </>
             )}
@@ -107,7 +114,11 @@ function renderContent(
   link?: string,
   contentLeft?: boolean,
   rowBreakdown?: number,
-  textColor?: string
+  textColor?: string,
+  questionsAndAnswers?: Array<{
+    question?: string;
+    answer?: string;
+  }>
 ) {
   return (
     <div
@@ -138,6 +149,35 @@ function renderContent(
           </p>
         );
       })}
+      {questionsAndAnswers?.length ? (
+        <div tabIndex={0} className="collapse collapse-arrow cursor-pointer">
+          {questionsAndAnswers.map((questionAndAnswer, index) => {
+            return (
+              <div key={index} className="my-4">
+                {questionAndAnswer?.question && (
+                  <div
+                    className="text-lg font-bold my-4 collapse-title"
+                    style={{ color: textColor }}
+                    dangerouslySetInnerHTML={{
+                      __html: questionAndAnswer.question,
+                    }}
+                  />
+                )}
+                {questionAndAnswer?.answer && (
+                  <div
+                    tabIndex={0}
+                    className="my-4 text-lg collapse-content"
+                    style={{ color: textColor }}
+                    dangerouslySetInnerHTML={{
+                      __html: questionAndAnswer.answer,
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
       <div className="my-10">
         {text ? (
           <Link to={link || "#"}>
