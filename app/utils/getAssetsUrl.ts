@@ -5,8 +5,8 @@ export function getAssetUrl(id: string) {
 export function getAssetUrlQuality(id: string) {
   const assetUrl = `https://cms.wasescha.immobilien/assets/${id}.webp?fix=contain&format=webp&quality=`;
   return {
-    low: `${assetUrl}1`,
+    low: `${assetUrl}10`,
     medium: `${assetUrl}50`,
-    high: `${assetUrl}90`,
+    high: `${assetUrl}97`,
   };
 }

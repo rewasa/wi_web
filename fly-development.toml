@@ -3,6 +3,7 @@
 app = "wi-web-dev"
 kill_signal = "SIGINT"
 kill_timeout = 5
+primary_region = "fra"
 processes = []
 
 [experimental]
