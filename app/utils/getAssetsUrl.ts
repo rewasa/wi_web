@@ -5,8 +5,8 @@ export function getAssetUrl(id: string) {
 export function getAssetUrlQuality(id: string) {
   const assetUrl = `https://cms.wasescha.immobilien/assets/${id}.png?fit=contain&format=png&quality=`;
   return {
-    low: `${assetUrl}10`,
+    low: `${assetUrl}30`,
     medium: `${assetUrl}50`,
-    high: `${assetUrl}100`,
+    high: `${assetUrl}90`,
   };
 }
