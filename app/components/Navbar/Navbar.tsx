@@ -1,22 +1,29 @@
 import { NavLink, useLocation } from "@remix-run/react";
 import logo from "./images/logo.svg";
+import { useState, useEffect } from "react";
+import clsx from "clsx";
 
 type MenuProps = Array<{
   title: string;
   link?: string;
-  subMenu?: Array<NavbarProps>;
+  subMenu?: Array<SubMenuProps>;
 }>;
 
-type NavbarProps = {
+type SubMenuProps = {
   title: string;
   link?: string;
-  subMenu?: Array<NavbarProps>;
+  subMenu?: Array<SubMenuProps>;
+};
+
+type NavbarProps = {
+  className?: string;
 };
 
 export const menu = [
   {
     title: "Angebote",
     subMenu: [
+      { title: "Inserierung", link: "/angebote/inserierung" },
       {
         title: "Verkaufen",
         link: "/angebote/verkaufen",
@@ -39,7 +46,6 @@ export const menu = [
           },
         ],
       },
-      { title: "Inserierung", link: "/angebote/inserierung" },
     ],
   },
   // { title: "Immobilien", link: "/immobilien" },
@@ -47,61 +53,100 @@ export const menu = [
   { title: "Kontakt", link: "/kontakt" },
 ];
 
-export const Navbar = () => {
+export const Navbar = (props: NavbarProps) => {
   const location = useLocation();
-  return (
-    <nav className="container navbar z-20 mx-auto items-center">
-      <div className="navbar-start">
-        <NavLink to="/">
-          <img
-            src={logo}
-            alt="Wasescha Immobilien Logo"
-            className="ml-1 w-[160px] lg:w-[200px]"
-          />
-        </NavLink>
-      </div>
-      <div className="navbar-center hidden lg:flex md:ml-12">
-        <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
-      </div>
+  const [lastScrollTop, setLastScrollTop] = useState(0);
 
-      {location.pathname !== "/" ? (
-        <div className="navbar-end hidden lg:flex">
-          <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
-            Kostenlose Schätzung
+  useEffect(() => {
+    const navbar = document.getElementById("navbar") as HTMLElement;
+
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > 80 && scrollTop > lastScrollTop) {
+        navbar.style.top = "-80px";
+      } else {
+        navbar.style.top = "0";
+      }
+
+      setLastScrollTop(scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
+  return (
+    <div
+      id="navbar"
+      className={clsx(
+        "fixed top-0 shadow transition-all duration-300 h-[80px] z-20 w-full",
+        props.className ? props.className : "bg-white"
+      )}
+    >
+      <nav className="navbar items-center container mx-auto py-4">
+        <div className="navbar-start">
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="Wasescha Immobilien Logo"
+              className="ml-1 w-[160px] lg:w-[200px]"
+            />
           </NavLink>
         </div>
-      ) : null}
+        <div className="navbar-center hidden lg:flex md:ml-12">
+          <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
+        </div>
 
-      <div className="navbar-end lg:hidden">
-        <div className="dropdown-bottom dropdown-left dropdown">
-          <label tabIndex={0} className="btn-ghost btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+        {location.pathname !== "/" ? (
+          <div className="navbar-end hidden lg:flex">
+            <NavLink
+              to={"/marktwertrechner"}
+              className="btn-outline btn-md btn"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
-          >
-            {renderMenuList(menu)}
-            <NavLink to={"/marktwertrechner"} className="btn-secondary btn m-2">
               Kostenlose Schätzung
             </NavLink>
-          </ul>
+          </div>
+        ) : null}
+
+        <div className="navbar-end lg:hidden">
+          <div className="dropdown-bottom dropdown-left dropdown">
+            <label tabIndex={0} className="btn-ghost btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
+            >
+              {renderMenuList(menu)}
+              <NavLink
+                to={"/marktwertrechner"}
+                className="btn-secondary btn m-2"
+              >
+                Kostenlose Schätzung
+              </NavLink>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 

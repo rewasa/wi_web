@@ -49,34 +49,34 @@ export const Services = ({
             {title}
           </div>
         ) : null}
-        <div className="flex-wrap text-white sm:flex sm:justify-around md:flex md:justify-around lg:flex lg:justify-around xl:justify-between">
+        <div className="flex-wrap text-white sm:flex sm:justify-around md:flex lg:flex">
           {services?.length
             ? services.map((service, index) => {
-                const linkTo = service.item.link || "#";
+                const linkTo = service.item.link || "";
                 const descriptionInHtml =
                   service.item.description?.includes("<");
 
                 return (
                   <div
                     key={service.item.id}
-                    className="relative  sm:mb-24 sm:w-3/4 md:w-2/5 lg:w-2/5 xl:w-1/3 xl:max-w-sm"
+                    className="relative sm:mb-24 xl:w-1/3"
                   >
                     <div
                       className={clsx({
                         "duration-400 delay-10 transition ease-in-out hover:rounded hover:bg-black":
-                          !backgroundColor && !backgroundImage?.id,
+                          !backgroundColor && !backgroundImage?.id && linkTo,
                       })}
                     >
-                      <Link to={linkTo}>
+                      <ConditionLinkWrapper link={linkTo}>
                         {service.item?.image ? (
-                          <div className="flex w-full justify-center">
+                          <div className="flex justify-center p-8">
                             <ImageLoader
                               assetId={service.item.image}
                               alt={
                                 service.item.title ||
                                 "Wasescha Immobilien Service"
                               }
-                              className="mx-auto lg:rounded py-4"
+                              className="mx-auto sm:h-80 sm:w-80 lg:rounded"
                             />
                           </div>
                         ) : null}
@@ -112,7 +112,7 @@ export const Services = ({
                             </p>
                           )}
                         </div>
-                      </Link>
+                      </ConditionLinkWrapper>
                       {service.item.detailDescription ? (
                         <div className="flex w-full justify-center">
                           <label htmlFor="detail-modal" className="btn">
@@ -157,4 +157,14 @@ function renderModal(content: string) {
       </div>
     </>
   );
+}
+
+function ConditionLinkWrapper({
+  children,
+  link,
+}: {
+  children: React.ReactNode;
+  link: string;
+}) {
+  return link ? <Link to={link}>{children}</Link> : <>{children}</>;
 }

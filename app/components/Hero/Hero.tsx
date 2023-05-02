@@ -14,7 +14,7 @@ export const Hero = (props: HeroProps) => {
     <div className="md:flex items-center h-full">
       <div
         role="contentinfo"
-        className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20 container mx-auto"
+        className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20 container mx-auto px-4"
       >
         <p
           tabIndex={0}
@@ -24,37 +24,34 @@ export const Hero = (props: HeroProps) => {
         </p>
         <h1
           tabIndex={0}
-          className="text-2xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="text-4xl lg:text-6xl font-black mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
         >
           {props?.title}
         </h1>
         <div
           tabIndex={0}
-          className="text-md mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
           dangerouslySetInnerHTML={{ __html: props.text1 as string }}
         ></div>
         <div
           tabIndex={0}
-          className="text-md mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
           dangerouslySetInnerHTML={{ __html: props.text2 as string }}
         ></div>
         <div className="bg-white lg:mt-16 py-4 px-4 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
-          <div className="sm:flex py-2">
-            <Link
-              to={"/marktwertrechner"}
-              className="btn btn-lg btn-secondary lg:ml-36"
-            >
+          <div className="flex py-2 mx-auto">
+            <Link to={"/marktwertrechner"} className="btn btn-lg btn-secondary">
               Kostenlose Schätzung
             </Link>
           </div>
-          <div className="invisible xl:visible sm:flex py-2">
-            <Link to={"/ueber-uns"} className="btn btn-lg btn-link">
-              über uns
+          <div className="invisible xl:visible sm:flex">
+            <Link to={"/kontakt"} className="btn btn-lg btn-outline">
+              Kontakt
             </Link>
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/3 h-full lg:pb-10">
+      <div className="w-full lg:w-2/3 h-full">
         {props?.backgroundImage?.id && (
           <ImageLoader
             assetId={props.backgroundImage.id}

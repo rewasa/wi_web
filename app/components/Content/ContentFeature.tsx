@@ -58,8 +58,11 @@ export const ContentFeature = ({
       {features?.length ? (
         containerFeatures(features, backgroundColor, text, link)
       ) : (
-        <div className="md:py-10" style={{ backgroundColor: backgroundColor }}>
-          <div className="container mx-auto w-full items-center justify-between px-4 py-10 md:flex">
+        <div
+          className="flex flex-wrap md:py-10"
+          style={{ backgroundColor: backgroundColor }}
+        >
+          <div className="container mx-auto w-full justify-between py-10 md:flex gap-8">
             {contentLeft || (size.width && size.width <= 640) ? (
               <>
                 {renderContent(
@@ -79,6 +82,7 @@ export const ContentFeature = ({
                   imageClassName,
                   imageHeight
                 )}
+                {renderActionButton("mobile", text, link)}
               </>
             ) : (
               <>
@@ -99,6 +103,7 @@ export const ContentFeature = ({
                   textColor,
                   questionsAndAnswers
                 )}
+                {renderActionButton("mobile", text, link)}
               </>
             )}
           </div>
@@ -123,13 +128,12 @@ function renderContent(
   return (
     <div
       className={clsx(
-        contentLeft ? "" : "xl:pl-28",
-        { "md:w-2/12": rowBreakdown === 2 },
-        { "md:w-4/12": rowBreakdown === 4 },
-        { "md:w-6/12": rowBreakdown === 6 },
-        { "md:w-8/12": rowBreakdown === 8 },
-        { "md:w-10/12": rowBreakdown === 10 },
-        "w-full"
+        { "lg:w-2/12": rowBreakdown === 2 },
+        { "lg:w-4/12": rowBreakdown === 4 },
+        { "lg:w-6/12": rowBreakdown === 6 },
+        { "lg:w-8/12": rowBreakdown === 8 },
+        { "lg:w-10/12": rowBreakdown === 10 },
+        "w-full px-4"
       )}
     >
       {content?.map((content, index) => {
@@ -139,7 +143,7 @@ function renderContent(
               dangerouslySetInnerHTML={{ __html: content.text }}
               key={index}
               style={{ color: textColor }}
-              className="my-4 text-lg"
+              className="mb-6 text-lg"
             />
           );
         }
@@ -167,7 +171,7 @@ function renderContent(
                 {questionAndAnswer?.answer && (
                   <div
                     tabIndex={0}
-                    className="my-4 text-xl collapse-content"
+                    className="mb-4 text-xl collapse-content opacity-50"
                     style={{ color: textColor }}
                     dangerouslySetInnerHTML={{
                       __html: questionAndAnswer.answer,
@@ -179,15 +183,32 @@ function renderContent(
           })}
         </div>
       ) : null}
-      <div className="my-10">
-        {text ? (
-          <Link to={link || "#"}>
-            <ActionButton>{text}</ActionButton>
-          </Link>
-        ) : null}
-      </div>
+      {renderActionButton("desktop", text, link)}
     </div>
   );
+}
+
+function renderActionButton(
+  device: "mobile" | "desktop" | "both",
+  text?: string,
+  link?: string
+) {
+  if (text) {
+    return (
+      <div
+        className={clsx(
+          "mt-10 lg:mt-20 justify-center sm:justify-start",
+          { "flex sm:hidden": device === "mobile" },
+          { "hidden sm:flex": device === "desktop" }
+        )}
+      >
+        <Link to={link || "#"}>
+          <ActionButton>{text}</ActionButton>
+        </Link>
+      </div>
+    );
+  }
+  return null;
 }
 
 function renderImages(
@@ -203,12 +224,12 @@ function renderImages(
   return (
     <div
       className={clsx(
-        contentLeft ? "xl:pl-28" : "",
-        { "md:w-2/12": rowBreakdown === 10 },
-        { "md:w-4/12": rowBreakdown === 8 },
-        { "md:w-6/12": rowBreakdown === 6 },
-        { "md:w-8/12": rowBreakdown === 4 },
-        { "md:w-10/12": rowBreakdown === 2 },
+        contentLeft ? "lg:pl-28" : "lg:pr-28",
+        { "lg:w-2/12": rowBreakdown === 10 },
+        { "lg:w-4/12": rowBreakdown === 8 },
+        { "lg:w-6/12": rowBreakdown === 6 },
+        { "lg:w-8/12": rowBreakdown === 4 },
+        { "lg:w-10/12": rowBreakdown === 2 },
         "w-full"
       )}
     >
@@ -224,45 +245,11 @@ function renderImages(
                     assetId={image.directus_files_id}
                     alt={alt}
                     className={clsx(
-                      "object-cover max-w-full h-auto",
+                      "h-full w-full object-cover",
                       imageClassName
-                      // {
-                      //   "md:h-[100px] md:w-auto": imageHeight === "100",
-                      //   "md:h-[150px] md:w-auto": imageHeight === "150",
-                      //   "md:h-[200px] md:w-auto": imageHeight === "200",
-                      //   "md:h-[250px] md:w-auto": imageHeight === "250",
-                      //   "md:h-[300px] md:w-auto": imageHeight === "300",
-                      //   "md:h-[350px] md:w-auto": imageHeight === "350",
-                      //   "md:h-[400px] md:w-auto": imageHeight === "400",
-                      //   "md:h-[450px] md:w-auto": imageHeight === "450",
-                      //   "md:h-[500px] md:w-auto": imageHeight === "500",
-                      //   "md:h-[550px] md:w-auto": imageHeight === "550",
-                      //   "md:h-[600px] md:w-auto": imageHeight === "600",
-                      // }
                     )}
-                    //style={{ maxHeight: `${imageHeight}px` }}
+                    style={{ maxHeight: `${imageHeight}px` }}
                   />
-                  // <img
-                  //   src={getAssetUrl(image.directus_files_id)}
-                  //   alt={alt}
-                  //   className={clsx(
-                  //     "object-cover m-auto w-full",
-                  //     imageClassName,
-                  //     {
-                  //       "md:h-[100px] md:w-auto": imageHeight === "100",
-                  //       "md:h-[150px] md:w-auto": imageHeight === "150",
-                  //       "md:h-[200px] md:w-auto": imageHeight === "200",
-                  //       "md:h-[250px] md:w-auto": imageHeight === "250",
-                  //       "md:h-[300px] md:w-auto": imageHeight === "300",
-                  //       "md:h-[350px] md:w-auto": imageHeight === "350",
-                  //       "md:h-[400px] md:w-auto": imageHeight === "400",
-                  //       "md:h-[450px] md:w-auto": imageHeight === "450",
-                  //       "md:h-[500px] md:w-auto": imageHeight === "500",
-                  //       "md:h-[550px] md:w-auto": imageHeight === "550",
-                  //       "md:h-[600px] md:w-auto": imageHeight === "600",
-                  //     }
-                  //   )}
-                  // />
                 )}
               </div>
             );

@@ -125,7 +125,7 @@ export async function loadPages() {
   });
 
   const settings = await directus.items("Settings").readByQuery({
-    fields: ["scripts.item.code", "footerLinks"],
+    fields: ["scripts.item.code", "footerLinks", "*"],
   });
 
   return { pages, settings };
