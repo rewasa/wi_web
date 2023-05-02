@@ -19,7 +19,7 @@ export const Heading = (props: HeadingProps) => {
             {props?.isMain ? (
               <h1
                 className={clsx(
-                  "text-3xl font-bold pr-[50px]",
+                  "text-5xl font-bold pr-[50px]",
                   props.className
                 )}
               >
@@ -28,7 +28,7 @@ export const Heading = (props: HeadingProps) => {
             ) : (
               <h2
                 className={clsx(
-                  "font-bold text-2xl lg:text-3xl pr-[50px]",
+                  "font-bold text-3xl lg:text-4xl pr-[50px]",
                   props.className
                 )}
               >

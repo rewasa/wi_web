@@ -115,10 +115,18 @@ export const Services = ({
                       </ConditionLinkWrapper>
                       {service.item.detailDescription ? (
                         <div className="flex w-full justify-center">
-                          <label htmlFor="detail-modal" className="btn">
+                          <label
+                            htmlFor={`detail-modal${index}`}
+                            className="btn"
+                          >
                             Mehr erfahren
                           </label>
-                          <>{renderModal(service.item.detailDescription)}</>
+                          <>
+                            {renderModal(
+                              service.item.detailDescription,
+                              `detail-modal${index}`
+                            )}
+                          </>
                         </div>
                       ) : null}
                     </div>
@@ -140,16 +148,16 @@ export const Services = ({
   );
 };
 
-function renderModal(content: string) {
+function renderModal(content: string, id: string) {
   return (
     <>
-      <input type="checkbox" id="detail-modal" className="modal-toggle" />
+      <input type="checkbox" id={id} className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-black">
           <div dangerouslySetInnerHTML={{ __html: content }} />
 
           <div className="modal-action">
-            <label htmlFor="detail-modal" className="btn">
+            <label htmlFor={id} className="btn">
               Schliessen
             </label>
           </div>
