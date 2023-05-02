@@ -143,7 +143,9 @@ function renderContent(
               dangerouslySetInnerHTML={{ __html: content.text }}
               key={index}
               style={{ color: textColor }}
-              className="mb-6 text-lg"
+              className={clsx("mb-6 text-lg", {
+                "opacity-80": textColor?.includes("FFF") && index > 0,
+              })}
             />
           );
         }
@@ -169,14 +171,16 @@ function renderContent(
                   />
                 )}
                 {questionAndAnswer?.answer && (
-                  <div
-                    tabIndex={0}
-                    className="mb-4 text-xl collapse-content opacity-50"
-                    style={{ color: textColor }}
-                    dangerouslySetInnerHTML={{
-                      __html: questionAndAnswer.answer,
-                    }}
-                  />
+                  <div className="mb-4 text-xl collapse-content opacity-80">
+                    <div
+                      tabIndex={0}
+                      className="text-lg"
+                      style={{ color: textColor }}
+                      dangerouslySetInnerHTML={{
+                        __html: questionAndAnswer.answer,
+                      }}
+                    />
+                  </div>
                 )}
               </div>
             );
