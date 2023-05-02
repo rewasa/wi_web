@@ -153,7 +153,7 @@ function renderModal(content: string, id: string) {
     <>
       <input type="checkbox" id={id} className="modal-toggle" />
       <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-black">
+        <div className="modal-box bg-black text-lg">
           <div dangerouslySetInnerHTML={{ __html: content }} />
 
           <div className="modal-action">
