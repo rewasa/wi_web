@@ -28,8 +28,7 @@ export default function Pages() {
   //console.log(JSON.stringify(pages, null, 2));
 
   const routePage = pages.find(
-    (page) =>
-      page.status === "published" && page.slug.startsWith(location.pathname)
+    (page) => page.status === "published" && page.slug === location.pathname
   );
 
   if (!routePage) {

@@ -23,10 +23,10 @@ export const menu = [
   {
     title: "Angebote",
     subMenu: [
-      { title: "Inserierung", link: "/angebote/inserierung" },
+      { title: "Inserierung", link: "/angebote/inserierung/" },
       {
         title: "Verkaufen",
-        link: "/angebote/verkaufen",
+        link: "/angebote/verkaufen/",
       },
       {
         title: "Finanzierung",
@@ -34,23 +34,23 @@ export const menu = [
         subMenu: [
           {
             title: "Eigenheim",
-            link: "/angebote/finanzierung/durch-eigenheim",
+            link: "/angebote/finanzierung/durch-eigenheim/",
           },
           {
             title: "Immobilienrettung",
-            link: "/angebote/finanzierung/immobilienrettung",
+            link: "/angebote/finanzierung/immobilienrettung/",
           },
           {
             title: "Zwangsversteigerung",
-            link: "/angebote/finanzierung/zwangsversteigerung",
+            link: "/angebote/finanzierung/zwangsversteigerung/",
           },
         ],
       },
     ],
   },
-  // { title: "Immobilien", link: "/immobilien" },
-  { title: "Über uns", link: "/ueber-uns" },
-  { title: "Kontakt", link: "/kontakt" },
+  // { title: "Immobilien", link: "/immobilien/" },
+  { title: "Über uns", link: "/ueber-uns/" },
+  { title: "Kontakt", link: "/kontakt/" },
 ];
 
 export const Navbar = (props: NavbarProps) => {
