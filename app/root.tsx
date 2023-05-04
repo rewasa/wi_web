@@ -45,8 +45,6 @@ export default function App() {
   const footerLinks = settings.footerLinks;
   // TODO: Add footer links to footer
 
-  console.log("imagePosition", settings.imagePosition);
-
   return (
     <html lang="de" className="h-full">
       <head>

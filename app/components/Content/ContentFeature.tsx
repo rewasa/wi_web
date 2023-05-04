@@ -53,65 +53,82 @@ export const ContentFeature = ({
   features = [],
 }: ContentFeatureProps) => {
   const size: Size = useWindowSize();
+  const isTablet = size?.width && size.width < 1280;
   return (
     <>
       {features?.length ? (
         containerFeatures(features, backgroundColor, text, link)
       ) : (
-        <div
-          className="flex flex-wrap md:py-10"
-          style={{ backgroundColor: backgroundColor }}
-        >
-          <div className="container mx-auto w-full justify-between py-10 md:flex gap-8">
-            {contentLeft || (size.width && size.width <= 640) ? (
+        <>
+          {renderSpacer(backgroundColor)}
+          <div
+            className="relative"
+            style={{ backgroundColor: backgroundColor }}
+          >
+            {contentLeft || isTablet ? (
               <>
-                {renderContent(
-                  contentList,
-                  text,
-                  link,
-                  contentLeft,
-                  rowBreakdown,
-                  textColor,
-                  questionsAndAnswers
-                )}
-                {renderImages(
-                  images,
-                  contentLeft,
-                  text,
-                  rowBreakdown,
-                  imageClassName,
-                  imageHeight
-                )}
-                {renderActionButton("mobile", text, link)}
+                <div className="pb-10 w-full xl:w-2/3 xl:px-20 xl:pl-52 px-4">
+                  {renderContent(
+                    contentList,
+                    text,
+                    link,
+                    contentLeft,
+                    rowBreakdown,
+                    textColor,
+                    questionsAndAnswers
+                  )}
+                </div>
+                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-1/3 xl:h-full">
+                  {renderImages(
+                    images,
+                    contentLeft,
+                    text,
+                    rowBreakdown,
+                    imageClassName,
+                    imageHeight
+                  )}
+                </div>
               </>
             ) : (
               <>
-                {renderImages(
-                  images,
-                  contentLeft,
-                  text,
-                  rowBreakdown,
-                  imageClassName,
-                  imageHeight
-                )}
-                {renderContent(
-                  contentList,
-                  text,
-                  link,
-                  contentLeft,
-                  rowBreakdown,
-                  textColor,
-                  questionsAndAnswers
-                )}
-                {renderActionButton("mobile", text, link)}
+                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:left-0 xl:w-1/3 xl:h-full">
+                  {renderImages(
+                    images,
+                    contentLeft,
+                    text,
+                    rowBreakdown,
+                    imageClassName,
+                    imageHeight
+                  )}
+                </div>
+                <div className="pb-10 xl:pl-20 w-full xl:max-w-[64rem] xl:ml-[33.333%]">
+                  {renderContent(
+                    contentList,
+                    text,
+                    link,
+                    contentLeft,
+                    rowBreakdown,
+                    textColor,
+                    questionsAndAnswers
+                  )}
+                </div>
               </>
             )}
           </div>
-        </div>
+        </>
       )}
     </>
   );
 };
+
+function renderSpacer(backgroundColor?: string) {
+  return (
+    <div
+      className="w-full h-10 md:h-20"
+      style={{ backgroundColor: backgroundColor }}
+    />
+  );
+}
 
 function renderContent(
   content: Array<{ text?: string }>,
@@ -126,16 +143,7 @@ function renderContent(
   }>
 ) {
   return (
-    <div
-      className={clsx(
-        { "lg:w-2/12": rowBreakdown === 2 },
-        { "lg:w-4/12": rowBreakdown === 4 },
-        { "lg:w-6/12": rowBreakdown === 6 },
-        { "lg:w-8/12": rowBreakdown === 8 },
-        { "lg:w-10/12": rowBreakdown === 10 },
-        "w-full px-4"
-      )}
-    >
+    <div>
       {content?.map((content, index) => {
         if (content?.text?.includes("<")) {
           return (
@@ -226,33 +234,34 @@ function renderImages(
   imageHeight?: string
 ) {
   return (
-    <div
-      className={clsx(
-        contentLeft ? "lg:pl-28" : "lg:pr-28",
-        { "lg:w-2/12": rowBreakdown === 10 },
-        { "lg:w-4/12": rowBreakdown === 8 },
-        { "lg:w-6/12": rowBreakdown === 6 },
-        { "lg:w-8/12": rowBreakdown === 4 },
-        { "lg:w-10/12": rowBreakdown === 2 },
-        "w-full"
-      )}
-    >
+    <div>
       {images?.length
         ? images.map((image, index) => {
             return (
               <div
                 key={image.directus_files_id}
-                className={clsx({ "py-4": images.length > 1 }, imageClassName)}
+                className={clsx(
+                  { "pb-4": images.length > 0 && index + 1 < images.length },
+                  imageClassName
+                )}
               >
                 {image?.directus_files_id && (
                   <ImageLoader
                     assetId={image.directus_files_id}
                     alt={alt}
                     className={clsx(
-                      "h-full w-full object-cover",
-                      imageClassName
+                      "h-full w-full",
+                      {
+                        "xl:absolute xl:inset-0 object-cover":
+                          imageHeight === null || imageHeight === "auto",
+                      },
+                      {
+                        "mx-auto my-auto object-contain": imageHeight,
+                      }
                     )}
-                    style={{ maxHeight: `${imageHeight}px` }}
+                    style={{
+                      maxHeight: `${imageHeight}px`,
+                    }}
                   />
                 )}
               </div>
@@ -265,9 +274,9 @@ function renderImages(
 
 function containerFeatures(
   features: Feature[],
-  backgroundColor: string,
-  text: string,
-  link: string
+  backgroundColor?: string,
+  text?: string,
+  link?: string
 ) {
   const featuresServices = features?.[0]?.ContentFeature_id?.features?.[0]?.item
     ?.services as Feature[];

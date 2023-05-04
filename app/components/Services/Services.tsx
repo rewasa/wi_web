@@ -76,7 +76,19 @@ export const Services = ({
                                 service.item.title ||
                                 "Wasescha Immobilien Service"
                               }
-                              className="mx-auto sm:h-80 sm:w-80 lg:rounded"
+                              className={clsx(
+                                "mx-auto",
+                                {
+                                  "sm:h-80 sm:w-80 lg:rounded":
+                                    service.item.title ||
+                                    service.item.description,
+                                },
+                                {
+                                  "w-full h-full":
+                                    !service.item.title &&
+                                    !service.item.description,
+                                }
+                              )}
                             />
                           </div>
                         ) : null}
@@ -98,7 +110,7 @@ export const Services = ({
                           {descriptionInHtml ? (
                             <div
                               style={{ color: textColor }}
-                              className="px-4 text-xl"
+                              className="px-4 pb-8 text-xl"
                               dangerouslySetInnerHTML={{
                                 __html: service.item.description || "",
                               }}
@@ -152,15 +164,14 @@ function renderModal(content: string, id: string) {
   return (
     <>
       <input type="checkbox" id={id} className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box bg-black text-lg">
+      <div className="modal modal-bottom">
+        <div className="modal-box bg-black text-lg xl:w-6/12 max-w-2xl">
           <div dangerouslySetInnerHTML={{ __html: content }} />
-
-          <div className="modal-action">
-            <label htmlFor={id} className="btn">
-              Schliessen
-            </label>
-          </div>
+        </div>
+        <div className="modal-action fixed bottom-2 bg-black">
+          <label htmlFor={id} className="btn">
+            Schliessen
+          </label>
         </div>
       </div>
     </>

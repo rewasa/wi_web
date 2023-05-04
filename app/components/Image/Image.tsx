@@ -14,7 +14,8 @@ const ImageLoader: React.FC<Props> = ({ assetId, alt, className, style }) => {
     <img
       src={getAssetUrl(assetId)}
       alt={alt}
-      className={clsx("object-cover m-auto w-full", className)}
+      className={className}
+      style={style}
     />
   );
 

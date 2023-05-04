@@ -88,7 +88,7 @@ export const Navbar = (props: NavbarProps) => {
         props.className ? props.className : "bg-white"
       )}
     >
-      <nav className="navbar items-center container mx-auto py-4">
+      <nav className="navbar items-center xl:pl-36 py-4">
         <div className="navbar-start">
           <NavLink to="/">
             <img
@@ -103,7 +103,7 @@ export const Navbar = (props: NavbarProps) => {
         </div>
 
         {location.pathname !== "/" ? (
-          <div className="navbar-end hidden lg:flex">
+          <div className="navbar-end hidden lg:flex xl:pr-10">
             <NavLink
               to={"/marktwertrechner"}
               className="btn-outline btn-md btn"
