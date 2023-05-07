@@ -5,7 +5,7 @@ import { Container } from "~/components/Container/Container";
 import ImageLoader from "~/components/Image/Image";
 import type { Size } from "~/hooks/useWindowSize";
 import { useWindowSize } from "~/hooks/useWindowSize";
-import { getAssetUrl } from "~/utils/getAssetsUrl";
+import { getAssetUrl, getThreeToTwoRatioAssetUrl } from "~/utils/getAssetsUrl";
 
 export type ContentFeatureProps = {
   rowBreakdown?: number;
@@ -67,7 +67,7 @@ export const ContentFeature = ({
           >
             {contentLeft || isTablet ? (
               <>
-                <div className="pb-10 w-full xl:w-2/3 xl:px-20 xl:pl-52 px-4">
+                <div className="px-4 md:px-0 w-full xl:w-3/5 xl:pl-52">
                   {renderContent(
                     contentList,
                     text,
@@ -78,7 +78,7 @@ export const ContentFeature = ({
                     questionsAndAnswers
                   )}
                 </div>
-                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-1/3 xl:h-full">
+                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-4xl">
                   {renderImages(
                     images,
                     contentLeft,
@@ -88,10 +88,11 @@ export const ContentFeature = ({
                     imageHeight
                   )}
                 </div>
+                {renderActionButton("mobile", text, link)}
               </>
             ) : (
               <>
-                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:left-0 xl:w-1/3 xl:h-full">
+                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:left-0 xl:w-2/5 max-w-xl my-auto">
                   {renderImages(
                     images,
                     contentLeft,
@@ -101,7 +102,7 @@ export const ContentFeature = ({
                     imageHeight
                   )}
                 </div>
-                <div className="pb-10 xl:pl-20 w-full xl:max-w-[64rem] xl:ml-[33.333%]">
+                <div className="px-4 md:px-0 xl:pl-20 w-full md:max-w-[48rem] xl:max-w-[56rem] xl:ml-[37%]">
                   {renderContent(
                     contentList,
                     text,
@@ -131,7 +132,7 @@ function renderSpacer(backgroundColor?: string) {
 }
 
 function renderContent(
-  content: Array<{ text?: string }>,
+  contentList: Array<{ text?: string }>,
   text?: string,
   link?: string,
   contentLeft?: boolean,
@@ -144,15 +145,18 @@ function renderContent(
 ) {
   return (
     <div>
-      {content?.map((content, index) => {
+      {contentList?.map((content, index) => {
         if (content?.text?.includes("<")) {
           return (
             <div
               dangerouslySetInnerHTML={{ __html: content.text }}
               key={index}
               style={{ color: textColor }}
-              className={clsx("mb-6 text-lg", {
+              className={clsx("text-lg max-w-4xl", {
                 "opacity-80": textColor?.includes("FFF") && index > 0,
+                "pb-4 md:pb-0":
+                  !text && !link && contentList.length === index + 1,
+                "pb-6": contentList.length !== index + 1,
               })}
             />
           );
@@ -209,7 +213,7 @@ function renderActionButton(
     return (
       <div
         className={clsx(
-          "mt-10 lg:mt-20 justify-center sm:justify-start",
+          "p-4 lg:p-0 lg:py-10 justify-center sm:justify-start",
           { "flex sm:hidden": device === "mobile" },
           { "hidden sm:flex": device === "desktop" }
         )}
@@ -234,25 +238,26 @@ function renderImages(
   imageHeight?: string
 ) {
   return (
-    <div>
+    <div className="relative h-full w-full">
       {images?.length
         ? images.map((image, index) => {
             return (
               <div
                 key={image.directus_files_id}
                 className={clsx(
+                  "my-auto",
                   { "pb-4": images.length > 0 && index + 1 < images.length },
                   imageClassName
                 )}
               >
                 {image?.directus_files_id && (
-                  <ImageLoader
-                    assetId={image.directus_files_id}
+                  <img
+                    src={getThreeToTwoRatioAssetUrl(image.directus_files_id)}
                     alt={alt}
                     className={clsx(
                       "h-full w-full",
                       {
-                        "xl:absolute xl:inset-0 object-cover":
+                        "xl:absolute xl:inset-0 xl:right-0 object-cover":
                           imageHeight === null || imageHeight === "auto",
                       },
                       {
@@ -263,6 +268,23 @@ function renderImages(
                       maxHeight: `${imageHeight}px`,
                     }}
                   />
+                  // <ImageLoader
+                  //   assetId={image.directus_files_id}
+                  //   alt={alt}
+                  //   className={clsx(
+                  //     "h-full w-full",
+                  //     {
+                  //       "xl:absolute xl:inset-0 object-cover":
+                  //         imageHeight === null || imageHeight === "auto",
+                  //     },
+                  //     {
+                  //       "mx-auto my-auto object-contain": imageHeight,
+                  //     }
+                  //   )}
+                  //   style={{
+                  //     maxHeight: `${imageHeight}px`,
+                  //   }}
+                  // />
                 )}
               </div>
             );
