@@ -3,7 +3,7 @@ export function getAssetUrl(id: string) {
 }
 
 export function getThreeToTwoRatioAssetUrl(id: string) {
-  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png&quality=70&fit=cover`;
+  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png&fit=cover`;
 }
 
 const transformFace = () => {
