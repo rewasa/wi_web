@@ -1,9 +1,9 @@
 export function getAssetUrl(id: string) {
-  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png&quality=70`;
+  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png`;
 }
 
 export function getThreeToTwoRatioAssetUrl(id: string) {
-  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png&fit=cover`;
+  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png`;
 }
 
 const transformFace = () => {

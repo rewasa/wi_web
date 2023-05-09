@@ -8,22 +8,34 @@ export type HeadingProps = {
   title: string;
   hasLogo?: boolean;
   className?: string;
+  classNames: string[] | null;
 };
 
 export const Heading = (props: HeadingProps) => {
+  const defaultClassNames = !props.classNames?.includes("text-")
+    ? "text-4xl"
+    : "";
   return (
     <>
-      <div className={clsx("py-10", props.className)}>
+      <div className={clsx("py-10", props.classNames)}>
         <div className="flex flex-wrap items-center justify-between px-4 xl:pl-52">
           {props?.isMain ? (
             <h1
-              className={clsx("text-4xl font-bold pr-[50px]", props.className)}
+              className={clsx(
+                "font-bold pr-[50px]",
+                defaultClassNames,
+                props.classNames
+              )}
             >
               {props.title}
             </h1>
           ) : (
             <h2
-              className={clsx("font-bold text-4xl pr-[50px]", props.className)}
+              className={clsx(
+                "font-bold pr-[50px]",
+                defaultClassNames,
+                props.classNames
+              )}
             >
               {props.title}
             </h2>

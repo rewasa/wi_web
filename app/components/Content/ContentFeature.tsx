@@ -27,6 +27,8 @@ export type ContentFeatureProps = {
   text: string;
   link: string;
   features?: Feature[];
+  classNames: string[] | null;
+  imagePercentPosition?: number;
 };
 
 type Feature = {
@@ -51,9 +53,11 @@ export const ContentFeature = ({
   text,
   link,
   features = [],
+  classNames,
+  imagePercentPosition = 0,
 }: ContentFeatureProps) => {
   const size: Size = useWindowSize();
-  const isTablet = size?.width && size.width < 1280;
+  const isTablet = size?.width && size.width < 1280 ? true : false;
   return (
     <>
       {features?.length ? (
@@ -75,7 +79,8 @@ export const ContentFeature = ({
                     contentLeft,
                     rowBreakdown,
                     textColor,
-                    questionsAndAnswers
+                    questionsAndAnswers,
+                    classNames
                   )}
                 </div>
                 <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-4xl">
@@ -85,7 +90,9 @@ export const ContentFeature = ({
                     text,
                     rowBreakdown,
                     imageClassName,
-                    imageHeight
+                    imageHeight,
+                    isTablet,
+                    imagePercentPosition
                   )}
                 </div>
                 {renderActionButton("mobile", text, link)}
@@ -99,7 +106,9 @@ export const ContentFeature = ({
                     text,
                     rowBreakdown,
                     imageClassName,
-                    imageHeight
+                    imageHeight,
+                    isTablet,
+                    imagePercentPosition
                   )}
                 </div>
                 <div className="px-4 md:px-0 xl:pl-20 w-full md:max-w-[48rem] xl:max-w-[56rem] xl:ml-[37%]">
@@ -110,7 +119,8 @@ export const ContentFeature = ({
                     contentLeft,
                     rowBreakdown,
                     textColor,
-                    questionsAndAnswers
+                    questionsAndAnswers,
+                    classNames
                   )}
                 </div>
               </>
@@ -141,15 +151,20 @@ function renderContent(
   questionsAndAnswers?: Array<{
     question?: string;
     answer?: string;
-  }>
+  }>,
+  classNames?: string[] | null
 ) {
   return (
     <div>
       {contentList?.map((content, index) => {
         if (content?.text?.includes("<")) {
+          const textWithClasses = classNames
+            ? content.text.replace(/<p>/g, `<p class="${clsx(classNames)}">`)
+            : content.text.replace(/<p>/g, `<p class="pb-4">`);
+
           return (
             <div
-              dangerouslySetInnerHTML={{ __html: content.text }}
+              dangerouslySetInnerHTML={{ __html: textWithClasses }}
               key={index}
               style={{ color: textColor }}
               className={clsx("text-lg max-w-4xl", {
@@ -235,17 +250,25 @@ function renderImages(
   alt: string = "Wasescha Immobilien Verkauf",
   rowBreakdown?: number,
   imageClassName?: string,
-  imageHeight?: string
+  imageHeight?: string,
+  isTablet?: boolean,
+  imagePercentPosition?: number
 ) {
   return (
-    <div className="relative h-full w-full">
+    <div
+      className="relative h-full w-full"
+      style={{
+        marginTop: imagePercentPosition
+          ? `${imagePercentPosition}%`
+          : undefined,
+      }}
+    >
       {images?.length
-        ? images.map((image, index) => {
+        ? images.slice(0, isTablet ? 1 : images.length).map((image, index) => {
             return (
               <div
                 key={image.directus_files_id}
                 className={clsx(
-                  "my-auto",
                   { "pb-4": images.length > 0 && index + 1 < images.length },
                   imageClassName
                 )}

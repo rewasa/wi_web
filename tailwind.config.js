@@ -2,19 +2,25 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        lg: "1.25rem",
+      },
+      margin: {
+        d1: "1%",
+        d2: "2%",
+        d3: "3%",
+        d4: "4%",
+        d5: "5%",
+        d6: "6%",
+        d7: "7%",
+        d8: "8%",
+        d9: "9%",
+        d10: "10%",
+      },
+    },
     fontFamily: {
       sans: ["Questrial", "ui-sans-serif", "system-ui"],
-    },
-    fontSize: {
-      sm: "0.8rem",
-      base: "1rem",
-      lg: "1.25rem",
-      xl: "1.363rem",
-      "2xl": "1.563rem",
-      "3xl": "1.953rem",
-      "4xl": "2.241rem",
-      "5xl": "3.052rem",
     },
   },
   plugins: [require("daisyui")],

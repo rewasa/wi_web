@@ -39,6 +39,7 @@ export interface Item {
   backgroundColor?: string;
   images?: any[];
   imageHeight?: string;
+  classNames: string[] | null;
 }
 
 export interface Service {
@@ -108,7 +109,9 @@ export async function loadPages() {
       "sections.item.questionsAndAnswers.*",
       "sections.item.images.*",
       "sections.item.imageHeight",
+      "sections.item.imagePercentPosition",
       "sections.item.html",
+      "sections.item.classNames",
       "sections.item.features.*.features.item.services.item.title",
       "sections.item.features.*.features.item.services.item.description",
       "sections.item.features.*.features.item.services.item.detailDescription",
@@ -127,6 +130,8 @@ export async function loadPages() {
   const settings = await directus.items("Settings").readByQuery({
     fields: ["scripts.item.code", "footerLinks", "*"],
   });
+
+  //console.log("pages", JSON.stringify(pages, null, 2));
 
   return { pages, settings };
 }
