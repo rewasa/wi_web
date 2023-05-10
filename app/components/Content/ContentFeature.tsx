@@ -71,7 +71,7 @@ export const ContentFeature = ({
           >
             {contentLeft || isTablet ? (
               <>
-                <div className="px-4 md:px-0 w-full xl:w-3/5 xl:pl-52">
+                <div className="px-4 w-full xl:w-3/5 xl:pl-52">
                   {renderContent(
                     contentList,
                     text,
@@ -83,7 +83,7 @@ export const ContentFeature = ({
                     classNames
                   )}
                 </div>
-                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-4xl">
+                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-xl">
                   {renderImages(
                     images,
                     contentLeft,
@@ -111,7 +111,7 @@ export const ContentFeature = ({
                     imagePercentPosition
                   )}
                 </div>
-                <div className="px-4 md:px-0 xl:pl-20 w-full md:max-w-[48rem] xl:max-w-[56rem] xl:ml-[37%]">
+                <div className="px-4 xl:pl-20 w-full md:max-w-[48rem] xl:max-w-[56rem] xl:ml-[37%]">
                   {renderContent(
                     contentList,
                     text,
@@ -256,11 +256,12 @@ function renderImages(
 ) {
   return (
     <div
-      className="relative h-full w-full"
+      className="relative h-full w-full pt-4 lg:pt-0"
       style={{
-        marginTop: imagePercentPosition
-          ? `${imagePercentPosition}%`
-          : undefined,
+        marginTop:
+          imagePercentPosition && !isTablet
+            ? `${imagePercentPosition}%`
+            : undefined,
       }}
     >
       {images?.length

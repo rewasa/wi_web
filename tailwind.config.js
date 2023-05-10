@@ -6,24 +6,12 @@ module.exports = {
       fontSize: {
         lg: "1.25rem",
       },
-      margin: {
-        d1: "1%",
-        d2: "2%",
-        d3: "3%",
-        d4: "4%",
-        d5: "5%",
-        d6: "6%",
-        d7: "7%",
-        d8: "8%",
-        d9: "9%",
-        d10: "10%",
-      },
     },
     fontFamily: {
       sans: ["Questrial", "ui-sans-serif", "system-ui"],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
     darkTheme: "light",
     themes: [
@@ -37,5 +25,15 @@ module.exports = {
         },
       },
     ],
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            hyphens: "auto",
+            lang: "de",
+          },
+        },
+      }),
+    },
   },
 };

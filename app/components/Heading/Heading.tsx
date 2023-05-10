@@ -18,7 +18,7 @@ export const Heading = (props: HeadingProps) => {
   return (
     <>
       <div className={clsx("py-10", props.classNames)}>
-        <div className="flex flex-wrap items-center justify-between px-4 xl:pl-52">
+        <div className="flex items-center justify-between px-4 xl:pl-52">
           {props?.isMain ? (
             <h1
               className={clsx(
@@ -31,18 +31,14 @@ export const Heading = (props: HeadingProps) => {
             </h1>
           ) : (
             <h2
-              className={clsx(
-                "font-bold pr-[50px]",
-                defaultClassNames,
-                props.classNames
-              )}
+              className={clsx("font-bold", defaultClassNames, props.classNames)}
             >
               {props.title}
             </h2>
           )}
           {props?.hasLogo && (
             <img
-              className="absolute right-2 xl:right-10 lg:relative w-[40px] md:w-[70px]"
+              className="float-right w-[40px] md:w-[70px]"
               src={wi}
               alt="wasescha immobilien logo klein"
             />
