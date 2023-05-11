@@ -33,7 +33,7 @@ export default function Kontakt() {
             <div className="flex-cols flex items-center">
               <div>
                 <div className="text-2xl text-[#AD9B81]">
-                  Wasescha Immobilien AG
+                  WASESCHA Immobilien AG
                   <br /> Churerstrasse 158
                   <br />
                   8808 Pfäffikon SZ
