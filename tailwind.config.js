@@ -25,15 +25,5 @@ module.exports = {
         },
       },
     ],
-    extend: {
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            hyphens: "auto",
-            lang: "de",
-          },
-        },
-      }),
-    },
   },
 };

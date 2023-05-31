@@ -18,7 +18,7 @@ export const Heading = (props: HeadingProps) => {
   return (
     <>
       <div className={clsx("py-10", props.classNames)}>
-        <div className="flex items-center justify-between px-4 xl:pl-52">
+        <div className="flex items-center justify-between px-4 xl:pl-36">
           {props?.isMain ? (
             <h1
               className={clsx(

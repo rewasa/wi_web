@@ -71,7 +71,7 @@ export const ContentFeature = ({
           >
             {contentLeft || isTablet ? (
               <>
-                <div className="px-4 w-full xl:w-3/5 xl:pl-52">
+                <div className="px-4 w-full xl:w-3/5 xl:pl-36">
                   {renderContent(
                     contentList,
                     text,
