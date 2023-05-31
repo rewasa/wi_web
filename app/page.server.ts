@@ -97,6 +97,7 @@ export async function loadPages() {
       "sections.collection",
       "sections.item.title",
       "sections.item.text",
+      "sections.item.teaser",
       "sections.item.text1",
       "sections.item.text2",
       "sections.item.backgroundImage.id",

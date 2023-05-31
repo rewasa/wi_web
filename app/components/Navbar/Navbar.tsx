@@ -23,10 +23,10 @@ export const menu = [
   {
     title: "Angebote",
     subMenu: [
-      { title: "Inserierung", link: "/angebote/inserierung/" },
+      { title: "EASY-Verkauf", link: "/angebote/easy-verkauf/" },
       {
-        title: "Verkaufen",
-        link: "/angebote/verkaufen/",
+        title: "EXPERT-Verkauf",
+        link: "/angebote/expert-verkauf/",
       },
       {
         title: "Finanzierung",

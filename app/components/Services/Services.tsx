@@ -96,7 +96,7 @@ export const Services = ({
                         <div
                           className={clsx(
                             "text-center",
-                            service.item.title && "my-16 py-4"
+                            service.item.title && "lg:my-16 py-4"
                           )}
                         >
                           {service.item.title ? (

@@ -29,6 +29,7 @@ export type ContentFeatureProps = {
   features?: Feature[];
   classNames: string[] | null;
   imagePercentPosition?: number;
+  teaser?: string;
 };
 
 type Feature = {
@@ -55,13 +56,14 @@ export const ContentFeature = ({
   features = [],
   classNames,
   imagePercentPosition = 0,
+  teaser,
 }: ContentFeatureProps) => {
   const size: Size = useWindowSize();
   const isTablet = size?.width && size.width < 1280 ? true : false;
   return (
     <>
       {features?.length ? (
-        containerFeatures(features, backgroundColor, text, link)
+        containerFeatures(features, backgroundColor, text, link, teaser)
       ) : (
         <>
           {renderSpacer(backgroundColor)}
@@ -80,7 +82,8 @@ export const ContentFeature = ({
                     rowBreakdown,
                     textColor,
                     questionsAndAnswers,
-                    classNames
+                    classNames,
+                    teaser
                   )}
                 </div>
                 <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-xl">
@@ -95,7 +98,7 @@ export const ContentFeature = ({
                     imagePercentPosition
                   )}
                 </div>
-                {renderActionButton("mobile", text, link)}
+                {renderActionButton("mobile", text, link, teaser)}
               </>
             ) : (
               <>
@@ -152,7 +155,8 @@ function renderContent(
     question?: string;
     answer?: string;
   }>,
-  classNames?: string[] | null
+  classNames?: string[] | null,
+  teaser?: string
 ) {
   return (
     <div>
@@ -214,7 +218,7 @@ function renderContent(
           })}
         </div>
       ) : null}
-      {renderActionButton("desktop", text, link)}
+      {renderActionButton("desktop", text, link, teaser)}
     </div>
   );
 }
@@ -222,7 +226,8 @@ function renderContent(
 function renderActionButton(
   device: "mobile" | "desktop" | "both",
   text?: string,
-  link?: string
+  link?: string,
+  teaser?: string
 ) {
   if (text) {
     return (
@@ -234,7 +239,7 @@ function renderActionButton(
         )}
       >
         <Link to={link || "#"}>
-          <ActionButton>{text}</ActionButton>
+          <ActionButton teaser={teaser}>{text}</ActionButton>
         </Link>
       </div>
     );
@@ -322,7 +327,8 @@ function containerFeatures(
   features: Feature[],
   backgroundColor?: string,
   text?: string,
-  link?: string
+  link?: string,
+  teaser?: string
 ) {
   const featuresServices = features?.[0]?.ContentFeature_id?.features?.[0]?.item
     ?.services as Feature[];
@@ -367,7 +373,7 @@ function containerFeatures(
       {text ? (
         <div className="my-20 grid place-items-center">
           <Link to={link || "#"}>
-            <ActionButton>{text}</ActionButton>
+            <ActionButton teaser={teaser}>{text}</ActionButton>
           </Link>
         </div>
       ) : null}
