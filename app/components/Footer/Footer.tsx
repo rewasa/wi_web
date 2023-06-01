@@ -8,12 +8,11 @@ export const Footer = () => {
         <div>
           <h3 className="font-bold pb-6">Angebote</h3>
           {/* <Link to="/immobilien" className="link-hover link pb-6">Immobilien</Link> */}
-          <Link to="/angebote/verkaufen/" className="link-hover link">
-            Verkaufen
+          <Link to="/angebote/easy-verkauf/" className="link-hover link">
+            EASY Verkauf
           </Link>
-
-          <Link to="/angebote/inserierung/" className="link-hover link">
-            Inserieren
+          <Link to="/angebote/expert-verkauf/" className="link-hover link">
+            EXPERT Verkauf
           </Link>
           <Link to="/angebote/finanzierung" className="link-hover link">
             Finanzierung
@@ -36,9 +35,6 @@ export const Footer = () => {
         </div>
         <div>
           <h3 className="font-bold pb-6">Benefits</h3>
-          <Link to="/angebote/verkaufen/" className="link-hover link">
-            Checklisten
-          </Link>
           <Link to="/marktwertrechner/" className="link-hover link">
             Marktwertrechner
           </Link>
