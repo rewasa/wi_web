@@ -51,7 +51,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full hyphens-auto">
+      <body className="h-full">
         {scripts.map((script) => (
           <script
             key={script.item.id}
