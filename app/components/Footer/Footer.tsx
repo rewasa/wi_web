@@ -9,10 +9,10 @@ export const Footer = () => {
           <h3 className="font-bold pb-6">Angebote</h3>
           {/* <Link to="/immobilien" className="link-hover link pb-6">Immobilien</Link> */}
           <Link to="/angebote/easy-verkauf/" className="link-hover link">
-            EASY Verkauf
+            EASY-Verkauf
           </Link>
           <Link to="/angebote/expert-verkauf/" className="link-hover link">
-            EXPERT Verkauf
+            EXPERT-Verkauf
           </Link>
           <Link to="/angebote/finanzierung" className="link-hover link">
             Finanzierung
