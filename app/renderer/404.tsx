@@ -21,17 +21,11 @@ export const NotFoundPage = () => {
                 </Link>
               </div>
             </div>
-            <div>
-              <img
-                src={getAssetUrl("68ff6801-1c4a-486d-8a20-3ca6ff3961cd")}
-                alt="404"
-              />
-            </div>
           </div>
         </div>
-        <div>
+        <div className="max-w-md">
           <img
-            src={getAssetUrl("3f64b3f2-fa5a-479d-8591-f161d5b08a2a")}
+            src={getAssetUrl("c667938c-dded-4491-b8d4-78185db04121")}
             alt="404 page not found"
           />
         </div>
