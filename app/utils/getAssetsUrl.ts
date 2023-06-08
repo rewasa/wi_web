@@ -1,5 +1,5 @@
 export function getAssetUrl(id: string) {
-  return `https://cms.wasescha.immobilien/assets/${id}.png?format=png`;
+  return `https://cms.wasescha.immobilien/assets/${id}.jpeg`;
 }
 
 export function getThreeToTwoRatioAssetUrl(id: string) {

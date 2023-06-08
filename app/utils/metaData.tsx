@@ -10,7 +10,6 @@ export function metaData(page: Page | undefined) {
   return [
     { charset: "utf-8" },
     { name: "viewport", content: "width=device-width,initial-scale=1" },
-    { robots: "noindex" }, // TODO: Remove this line when you're ready to go live
     { title: title },
     {
       property: "og:title",

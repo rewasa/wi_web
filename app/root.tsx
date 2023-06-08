@@ -50,14 +50,37 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+        {scripts
+          .filter((s) => s.item.variant === "head")
+          .map((script) => {
+            return (
+              <script
+                key={script.item.id}
+                dangerouslySetInnerHTML={{ __html: script.item.code }}
+              />
+            );
+          })}
       </head>
       <body className="h-full">
-        {scripts.map((script) => (
-          <script
-            key={script.item.id}
-            dangerouslySetInnerHTML={{ __html: script.item.code }}
-          />
-        ))}
+        <noscript>
+          <iframe
+            title="Google Tag Manager"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WL8R7VN"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {scripts
+          .filter((s) => s.item.variant === "body")
+          .map((script) => {
+            return (
+              <script
+                key={script.item.id}
+                dangerouslySetInnerHTML={{ __html: script.item.code }}
+              />
+            );
+          })}
 
         <PageContext.Provider value={pages}>
           <Outlet />

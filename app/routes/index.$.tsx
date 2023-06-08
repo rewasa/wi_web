@@ -23,9 +23,6 @@ export const meta = (meta: V2_MetaArgs) => {
 export default function Pages() {
   const location = useLocation();
   const pages = usePage();
-  useRevalidateOnFocus({ enabled: true });
-
-  //console.log(JSON.stringify(pages, null, 2));
 
   const routePage = pages.find(
     (page) => page.status === "published" && page.slug === location.pathname
