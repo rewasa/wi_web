@@ -35,7 +35,7 @@ export default function Marktwertrechner() {
     const interval = setInterval(() => {
       setLoaderValue((loaderValue) => loaderValue + 1);
     }, 10);
-    if (loaderValue > 300) {
+    if (loaderValue > 100) {
       clearInterval(interval);
     }
     return () => clearInterval(interval);
