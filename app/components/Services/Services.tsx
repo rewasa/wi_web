@@ -110,7 +110,7 @@ export const Services = ({
                           {descriptionInHtml ? (
                             <div
                               style={{ color: textColor }}
-                              className="px-4 pb-8 text-xl"
+                              className="px-4 text-xl"
                               dangerouslySetInnerHTML={{
                                 __html: service.item.description || "",
                               }}
