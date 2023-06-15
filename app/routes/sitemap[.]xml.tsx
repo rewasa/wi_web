@@ -2,31 +2,31 @@ export const loader = () => {
   const content = `
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
-      <loc>https://wasescha.immobilien.ch/</loc>
+      <loc>https://wasescha.immobilien/</loc>
       <priority>1.0</priority>
       </url>
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/easy-verkauf/</loc>
+      <loc>https://wasescha.immobilien/angebote/easy-verkauf/</loc>
       <priority>1.0</priority>
       </url>
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/expert-verkauf/</loc>
+      <loc>https://wasescha.immobilien/angebote/expert-verkauf/</loc>
       <priority>1.0</priority>
       </url>
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/finanzierung/immobilienrettung/</loc>
+      <loc>https://wasescha.immobilien/angebote/finanzierung/immobilienrettung/</loc>
       <priority>1.0</priority>
       </url>      
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/finanzierung/durch-eigenheim/</loc>
+      <loc>https://wasescha.immobilien/angebote/finanzierung/durch-eigenheim/</loc>
       <priority>1.0</priority>
       </url>     
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/angebote/finanzierung</loc>
+      <loc>https://wasescha.immobilien/angebote/angebote/finanzierung</loc>
       <priority>1.0</priority>
       </url>
       <url>
-      <loc>https://wasescha.immobilien.ch/angebote/finanzierung/zwangsversteigerung/</loc>
+      <loc>https://wasescha.immobilien/angebote/finanzierung/zwangsversteigerung/</loc>
       <priority>1.0</priority>
       </url>
     </urlset>
