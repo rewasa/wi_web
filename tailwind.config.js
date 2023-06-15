@@ -2,12 +2,16 @@
 module.exports = {
   content: ["./app/**/*.{ts,tsx,jsx,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        lg: "1.25rem",
+      },
+    },
     fontFamily: {
       sans: ["Questrial", "ui-sans-serif", "system-ui"],
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("@tailwindcss/typography")],
   daisyui: {
     darkTheme: "light",
     themes: [

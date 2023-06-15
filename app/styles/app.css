@@ -16,3 +16,22 @@
     /* Safari, Android, iOS */
       url("../fonts/questrial-v18-latin-regular.svg#Questrial") format("svg"); /* Legacy iOS */
 }
+
+ul {
+  list-style: none;
+}
+
+.text-lg li::before {
+  content: "";
+  display: inline-block;
+  background-image: url(/wi.svg);
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  vertical-align: text-bottom;
+}
+
+.text-lg li {
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}

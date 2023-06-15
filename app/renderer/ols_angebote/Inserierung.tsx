@@ -7,7 +7,7 @@ import inserierun1 from "~/images/inserierung1.png";
 import inserierun2 from "~/images/inserierung2.png";
 import inserierun3 from "~/images/inserierung3.png";
 import inserierun4 from "~/images/inserierung4.png";
-import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
+import { ContentFeature } from "~/components/Content/ContentFeature";
 import { Carousel } from "~/components/Carousel/Carousel";
 import { Container } from "~/components/Container/Container";
 
@@ -19,7 +19,7 @@ export default function Inserierung() {
         isMain
         title="Spare Zeit und Geld für die Inserierung"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         rowBreakdown={{ image: 4, content: 8 }}
         contentLeft={false}
         contentList={[

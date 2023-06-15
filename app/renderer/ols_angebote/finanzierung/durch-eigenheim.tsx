@@ -12,7 +12,7 @@ import featureCheck from "~/images/feature-check.svg";
 import featureMoney from "~/images/feature-money.svg";
 import featureIdee from "~/images/feature-idee.svg";
 
-import { ContentFeatureContainer } from "~/components/Content/ContentFeatureContainer";
+import { ContentFeature } from "~/components/Content/ContentFeature";
 import { Services } from "~/components/Services/Services";
 import { Container } from "~/components/Container/Container";
 import { FeatureContainer } from "~/components/Content/FeatureContainer";
@@ -27,7 +27,7 @@ export default function DurchEigenheim() {
         isMain
         title="Projektfinanzierung durch Eigenheim"
       />
-      <ContentFeatureContainer
+      <ContentFeature
         contentLeft={false}
         contentList={[
           "<h1 class='text-3xl text-bold pb-6'>Trifft einer oder mehrere Punkte auf Sie zu?<br />Dann sollten wir sprechen!</h1>",
@@ -42,7 +42,7 @@ export default function DurchEigenheim() {
         bgColor="bg-[#AD9A81]"
       />
       <Services
-        backgroundColor="#968D7E"
+        backgroundColor=" "
         textColor="text-black"
         actionButton={{
           text: "Hier geht's zum Kontakt",

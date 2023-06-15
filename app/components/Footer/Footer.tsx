@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import wi from "~/images/wi.svg";
 
 export const Footer = () => {
@@ -5,23 +6,38 @@ export const Footer = () => {
     <div className="container bottom-0 mx-auto">
       <footer className="footer p-10 text-base-content">
         <div>
-          <a className="link-hover link pb-6">Immobilien</a>
-          <a className="link-hover link">Verkaufen</a>
-          <a className="link-hover link">Kaufen</a>
-          <a className="link-hover link">Finanzierung</a>
-          <a className="link-hover link">Inserieren</a>
+          <h3 className="font-bold pb-6">Angebote</h3>
+          {/* <Link to="/immobilien" className="link-hover link pb-6">Immobilien</Link> */}
+          <Link to="/angebote/easy-verkauf/" className="link-hover link">
+            EASY-Verkauf
+          </Link>
+          <Link to="/angebote/expert-verkauf/" className="link-hover link">
+            EXPERT-Verkauf
+          </Link>
+          <Link to="/angebote/finanzierung" className="link-hover link">
+            Finanzierung
+          </Link>
         </div>
         <div>
-          <a className="link-hover link pb-6">Unternehmen</a>
-          <a className="link-hover link">über uns</a>
-          <a className="link-hover link">Kontakt</a>
-          <a className="link-hover link">Impressum</a>
-          <a className="link-hover link">AGB</a>
+          <h3 className="font-bold pb-6">Unternehmen</h3>
+          <Link to="/ueber-uns/" className="link-hover link">
+            Über uns
+          </Link>
+          <Link to="/kontakt" className="link-hover link">
+            Kontakt
+          </Link>
+          <Link to="/impressum" className="link-hover link">
+            Impressum
+          </Link>
+          <Link to="/agb" className="link-hover link">
+            AGBs
+          </Link>
         </div>
         <div>
-          <a className="link-hover link pb-6">Benefits</a>
-          <a className="link-hover link">Checklisten</a>
-          <a className="link-hover link">Marktwertrechner</a>
+          <h3 className="font-bold pb-6">Benefits</h3>
+          <Link to="/marktwertrechner/" className="link-hover link">
+            Marktwertrechner
+          </Link>
         </div>
       </footer>
       <footer className="border-base-grey footer border-t px-10 py-4 text-base-content">
@@ -29,10 +45,10 @@ export const Footer = () => {
           <img
             src={wi}
             alt="Wasescha Immobilien Logo Klein"
-            className="h-10 w-10"
+            className="h-7 w-10"
           />
           <p>
-            <span className="">Wasescha Immobilien AG</span>
+            <span className="">WASESCHA Immobilien AG</span>
             <br />
             <span className="text-sm">
               Churerstrasse 158, 8808 Pfäffikon SZ
@@ -41,7 +57,11 @@ export const Footer = () => {
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">
-            <a>
+            <a
+              href="https://www.facebook.com/wasescha.immobilien/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

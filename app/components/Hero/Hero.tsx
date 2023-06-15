@@ -1,5 +1,6 @@
-import { getAssetUrl } from "~/utils/getAssetsUrl";
+import { Link } from "@remix-run/react";
 import bg from "./images/bg.png";
+import ImageLoader from "~/components/Image/Image";
 export type HeroProps = {
   title?: string;
   text1?: string;
@@ -9,55 +10,62 @@ export type HeroProps = {
   };
 };
 export const Hero = (props: HeroProps) => {
-  const bgImage = props?.backgroundImage?.id
-    ? getAssetUrl(props?.backgroundImage?.id)
-    : bg;
   return (
-    <>
+    <div className="md:flex items-center h-full">
       <div
-        className="h-56 bg-black bg-cover bg-top bg-no-repeat md:h-screen"
-        style={{
-          backgroundImage: `url(${bgImage})`,
-        }}
+        role="contentinfo"
+        className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20 container mx-auto px-4"
       >
-        <div className="invisible md:visible">
-          <div className="">
-            <h1 className="mb-5 pt-4 text-center text-2xl font-bold md:pt-16 md:text-4xl lg:text-5xl">
-              {props?.title}
-            </h1>
-            <div className="container mx-auto text-xl">
-              <div className="chat chat-start pt-6">
-                {props.text1 && (
-                  <div
-                    className="chat-bubble max-w-sm text-base-content"
-                    dangerouslySetInnerHTML={{ __html: props.text1 }}
-                  ></div>
-                )}
-              </div>
-              <div className="chat chat-end">
-                {props.text2 && (
-                  <div
-                    className="chat-bubble text-base-content"
-                    dangerouslySetInnerHTML={{ __html: props.text2 }}
-                  ></div>
-                )}
-              </div>
-            </div>
+        <p
+          tabIndex={0}
+          className="invisible lg:visible text-secondary uppercase text-xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+        >
+          Wasescha Immobilien
+        </p>
+        <h1
+          tabIndex={0}
+          className="text-4xl lg:text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+        >
+          {props?.title}
+        </h1>
+        <p
+          tabIndex={0}
+          className="uppercase mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+        >
+          Katherine Mansfield
+        </p>
+        <div
+          tabIndex={0}
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          dangerouslySetInnerHTML={{ __html: props.text1 as string }}
+        ></div>
+        <div
+          tabIndex={0}
+          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          dangerouslySetInnerHTML={{ __html: props.text2 as string }}
+        ></div>
+        <div className="bg-white lg:mt-16 py-4 px-4 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
+          <div className="flex py-2 mx-auto">
+            <Link to={"/marktwertrechner"} className="btn btn-lg btn-secondary">
+              Kostenlose Schätzung
+            </Link>
+          </div>
+          <div className="invisible xl:visible sm:flex">
+            <Link to={"/kontakt"} className="btn btn-lg btn-outline">
+              Kontakt
+            </Link>
           </div>
         </div>
       </div>
-      <div className="bg-base-100 md:hidden">
-        <div className="container m-2 mx-auto p-2 text-center">
-          <h1 className="mb-5 pt-4 text-center text-2xl font-bold">
-            {props.title}
-          </h1>
-          <div className="container mx-auto text-xl">
-            <p className="pb-2 text-base-content">{props.text1}</p>
-
-            <p className="pb-2 text-base-content">{props.text2}</p>
-          </div>
-        </div>
+      <div className="w-full lg:w-2/3 h-full">
+        {props?.backgroundImage?.id && (
+          <ImageLoader
+            assetId={props.backgroundImage.id}
+            alt="Haus mit pool"
+            className="mx-auto lg:rounded"
+          />
+        )}
       </div>
-    </>
+    </div>
   );
 };

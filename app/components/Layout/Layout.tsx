@@ -13,8 +13,8 @@ export const Layout = ({
 }) => {
   return (
     <div className={clsx("flex h-full flex-col justify-between", className)}>
-      <Navbar />
-      <main className={clsx(bgMain)}>{children}</main>
+      <Navbar className={className} />
+      <main className={clsx("pt-[80px]", bgMain)}>{children}</main>
       <Footer />
     </div>
   );

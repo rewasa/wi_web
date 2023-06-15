@@ -3,6 +3,8 @@ import { Container } from "~/components/Container/Container";
 import { Heading } from "~/components/Heading/Heading";
 import { Layout } from "~/components/Layout/Layout";
 import useHedolight from "~/hooks/useHedolight";
+import type { Page } from "~/page.server";
+import { metaData } from "~/utils/metaData";
 
 const scripts = () => {
   return [
@@ -13,6 +15,18 @@ const scripts = () => {
 };
 
 export const handle = { scripts };
+
+export const meta = () => {
+  const marktwertrechnerMeta = {
+    title: "Marktwertrechner",
+    description: "Marktwertrechner",
+    slug: "/marktwertrechner",
+    ogImage: {
+      id: "bad74d54-58ee-461c-8768-ad7cfda57bb1", // Hero Image
+    },
+  } as Page;
+  return metaData(marktwertrechnerMeta);
+};
 
 export default function Marktwertrechner() {
   const [loaderValue, setLoaderValue] = useState(0);

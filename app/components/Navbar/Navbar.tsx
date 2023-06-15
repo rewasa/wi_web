@@ -1,25 +1,32 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, useLocation } from "@remix-run/react";
 import logo from "./images/logo.svg";
+import { useState, useEffect } from "react";
+import clsx from "clsx";
 
 type MenuProps = Array<{
   title: string;
   link?: string;
-  subMenu?: Array<NavbarProps>;
+  subMenu?: Array<SubMenuProps>;
 }>;
 
-type NavbarProps = {
+type SubMenuProps = {
   title: string;
   link?: string;
-  subMenu?: Array<NavbarProps>;
+  subMenu?: Array<SubMenuProps>;
+};
+
+type NavbarProps = {
+  className?: string;
 };
 
 export const menu = [
   {
     title: "Angebote",
     subMenu: [
+      { title: "EASY-Verkauf", link: "/angebote/easy-verkauf/" },
       {
-        title: "Verkaufen",
-        link: "/angebote/verkaufen",
+        title: "EXPERT-Verkauf",
+        link: "/angebote/expert-verkauf/",
       },
       {
         title: "Finanzierung",
@@ -27,81 +34,119 @@ export const menu = [
         subMenu: [
           {
             title: "Eigenheim",
-            link: "/angebote/finanzierung/durch-eigenheim",
+            link: "/angebote/finanzierung/durch-eigenheim/",
           },
           {
             title: "Immobilienrettung",
-            link: "/angebote/finanzierung/immobilienrettung",
+            link: "/angebote/finanzierung/immobilienrettung/",
           },
           {
             title: "Zwangsversteigerung",
-            link: "/angebote/finanzierung/zwangsversteigerung",
+            link: "/angebote/finanzierung/zwangsversteigerung/",
           },
         ],
       },
-      { title: "Inserierung", link: "/angebote/inserierung" },
     ],
   },
-  { title: "Immobilien", link: "/immobilien" },
-  { title: "Über uns", link: "/ueber-uns" },
-  { title: "Kontakt", link: "/kontakt" },
+  // { title: "Immobilien", link: "/immobilien/" },
+  { title: "Über uns", link: "/ueber-uns/" },
+  { title: "Kontakt", link: "/kontakt/" },
 ];
 
-export const Navbar = () => {
+export const Navbar = (props: NavbarProps) => {
+  const location = useLocation();
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+
+  useEffect(() => {
+    const navbar = document.getElementById("navbar") as HTMLElement;
+
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > 80 && scrollTop > lastScrollTop) {
+        navbar.style.top = "-80px";
+      } else {
+        navbar.style.top = "0";
+      }
+
+      setLastScrollTop(scrollTop);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollTop]);
+
   return (
-    <nav className="container navbar z-20 mx-auto items-center">
-      <div className="navbar-start">
-        <NavLink to="/">
-          <img
-            src={logo}
-            alt="Wasescha Immobilien Logo"
-            className="ml-1 w-[160px] lg:w-[200px]"
-          />
-        </NavLink>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
-      </div>
+    <div
+      id="navbar"
+      className={clsx(
+        "fixed top-0 shadow transition-all duration-300 h-[80px] z-20 w-full",
+        props.className ? props.className : "bg-white"
+      )}
+    >
+      <nav className="navbar items-center xl:pl-36 py-4">
+        <div className="navbar-start">
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="Wasescha Immobilien Logo"
+              className="ml-1 w-[160px] lg:w-[200px]"
+            />
+          </NavLink>
+        </div>
+        <div className="navbar-center hidden lg:flex md:ml-12">
+          <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
+        </div>
 
-      <div className="navbar-end hidden lg:flex">
-        <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
-          Kostenlose Schätzung
-        </NavLink>
-      </div>
-
-      <div className="navbar-end lg:hidden">
-        <div className="dropdown-bottom dropdown-left dropdown">
-          <label tabIndex={0} className="btn-ghost btn">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
-          >
-            {renderMenuList(menu)}
+        {location.pathname !== "/" ? (
+          <div className="navbar-end hidden lg:flex xl:pr-10">
             <NavLink
               to={"/marktwertrechner"}
-              className="btn-secondary btn-xs btn m-2"
+              className="btn-outline btn-md btn"
             >
               Kostenlose Schätzung
             </NavLink>
-          </ul>
+          </div>
+        ) : null}
+
+        <div className="navbar-end lg:hidden">
+          <div className="dropdown-bottom dropdown-left dropdown">
+            <label tabIndex={0} className="btn-ghost btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              tabIndex={0}
+              className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
+            >
+              {renderMenuList(menu)}
+              <NavLink
+                to={"/marktwertrechner"}
+                className="btn-secondary btn m-2"
+              >
+                Kostenlose Schätzung
+              </NavLink>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 };
 
@@ -116,7 +161,7 @@ function renderMenuList(menu: MenuProps) {
         <>
           <li tabIndex={0} key={item.title + index + 2}>
             <div className="hidden lg:flex">
-              {item.title}
+              <span className="text-xl">{item.title}</span>
               <svg
                 className="fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -132,9 +177,9 @@ function renderMenuList(menu: MenuProps) {
               {item.subMenu.map((subItem, index) => {
                 if (subItem.subMenu?.length) {
                   return (
-                    <li tabIndex={0} key={item.title + index + 2}>
+                    <li tabIndex={0} key={item.title + index + 3}>
                       <NavLink to={subItem.link || ""}>
-                        {subItem.title}
+                        <span className="text-xl">{subItem.title}</span>
                         <svg
                           className="fill-current"
                           xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +204,9 @@ function renderMenuList(menu: MenuProps) {
                                     isActive ? activeStyle : undefined
                                   }
                                 >
-                                  {subSubItem.title}
+                                  <span className="text-xl">
+                                    {subSubItem.title}
+                                  </span>
                                 </NavLink>
                               </li>
                             </>
@@ -177,42 +224,45 @@ function renderMenuList(menu: MenuProps) {
                         isActive ? activeStyle : undefined
                       }
                     >
-                      {subItem.title}
+                      <span className="text-xl">{subItem.title}</span>
                     </NavLink>
                   </li>
                 );
               })}
             </ul>
           </li>
-          <div className="flex-inline flex-wrap lg:hidden">
+          {/* Mobile menu */}
+          <div className="flex-inline flex-wrap lg:hidden mt-10 sm:mt-0">
             {item.subMenu.map((subItem, index) => {
               if (subItem.subMenu?.length) {
                 return (
                   <div
-                    key={index + 10}
+                    key={index + 100}
                     className="flex-inline flex-wrap lg:hidden"
                   >
-                    <li key={subItem.title + index}>
+                    <li key={subItem.title + index + 1000}>
                       <NavLink
                         to={subItem.link || ""}
                         style={({ isActive }) =>
                           isActive ? activeStyle : undefined
                         }
                       >
-                        <span className="">{subItem.title}</span>
+                        <span className="text-xl">{subItem.title}</span>
                       </NavLink>
                     </li>
                     {subItem.subMenu.map((subSubItem, index) => {
                       return (
                         <>
-                          <li key={subSubItem.title + index}>
+                          <li key={subSubItem.title + index + 20000}>
                             <NavLink
                               to={subSubItem.link || ""}
                               style={({ isActive }) =>
                                 isActive ? activeStyle : undefined
                               }
                             >
-                              <span className="">{subSubItem.title}</span>
+                              <span className="text-xl">
+                                {subSubItem.title}
+                              </span>
                             </NavLink>
                           </li>
                         </>
@@ -222,14 +272,14 @@ function renderMenuList(menu: MenuProps) {
                 );
               }
               return (
-                <li key={subItem.title + index}>
+                <li key={subItem.title + index + 30000}>
                   <NavLink
                     to={subItem.link || ""}
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
                   >
-                    <span className="">{subItem.title}</span>
+                    <span className="text-xl">{subItem.title}</span>
                   </NavLink>
                 </li>
               );
@@ -239,12 +289,12 @@ function renderMenuList(menu: MenuProps) {
       );
     }
     return (
-      <li key={item.title + index + 1}>
+      <li key={item.title + index + 50000}>
         <NavLink
           to={item.link || ""}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
         >
-          {item.title}
+          <span className="text-xl">{item.title}</span>
         </NavLink>
       </li>
     );

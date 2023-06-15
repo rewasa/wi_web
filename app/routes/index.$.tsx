@@ -1,46 +1,61 @@
-import { Link, useLoaderData } from "@remix-run/react";
-import { Hero } from "~/components/Hero/Hero";
+import type { V2_MetaArgs } from "@remix-run/node";
+import { useLocation } from "@remix-run/react";
+import clsx from "clsx";
 import { Layout } from "~/components/Layout/Layout";
-import { Services } from "~/components/Services/Services";
-
-import verkaufen from "~/images/verkaufen.svg";
-import inserieren from "~/images/inserieren.svg";
-import finanzierung from "~/images/finanzierung.svg";
-import { getDirectusClient } from "~/lib/directus";
-import { components } from "~/generated/types";
+import { useRevalidateOnFocus } from "~/hooks/useRevalidateOnFocus";
+import { NotFoundPage } from "~/renderer/404";
+import { SectionRenderer } from "~/renderer/Section";
+import { metaData } from "~/utils/metaData";
 import { usePage } from "~/utils/pageContext";
+import type { Page } from "~/page.server";
 
-const serviceTitle = "Bei welchem anliegen dürfen wir dich unterstützen?";
-const services = [
-  {
-    title: "Verkaufen",
-    description:
-      "Befinden Sie sich in einer finanziellen Notlage? Wenn die Zwangsversteigerung droht, scheint ein Notverkauf meist als einziger Ausweg. Doch Immobilien sind mehr als nur Objekte. Sie stehen für Sicherheit, Familie und Erinnerungen. Unsere Kernkompetenz liegt in der Rettung Ihrer Immobilie.",
-    image: verkaufen,
-    link: "/angebote/verkaufen",
-  },
-  {
-    title: "Finanzierung",
-    description:
-      "Benötigen Sie Geld um Ihr Projekt zu verwirklichen? Egal, was Ihr visionäres Projekt ist – WASESCHA Immobilien AG hat die passende Lösung für Sie: Verkaufen Sie Ihr Wohneigentum für einen vertraglich festgelegte Zeitraum an uns und bleiben Sie als Mieter darin wohnen.",
-    image: finanzierung,
-    link: "/angebote/finanzierung",
-  },
-  {
-    title: "Inserieren",
-    description:
-      "Steht Ihre Liegenschaft kurz vor der Zwangsversteigerung? Oder ist Ihre Liegenschaft bereits im Zwangsversteigerungsprozess? Wir bieten Ihnen eine kostenlose Erstberatung an!",
-    image: inserieren,
-    link: "/angebote/inserierung",
-  },
-];
+export const meta = (meta: V2_MetaArgs) => {
+  const pageData = (meta.matches[0].data || meta.matches?.[1].data) as {
+    pages: { data: Page[] };
+  };
+  const pageMeta = pageData.pages.data?.find((page) =>
+    page.slug.startsWith(meta.location.pathname)
+  );
 
-export default function Page() {
+  return metaData(pageMeta);
+};
+
+export default function Pages() {
+  const location = useLocation();
   const pages = usePage();
 
+  const routePage = pages.find(
+    (page) => page.status === "published" && page.slug === location.pathname
+  );
+
+  if (!routePage) {
+    return (
+      <Layout>
+        <section>
+          <NotFoundPage />
+        </section>
+      </Layout>
+    );
+  }
+
   return (
-    <Layout>
-      <div>page </div>
+    <Layout
+      className={clsx({
+        "bg-[#CDBDA6]": routePage.darkMode,
+      })}
+      bgMain={routePage.darkMode ? "bg-primary" : ""}
+    >
+      {routePage.sections?.map((section) => (
+        <section
+          key={section.item.id}
+          className={clsx({
+            "bg-primary": routePage.darkMode,
+            "text-gray-200": routePage.darkMode,
+          })}
+        >
+          <SectionRenderer section={section} />
+        </section>
+      ))}
     </Layout>
   );
 }

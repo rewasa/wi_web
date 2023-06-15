@@ -1,4 +1,9 @@
-import { json, LinksFunction, MetaFunction } from "@remix-run/node";
+import type {
+  LinksFunction,
+  MetaFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
+import { json } from "@remix-run/node";
 
 import {
   Links,
@@ -13,9 +18,9 @@ import {
 import tailwindStylesheetUrl from "./styles/tailwind.css";
 import appStyles from "~/styles/app.css";
 import { ExternalScripts } from "remix-utils";
-import { loadPages, Pages } from "~/page.server";
+import type { FooterLink, Page, Script } from "~/page.server";
+import { loadPages } from "~/page.server";
 import { PageContext } from "~/utils/pageContext";
-import { Layout } from "~/components/Layout/Layout";
 
 export const links: LinksFunction = () => {
   return [
@@ -24,31 +29,61 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "WASESCHA Immobilien AG",
-  viewport: "width=device-width,initial-scale=1",
-  robots: "noindex", // TODO: Remove this line when you're ready to go live
-});
-
 export async function loader() {
-  const { pages } = await loadPages();
-  return json(pages);
+  const { pages, settings } = await loadPages();
+  return json({ pages, settings });
 }
 
 export default function App() {
-  const { data: pages } = useLoaderData() as Pages;
+  const loaderData = useLoaderData<typeof loader>();
+  const pages = loaderData.pages.data as unknown as Page[];
+  const settings = loaderData.settings.data as unknown as {
+    scripts: Script[];
+    footerLinks: FooterLink[];
+  };
+  const scripts = settings.scripts;
+  const footerLinks = settings.footerLinks;
+  // TODO: Add footer links to footer
+
   return (
     <html lang="de" className="h-full">
       <head>
         <Meta />
         <Links />
+        {scripts
+          .filter((s) => s.item.variant === "head")
+          .map((script) => {
+            return (
+              <script
+                key={script.item.id}
+                dangerouslySetInnerHTML={{ __html: script.item.code }}
+              />
+            );
+          })}
       </head>
       <body className="h-full">
+        <noscript>
+          <iframe
+            title="Google Tag Manager"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WL8R7VN"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {scripts
+          .filter((s) => s.item.variant === "body")
+          .map((script) => {
+            return (
+              <script
+                key={script.item.id}
+                dangerouslySetInnerHTML={{ __html: script.item.code }}
+              />
+            );
+          })}
+
         <PageContext.Provider value={pages}>
-          <Layout>
-            <Outlet />
-          </Layout>
+          <Outlet />
         </PageContext.Provider>
         <ScrollRestoration />
         <ExternalScripts />
