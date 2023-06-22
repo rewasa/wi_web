@@ -8,7 +8,7 @@ export type HeadingProps = {
   title: string;
   hasLogo?: boolean;
   className?: string;
-  classNames: string[] | null;
+  classNames?: string[] | null;
 };
 
 export const Heading = (props: HeadingProps) => {
