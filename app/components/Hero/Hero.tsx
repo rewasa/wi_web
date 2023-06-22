@@ -51,7 +51,7 @@ export const Hero = (props: HeroProps) => {
             </Link>
           </div>
           <div className="invisible xl:visible sm:flex">
-            <Link to={"/kontakt"} className="btn btn-lg btn-outline">
+            <Link to={"/kontakt-wo-sind-wir"} className="btn btn-lg btn-outline">
               Kontakt
             </Link>
           </div>

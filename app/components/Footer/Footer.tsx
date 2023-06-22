@@ -23,7 +23,7 @@ export const Footer = () => {
           <Link to="/ueber-uns/" className="link-hover link">
             Über uns
           </Link>
-          <Link to="/kontakt" className="link-hover link">
+          <Link to="/kontakt-wo-sind-wir/" className="link-hover link">
             Kontakt
           </Link>
           <Link to="/impressum" className="link-hover link">

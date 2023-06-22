@@ -50,7 +50,7 @@ export const menu = [
   },
   // { title: "Immobilien", link: "/immobilien/" },
   { title: "Über uns", link: "/ueber-uns/" },
-  { title: "Kontakt", link: "/kontakt/" },
+  { title: "Kontakt", link: "/kontakt-wo-sind-wir/" },
 ];
 
 export const Navbar = (props: NavbarProps) => {
