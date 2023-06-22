@@ -45,7 +45,7 @@ export const action = async (args: DataFunctionArgs) => {
     } else {
       await directus.items("Person").createOne({
         ...values,
-        messages: [{ message: values.message }] as any,
+        messages: [{ sourcePage: values.sourcePage, message: values.message }] as any,
       });
     }
   });
