@@ -36,6 +36,7 @@ export const action = async (args: DataFunctionArgs) => {
         ...values,
         messages: [
           {
+            sourcePage: values.sourcePage,
             message: values.message,
           },
           ...knownPerson.messages,
