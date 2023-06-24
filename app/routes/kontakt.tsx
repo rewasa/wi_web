@@ -6,7 +6,7 @@ import { json, type DataFunctionArgs } from "@remix-run/server-runtime";
 import { ContactFormSchema } from "~/schema/ContactFromSchema";
 import { Form } from "~/form";
 import { getDirectusClient } from "~/lib/directus";
-import { useLoaderData } from "@remix-run/react"
+import { useLoaderData } from "@remix-run/react";
 
 async function findKnownPerson(email: string) {
   const directus = await getDirectusClient();
@@ -45,7 +45,9 @@ export const action = async (args: DataFunctionArgs) => {
     } else {
       await directus.items("Person").createOne({
         ...values,
-        messages: [{ sourcePage: values.sourcePage, message: values.message }] as any,
+        messages: [
+          { sourcePage: values.sourcePage, message: values.message },
+        ] as any,
       });
     }
   });
@@ -61,11 +63,11 @@ export const action = async (args: DataFunctionArgs) => {
 export async function loader(args: DataFunctionArgs) {
   const params = new URLSearchParams(args.request.url.split("?")[1]);
   const sourcePage = params.get("sourcePage");
-  return json({ sourcePage })
+  return json({ sourcePage });
 }
 
 export default function Kontaktformular() {
-  const data = useLoaderData<typeof loader>()
+  const data = useLoaderData<typeof loader>();
 
   return (
     <Layout className="bg-[#CDBDA6]">
@@ -73,8 +75,8 @@ export default function Kontaktformular() {
         <div className="container mx-auto py-10 px-4 text-xl md:py-32">
           <h1 className="text-2xl">Schreibe uns eine Nachricht.</h1>
           <p className="py-4">
-            Gerne beraten wir Sie persönlich. Füllen Sie einfach das Formular
-            aus und wir melden uns bei Ihnen.
+            Gerne beraten wir dich persönlich. Fülle einfach das Formular aus
+            und wir melden uns bei dir.
           </p>
           <Form schema={ContactFormSchema} className="w-full">
             {({ Field, Errors, Button }) => (
@@ -131,17 +133,22 @@ export default function Kontaktformular() {
                     </>
                   )}
                 </Field>
-                {data.sourcePage && (<Field name="sourcePage" value={data.sourcePage}>
-                  {({ Label, SmartInput }) => (
-                    <>
-                      <Label className="label">Wie dürfen wir dich unterstützen?</Label>
-                      <SmartInput
-                        type="text"
-                        placeholder=""
-                        className="input-bordered input-primary input w-full max-w-md text-black"
-                      />
-                    </>
-                  )}</Field>)}
+                {data.sourcePage && (
+                  <Field name="sourcePage" value={data.sourcePage}>
+                    {({ Label, SmartInput }) => (
+                      <>
+                        <Label className="label">
+                          Wie dürfen wir dich unterstützen?
+                        </Label>
+                        <SmartInput
+                          type="text"
+                          placeholder=""
+                          className="input-bordered input-primary input w-full max-w-md text-black"
+                        />
+                      </>
+                    )}
+                  </Field>
+                )}
                 <Field name="message">
                   {({ Label, Multiline, Errors }) => (
                     <>
