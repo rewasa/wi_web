@@ -32,6 +32,9 @@ export const Footer = () => {
           <Link to="/agb" className="link-hover link">
             AGBs
           </Link>
+          <Link to="/datenschutz" className="link-hover link">
+            Datenschutzerklärung
+          </Link>
         </div>
         <div>
           <h3 className="font-bold pb-6">Benefits</h3>
