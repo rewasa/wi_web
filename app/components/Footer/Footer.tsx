@@ -41,6 +41,9 @@ export const Footer = () => {
           <Link to="/marktwertrechner/" className="link-hover link">
             Marktwertrechner
           </Link>
+          <Link to="/partner" className="link-hover link">
+            Unsere Partner
+          </Link>
         </div>
       </footer>
       <footer className="border-base-grey footer border-t px-10 py-4 text-base-content">

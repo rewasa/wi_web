@@ -1,11 +1,12 @@
-import { Link } from "@remix-run/react";
-import clsx from "clsx";
+import { getAssetUrl, getThreeToTwoRatioAssetUrl } from "~/utils/getAssetsUrl";
+
 import { ActionButton } from "~/components/Button/ActionButton";
 import { Container } from "~/components/Container/Container";
 import ImageLoader from "~/components/Image/Image";
+import { Link } from "@remix-run/react";
 import type { Size } from "~/hooks/useWindowSize";
+import clsx from "clsx";
 import { useWindowSize } from "~/hooks/useWindowSize";
-import { getAssetUrl, getThreeToTwoRatioAssetUrl } from "~/utils/getAssetsUrl";
 
 export type ContentFeatureProps = {
   rowBreakdown?: number;
@@ -38,6 +39,7 @@ type Feature = {
     title: string;
     description: string;
     image?: string;
+    link?: string;
   };
 };
 
@@ -340,18 +342,23 @@ function containerFeatures(
       >
         {featuresServices?.map((feature: Feature, index) => {
           return (
-            <div
+            <a
               key={feature.item.id}
+              href={feature.item.link}
+              target={
+                feature.item.link?.startsWith("http") ? "_blank" : "_self"
+              }
               className={clsx(
                 "flex w-full flex-col items-center",
                 index < 2 ? "border-b-[#565555] md:border-b-2" : "",
                 index % 2 === 0 ? "border-r-[#565555] md:border-r-2" : ""
               )}
+              rel="noreferrer"
             >
               <div className="flex flex-col p-10 text-center">
                 {feature.item.image ? (
                   <img
-                    className="w-max-[200px] mx-auto"
+                    className="max-w-[220px] mx-auto"
                     src={getAssetUrl(feature.item.image)}
                     alt={feature.item.title}
                   />
@@ -365,7 +372,7 @@ function containerFeatures(
                   dangerouslySetInnerHTML={{ __html: feature.item.description }}
                 />
               </div>
-            </div>
+            </a>
           );
         })}
       </div>

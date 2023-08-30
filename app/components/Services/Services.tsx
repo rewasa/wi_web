@@ -1,10 +1,10 @@
-import { Link } from "@remix-run/react";
-import clsx from "clsx";
 import { ActionButton } from "~/components/Button/ActionButton";
-import type { Service } from "~/page.server";
-import { getAssetUrl } from "~/utils/getAssetsUrl";
-import bg from "./images/bg.svg";
 import ImageLoader from "~/components/Image/Image";
+import { Link } from "@remix-run/react";
+import type { Service } from "~/page.server";
+import bg from "./images/bg.svg";
+import clsx from "clsx";
+import { getAssetUrl } from "~/utils/getAssetsUrl";
 
 export type ServicesProps = {
   title?: string;
@@ -178,7 +178,7 @@ function renderModal(content: string, id: string) {
   );
 }
 
-function ConditionLinkWrapper({
+export function ConditionLinkWrapper({
   children,
   link,
 }: {
