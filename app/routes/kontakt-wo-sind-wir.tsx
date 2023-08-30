@@ -1,10 +1,8 @@
 import { Heading } from "~/components/Heading/Heading";
 import { Layout } from "~/components/Layout/Layout";
-
-import map from "~/images/map.svg";
-import kontakt from "~/images/kontakt.svg";
-
 import { Link } from "@remix-run/react";
+import kontakt from "~/images/kontakt.svg";
+import map from "~/images/map.svg";
 
 export default function Kontakt() {
   return (
@@ -19,6 +17,15 @@ export default function Kontakt() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="flex-cols z-10 flex items-center">
               <div>
+                <a
+                  href="https://calendly.com/wiag"
+                  target="_blank"
+                  className="btn-secondary btn mb-8"
+                  rel="noreferrer"
+                >
+                  Vereinbare ein kostenloses Beratungsgespräch
+                </a>
+
                 <Link to="/kontakt" className="btn-secondary btn mb-8">
                   Kontaktformular ausfüllen
                 </Link>

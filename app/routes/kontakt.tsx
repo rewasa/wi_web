@@ -7,6 +7,7 @@ import { ContactFormSchema } from "~/schema/ContactFromSchema";
 import { Form } from "~/form";
 import { getDirectusClient } from "~/lib/directus";
 import { useLoaderData } from "@remix-run/react";
+import { ActionButton } from "~/components/Button/ActionButton";
 
 async function findKnownPerson(email: string) {
   const directus = await getDirectusClient();
@@ -73,11 +74,22 @@ export default function Kontaktformular() {
     <Layout className="bg-[#CDBDA6]">
       <div className="bg-primary pb-20 text-gray-200">
         <div className="container mx-auto py-10 px-4 text-xl md:py-32">
+          <div className="flex pb-6 justify-end">
+            <a
+              href="https://calendly.com/wiag"
+              target="_blank"
+              className="btn-secondary btn mb-8"
+              rel="noreferrer"
+            >
+              Vereinbare ein kostenloses Beratungsgespräch
+            </a>
+          </div>
           <h1 className="text-2xl">Schreibe uns eine Nachricht.</h1>
           <p className="py-4">
             Gerne beraten wir dich persönlich. Fülle einfach das Formular aus
             und wir melden uns bei dir.
           </p>
+
           <Form schema={ContactFormSchema} className="w-full">
             {({ Field, Errors, Button }) => (
               <>
