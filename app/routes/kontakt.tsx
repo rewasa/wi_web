@@ -72,13 +72,13 @@ export default function Kontaktformular() {
 
   return (
     <Layout className="bg-[#CDBDA6]">
-      <div className="bg-primary pb-20 text-gray-200">
-        <div className="container mx-auto py-10 px-4 text-xl md:py-32">
-          <div className="flex pb-6 justify-end">
+      <div className="bg-primary text-gray-200">
+        <div className="container mx-auto py-10 px-4 text-xl">
+          <div className="flex pb-6">
             <a
               href="https://calendly.com/wiag"
               target="_blank"
-              className="btn-secondary btn mb-8"
+              className="btn-secondary btn mb-8 max-w-full"
               rel="noreferrer"
             >
               Vereinbare ein kostenloses Beratungsgespräch

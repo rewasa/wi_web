@@ -341,24 +341,27 @@ function containerFeatures(
         style={{ backgroundColor }}
       >
         {featuresServices?.map((feature: Feature, index) => {
+          const isPartner = feature.item.link?.startsWith("http");
           return (
             <a
               key={feature.item.id}
               href={feature.item.link}
-              target={
-                feature.item.link?.startsWith("http") ? "_blank" : "_self"
-              }
+              target={isPartner ? "_blank" : "_self"}
               className={clsx(
                 "flex w-full flex-col items-center",
-                index < 2 ? "border-b-[#565555] md:border-b-2" : "",
-                index % 2 === 0 ? "border-r-[#565555] md:border-r-2" : ""
+                index < 2 && !isPartner
+                  ? "border-b-[#565555] md:border-b-2"
+                  : "",
+                index % 2 === 0 && !isPartner
+                  ? "border-r-[#565555] md:border-r-2"
+                  : ""
               )}
               rel="noreferrer"
             >
               <div className="flex flex-col p-10 text-center">
                 {feature.item.image ? (
                   <img
-                    className="max-w-[220px] mx-auto"
+                    className="max-w-[320px] mx-auto"
                     src={getAssetUrl(feature.item.image)}
                     alt={feature.item.title}
                   />

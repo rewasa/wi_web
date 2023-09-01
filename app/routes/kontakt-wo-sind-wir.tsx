@@ -9,7 +9,7 @@ export default function Kontakt() {
     <Layout className="bg-[#CDBDA6]" bgMain="bg-primary">
       <div className="bg-primary pb-20 text-gray-200">
         <Heading
-          isMain
+          hasLogo
           title="Wo und wie erreichst du uns?"
           className="pt-20"
         />
@@ -17,15 +17,16 @@ export default function Kontakt() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="flex-cols z-10 flex items-center">
               <div>
-                <a
-                  href="https://calendly.com/wiag"
-                  target="_blank"
-                  className="btn-secondary btn mb-8"
-                  rel="noreferrer"
-                >
-                  Vereinbare ein kostenloses Beratungsgespräch
-                </a>
-
+                <div>
+                  <a
+                    href="https://calendly.com/wiag"
+                    target="_blank"
+                    className="btn-secondary btn mb-8"
+                    rel="noreferrer"
+                  >
+                    Vereinbare ein kostenloses Beratungsgespräch
+                  </a>
+                </div>
                 <Link to="/kontakt" className="btn-secondary btn mb-8">
                   Kontaktformular ausfüllen
                 </Link>
