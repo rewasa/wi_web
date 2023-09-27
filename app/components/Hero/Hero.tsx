@@ -1,6 +1,6 @@
+import ImageLoader from "~/components/Image/Image";
 import { Link } from "@remix-run/react";
 import bg from "./images/bg.png";
-import ImageLoader from "~/components/Image/Image";
 export type HeroProps = {
   title?: string;
   text1?: string;
@@ -30,9 +30,9 @@ export const Hero = (props: HeroProps) => {
         </h1>
         <p
           tabIndex={0}
-          className="uppercase mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="text-4xl uppercase mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
         >
-          Katherine Mansfield
+          Dein Zuhause, unsere Expertise
         </p>
         <div
           tabIndex={0}
@@ -51,7 +51,10 @@ export const Hero = (props: HeroProps) => {
             </Link>
           </div>
           <div className="invisible xl:visible sm:flex">
-            <Link to={"/kontakt-wo-sind-wir"} className="btn btn-lg btn-outline">
+            <Link
+              to={"/kontakt-wo-sind-wir"}
+              className="btn btn-lg btn-outline"
+            >
               Kontakt
             </Link>
           </div>

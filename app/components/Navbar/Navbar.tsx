@@ -1,7 +1,8 @@
 import { NavLink, useLocation } from "@remix-run/react";
-import logo from "./images/logo.svg";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import clsx from "clsx";
+import logo from "./images/logo.svg";
 
 type MenuProps = Array<{
   title: string;
@@ -28,6 +29,7 @@ export const menu = [
         title: "EXPERT-Verkauf",
         link: "/angebote/expert-verkauf/",
       },
+      { title: "Konstenlose Schätzung", link: "/marktwertrechner/" },
       {
         title: "Finanzierung",
         link: "/angebote/finanzierung",
@@ -102,16 +104,11 @@ export const Navbar = (props: NavbarProps) => {
           <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
         </div>
 
-        {location.pathname !== "/" ? (
-          <div className="navbar-end hidden lg:flex xl:pr-10">
-            <NavLink
-              to={"/marktwertrechner"}
-              className="btn-outline btn-md btn"
-            >
-              Kostenlose Schätzung
-            </NavLink>
-          </div>
-        ) : null}
+        <div className="navbar-end hidden lg:flex xl:pr-10">
+          <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
+            Kostenlose Schätzung
+          </NavLink>
+        </div>
 
         <div className="navbar-end lg:hidden">
           <div className="dropdown-bottom dropdown-left dropdown">
@@ -217,20 +214,23 @@ function renderMenuList(menu: MenuProps) {
                   );
                 }
                 return (
-                  <li key={subItem.title + index + 3}>
-                    <NavLink
-                      to={subItem.link || ""}
-                      style={({ isActive }) =>
-                        isActive ? activeStyle : undefined
-                      }
-                    >
-                      <span className="text-xl">{subItem.title}</span>
-                    </NavLink>
-                  </li>
+                  <>
+                    <li key={subItem.title + index + 3}>
+                      <NavLink
+                        to={subItem.link || ""}
+                        style={({ isActive }) =>
+                          isActive ? activeStyle : undefined
+                        }
+                      >
+                        <span className="text-xl">{subItem.title}</span>
+                      </NavLink>
+                    </li>
+                  </>
                 );
               })}
             </ul>
           </li>
+
           {/* Mobile menu */}
           <div className="flex-inline flex-wrap lg:hidden mt-10 sm:mt-0">
             {item.subMenu.map((subItem, index) => {
