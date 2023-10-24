@@ -24,13 +24,13 @@ export const Hero = (props: HeroProps) => {
         </p>
         <h1
           tabIndex={0}
-          className="text-4xl lg:text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="text-3xl lg:text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
         >
           {props?.title}
         </h1>
         <p
           tabIndex={0}
-          className="text-4xl uppercase mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="text-3xl lg:text-5xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
         >
           Dein Zuhause, unsere Expertise
         </p>

@@ -52,6 +52,7 @@ export const Footer = () => {
             src={wi}
             alt="Wasescha Immobilien Logo Klein"
             className="h-7 w-10"
+            loading="lazy"
           />
           <p>
             <span className="">WASESCHA Immobilien AG</span>

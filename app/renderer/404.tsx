@@ -27,6 +27,7 @@ export const NotFoundPage = () => {
           <img
             src={getAssetUrl("c667938c-dded-4491-b8d4-78185db04121")}
             alt="404 page not found"
+            loading="lazy"
           />
         </div>
       </div>

@@ -35,6 +35,7 @@ export default function Kontakt() {
                   src={map}
                   alt="map from wasescha immobilien"
                   className="z-10"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -59,7 +60,12 @@ export default function Kontakt() {
           </div>
         </div>
         <div className="z-0">
-          <img src={kontakt} alt="kontakt" className="mx-auto md:-mt-32" />
+          <img
+            src={kontakt}
+            alt="kontakt"
+            className="mx-auto md:-mt-32"
+            loading="lazy"
+          />
         </div>
       </div>
     </Layout>

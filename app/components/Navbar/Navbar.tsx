@@ -29,7 +29,7 @@ export const menu = [
         title: "EXPERT-Verkauf",
         link: "/angebote/expert-verkauf/",
       },
-      { title: "Konstenlose Schätzung", link: "/marktwertrechner/" },
+      { title: "Kostenlose Schätzung", link: "/marktwertrechner/" },
       {
         title: "Finanzierung",
         link: "/angebote/finanzierung",
@@ -97,6 +97,7 @@ export const Navbar = (props: NavbarProps) => {
               src={logo}
               alt="Wasescha Immobilien Logo"
               className="ml-1 w-[160px] lg:w-[200px]"
+              loading="lazy"
             />
           </NavLink>
         </div>

@@ -298,6 +298,7 @@ function renderImages(
                     style={{
                       maxHeight: `${imageHeight}px`,
                     }}
+                    loading="lazy"
                   />
                   // <ImageLoader
                   //   assetId={image.directus_files_id}
@@ -364,6 +365,7 @@ function containerFeatures(
                     className="max-w-[320px] mx-auto"
                     src={getAssetUrl(feature.item.image)}
                     alt={feature.item.title}
+                    loading="lazy"
                   />
                 ) : null}
                 <h3 className="pb-2 text-2xl font-bold">

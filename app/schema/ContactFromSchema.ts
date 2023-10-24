@@ -7,4 +7,5 @@ export const ContactFormSchema = z.object({
   email: z.string().min(1).email(),
   phone: z.string().optional(),
   message: z.string().optional(),
+  honeypot: z.string().optional(),
 });

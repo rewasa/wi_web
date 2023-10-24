@@ -38,6 +38,7 @@ export const FeatureContainer = (props: FeatureContainerProps) => {
                     className="w-max-[200px] mx-auto"
                     src={feature.image}
                     alt={feature.title}
+                    loading="lazy"
                   />
                 ) : null}
                 <h3 className="pb-2 text-2xl font-bold">{feature.title}</h3>

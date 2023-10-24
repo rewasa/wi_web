@@ -29,6 +29,9 @@ async function findKnownPerson(email: string) {
 
 export const action = async (args: DataFunctionArgs) => {
   const mutation = makeDomainFunction(ContactFormSchema)(async (values) => {
+    if (values.honeypot) {
+      return;
+    }
     const directus = await getDirectusClient();
     const knownPerson = await findKnownPerson(values.email);
 
@@ -174,6 +177,21 @@ export default function Kontaktformular() {
                     </>
                   )}
                 </Field>
+
+                {/* Honeypot-Feld */}
+                <div style={{ display: "none" }}>
+                  <Field name="honeypot">
+                    {({ Label, SmartInput }) => (
+                      <>
+                        <Label>Bitte nicht ausfüllen</Label>
+                        <SmartInput
+                          type="text"
+                          placeholder="Leave this field empty"
+                        />
+                      </>
+                    )}
+                  </Field>
+                </div>
                 <Errors />
                 <div className="">
                   <Button className="btn-secondary btn">Senden</Button>

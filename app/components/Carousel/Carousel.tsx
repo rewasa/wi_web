@@ -10,7 +10,12 @@ export const Carousel = (props: CarouselProps) => {
     <div className="carousel">
       {props.images.map((image, index) => (
         <div className="carousel-item" key={index}>
-          <img className={clsx(props.imageClassName)} src={image} alt="" />
+          <img
+            className={clsx(props.imageClassName)}
+            src={image}
+            alt={"carousel image " + index + 1}
+            loading="lazy"
+          />
         </div>
       ))}
     </div>

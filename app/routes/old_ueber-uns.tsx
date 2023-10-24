@@ -89,7 +89,7 @@ export default function UeberUns() {
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             <div className="flex-cols flex items-center">
               <div className="mx-auto py-8">
-                <img src={iwan} alt="iwan wasescha" />
+                <img src={iwan} alt="iwan wasescha" loading="lazy" />
               </div>
             </div>
             <div className="flex-cols flex items-center">
@@ -102,7 +102,7 @@ export default function UeberUns() {
 
             <div className="flex-cols flex items-start">
               <div className="mx-auto py-8">
-                <img src={natalina} alt="natalina schärer" />
+                <img src={natalina} alt="natalina schärer" loading="lazy" />
               </div>
             </div>
           </div>

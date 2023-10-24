@@ -16,6 +16,7 @@ const ImageLoader: React.FC<Props> = ({ assetId, alt, className, style }) => {
       alt={alt}
       className={className}
       style={style}
+      loading="lazy"
     />
   );
 

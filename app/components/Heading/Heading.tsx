@@ -41,6 +41,7 @@ export const Heading = (props: HeadingProps) => {
               className="float-right w-[40px] md:w-[70px]"
               src={wi}
               alt="wasescha immobilien logo klein"
+              loading="lazy"
             />
           )}
         </div>
