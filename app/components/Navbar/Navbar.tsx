@@ -101,14 +101,24 @@ export const Navbar = (props: NavbarProps) => {
             />
           </NavLink>
         </div>
-        <div className="navbar-center hidden lg:flex md:ml-12">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
         </div>
 
-        <div className="navbar-end hidden lg:flex xl:pr-10">
-          <NavLink to={"/marktwertrechner"} className="btn-outline btn-md btn">
+        <div className="navbar-end hidden xl:flex xl:pr-10 space-x-2">
+          <NavLink to={"/marktwertrechner"} className="btn btn-primary">
             Kostenlose Schätzung
           </NavLink>
+          {location.pathname === "/" ? (
+            <a
+              href="https://calendly.com/wiag"
+              target="_blank"
+              className="btn btn-secondary"
+              rel="noreferrer"
+            >
+              Kostenloses Beratungsgespräch
+            </a>
+          ) : null}
         </div>
 
         <div className="navbar-end lg:hidden">
