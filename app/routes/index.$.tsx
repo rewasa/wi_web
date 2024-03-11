@@ -2,7 +2,6 @@ import type { V2_MetaArgs } from "@remix-run/node";
 import { useLocation } from "@remix-run/react";
 import clsx from "clsx";
 import { Layout } from "~/components/Layout/Layout";
-import { useRevalidateOnFocus } from "~/hooks/useRevalidateOnFocus";
 import { NotFoundPage } from "~/renderer/404";
 import { SectionRenderer } from "~/renderer/Section";
 import { metaData } from "~/utils/metaData";

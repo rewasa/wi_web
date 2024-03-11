@@ -1,8 +1,4 @@
-import type {
-  LinksFunction,
-  MetaFunction,
-  V2_MetaFunction,
-} from "@remix-run/node";
+import type { DataFunctionArgs, LinksFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 
 import {
@@ -29,9 +25,20 @@ export const links: LinksFunction = () => {
   ];
 };
 
-export async function loader() {
+export async function loader(args: DataFunctionArgs) {
+  const location = new URL(args.request.url);
   const { pages, settings } = await loadPages();
-  return json({ pages, settings });
+
+  const routePage =
+    location.pathname !== "/"
+      ? pages?.data?.find(
+          (page) =>
+            page.status === "published" &&
+            page.slug?.includes(location.pathname)
+        )
+      : true;
+
+  return json({ pages, settings }, { status: routePage ? 200 : 404 });
 }
 
 export default function App() {

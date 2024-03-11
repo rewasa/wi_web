@@ -148,7 +148,7 @@ export const Services = ({
             : null}
         </div>
 
-        {text ? (
+        {text && link ? (
           <div className="pt-5 text-center">
             <Link to={link}>
               <ActionButton>{text}</ActionButton>
