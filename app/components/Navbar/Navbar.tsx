@@ -31,20 +31,20 @@ export const menu = [
       },
       { title: "Kostenlose Schätzung", link: "/marktwertrechner/" },
       {
-        title: "Finanzierung",
-        link: "/angebote/finanzierung",
+        title: "Weitere Angebote",
+        link: "/angebote/weitere-angebote",
         subMenu: [
           {
-            title: "Eigenheim",
-            link: "/angebote/finanzierung/durch-eigenheim/",
+            title: "Eigenheim-Darlehen",
+            link: "/angebote/weitere-angebote/eigenheim-darlehen/",
           },
           {
             title: "Immobilienrettung",
-            link: "/angebote/finanzierung/immobilienrettung/",
+            link: "/angebote/weitere-angebote/immobilienrettung/",
           },
           {
             title: "Zwangsversteigerung",
-            link: "/angebote/finanzierung/zwangsversteigerung/",
+            link: "/angebote/weitere-angebote/zwangsversteigerung/",
           },
         ],
       },
@@ -86,11 +86,11 @@ export const Navbar = (props: NavbarProps) => {
     <div
       id="navbar"
       className={clsx(
-        "fixed top-0 shadow transition-all duration-300 h-[80px] z-20 w-full",
+        "fixed top-0 z-20 h-[80px] w-full shadow transition-all duration-300",
         props.className ? props.className : "bg-white"
       )}
     >
-      <nav className="navbar items-center xl:pl-36 py-4">
+      <nav className="navbar items-center py-4 xl:pl-36">
         <div className="navbar-start">
           <NavLink to="/">
             <img
@@ -105,7 +105,7 @@ export const Navbar = (props: NavbarProps) => {
           <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
         </div>
 
-        <div className="navbar-end hidden xl:flex xl:pr-10 space-x-2">
+        <div className="navbar-end hidden space-x-2 xl:flex xl:pr-10">
           <NavLink to={"/marktwertrechner"} className="btn btn-primary">
             Kostenlose Schätzung
           </NavLink>
@@ -122,8 +122,8 @@ export const Navbar = (props: NavbarProps) => {
         </div>
 
         <div className="navbar-end lg:hidden">
-          <div className="dropdown-bottom dropdown-left dropdown">
-            <label tabIndex={0} className="btn-ghost btn">
+          <div className="dropdown dropdown-left dropdown-bottom">
+            <label tabIndex={0} className="btn btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -146,7 +146,7 @@ export const Navbar = (props: NavbarProps) => {
               {renderMenuList(menu)}
               <NavLink
                 to={"/marktwertrechner"}
-                className="btn-secondary btn m-2"
+                className="btn btn-secondary m-2"
               >
                 Kostenlose Schätzung
               </NavLink>
@@ -243,7 +243,7 @@ function renderMenuList(menu: MenuProps) {
           </li>
 
           {/* Mobile menu */}
-          <div className="flex-inline flex-wrap lg:hidden mt-10 sm:mt-0">
+          <div className="flex-inline mt-10 flex-wrap sm:mt-0 lg:hidden">
             {item.subMenu.map((subItem, index) => {
               if (subItem.subMenu?.length) {
                 return (
