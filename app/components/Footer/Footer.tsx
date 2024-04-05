@@ -6,42 +6,42 @@ export const Footer = () => {
     <div className="container bottom-0 mx-auto">
       <footer className="footer p-10 text-base-content">
         <div>
-          <h3 className="font-bold pb-6">Angebote</h3>
+          <h3 className="pb-6 font-bold">Angebote</h3>
           {/* <Link to="/immobilien" className="link-hover link pb-6">Immobilien</Link> */}
-          <Link to="/angebote/easy-verkauf/" className="link-hover link">
+          <Link to="/angebote/easy-verkauf/" className="link link-hover">
             EASY-Verkauf
           </Link>
-          <Link to="/angebote/expert-verkauf/" className="link-hover link">
+          <Link to="/angebote/expert-verkauf/" className="link link-hover">
             EXPERT-Verkauf
           </Link>
-          <Link to="/angebote/finanzierung" className="link-hover link">
-            Finanzierung
+          <Link to="/angebote/weitere-angebote" className="link link-hover">
+            Weitere Angebote
           </Link>
         </div>
         <div>
-          <h3 className="font-bold pb-6">Unternehmen</h3>
-          <Link to="/ueber-uns/" className="link-hover link">
+          <h3 className="pb-6 font-bold">Unternehmen</h3>
+          <Link to="/ueber-uns/" className="link link-hover">
             Über uns
           </Link>
-          <Link to="/kontakt-wo-sind-wir/" className="link-hover link">
+          <Link to="/kontakt-wo-sind-wir/" className="link link-hover">
             Kontakt
           </Link>
-          <Link to="/impressum" className="link-hover link">
+          <Link to="/impressum" className="link link-hover">
             Impressum
           </Link>
-          <Link to="/agb" className="link-hover link">
+          <Link to="/agb" className="link link-hover">
             AGBs
           </Link>
-          <Link to="/datenschutz" className="link-hover link">
+          <Link to="/datenschutz" className="link link-hover">
             Datenschutzerklärung
           </Link>
         </div>
         <div>
-          <h3 className="font-bold pb-6">Benefits</h3>
-          <Link to="/marktwertrechner/" className="link-hover link">
+          <h3 className="pb-6 font-bold">Benefits</h3>
+          <Link to="/marktwertrechner/" className="link link-hover">
             Marktwertrechner
           </Link>
-          <Link to="/partner" className="link-hover link">
+          <Link to="/partner" className="link link-hover">
             Unsere Partner
           </Link>
         </div>
