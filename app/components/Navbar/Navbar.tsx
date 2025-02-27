@@ -29,7 +29,6 @@ export const menu = [
         title: "EXPERT-Verkauf",
         link: "/angebote/expert-verkauf/",
       },
-      { title: "Kostenlose Schätzung", link: "/marktwertrechner/" },
       {
         title: "Weitere Angebote",
         link: "/angebote/weitere-angebote",
@@ -105,10 +104,7 @@ export const Navbar = (props: NavbarProps) => {
           <ul className="menu menu-horizontal px-1">{renderMenuList(menu)}</ul>
         </div>
 
-        <div className="navbar-end hidden space-x-2 xl:flex xl:pr-10">
-          <NavLink to={"/marktwertrechner"} className="btn btn-primary">
-            Kostenlose Schätzung
-          </NavLink>
+        <div className="navbar-end hidden space-x-2 2xl:flex 2xl:pr-10">
           {location.pathname === "/" ? (
             <a
               href="https://calendly.com/wiag"
@@ -144,12 +140,6 @@ export const Navbar = (props: NavbarProps) => {
               className="dropdown-content menu rounded-box min-w-[320px] bg-base-100 shadow"
             >
               {renderMenuList(menu)}
-              <NavLink
-                to={"/marktwertrechner"}
-                className="btn btn-secondary m-2"
-              >
-                Kostenlose Schätzung
-              </NavLink>
             </ul>
           </div>
         </div>

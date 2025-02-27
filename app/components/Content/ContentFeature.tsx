@@ -75,7 +75,7 @@ export const ContentFeature = ({
           >
             {contentLeft || isTablet ? (
               <>
-                <div className="px-4 w-full xl:w-3/5 xl:pl-36">
+                <div className="w-full px-4 xl:w-3/5 xl:pl-36">
                   {renderContent(
                     contentList,
                     text,
@@ -88,7 +88,7 @@ export const ContentFeature = ({
                     teaser
                   )}
                 </div>
-                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5 max-w-xl">
+                <div className="h-full w-full max-w-xl xl:absolute xl:inset-y-0 xl:right-0 xl:w-2/5">
                   {renderImages(
                     images,
                     contentLeft,
@@ -104,7 +104,7 @@ export const ContentFeature = ({
               </>
             ) : (
               <>
-                <div className="w-full h-full xl:absolute xl:inset-y-0 xl:left-0 xl:w-2/5 max-w-xl my-auto">
+                <div className="my-auto h-full w-full max-w-xl xl:absolute xl:inset-y-0 xl:left-0 xl:w-2/5">
                   {renderImages(
                     images,
                     contentLeft,
@@ -116,7 +116,7 @@ export const ContentFeature = ({
                     imagePercentPosition
                   )}
                 </div>
-                <div className="px-4 xl:pl-20 w-full md:max-w-[48rem] xl:max-w-[56rem] xl:ml-[37%]">
+                <div className="w-full px-4 md:max-w-[48rem] xl:ml-[37%] xl:max-w-[56rem] xl:pl-20">
                   {renderContent(
                     contentList,
                     text,
@@ -140,7 +140,7 @@ export const ContentFeature = ({
 function renderSpacer(backgroundColor?: string) {
   return (
     <div
-      className="w-full h-10 md:h-20"
+      className="h-10 w-full md:h-20"
       style={{ backgroundColor: backgroundColor }}
     />
   );
@@ -173,7 +173,7 @@ function renderContent(
               dangerouslySetInnerHTML={{ __html: textWithClasses }}
               key={index}
               style={{ color: textColor }}
-              className={clsx("text-lg max-w-4xl", {
+              className={clsx("max-w-4xl text-lg", {
                 "opacity-80": textColor?.includes("FFF") && index > 0,
                 "pb-4 md:pb-0":
                   !text && !link && contentList.length === index + 1,
@@ -196,7 +196,7 @@ function renderContent(
                 <input type="checkbox" />
                 {questionAndAnswer?.question && (
                   <div
-                    className="text-xl font-bold my-4 collapse-title"
+                    className="collapse-title my-4 text-xl font-bold"
                     style={{ color: textColor }}
                     dangerouslySetInnerHTML={{
                       __html: questionAndAnswer.question,
@@ -204,7 +204,7 @@ function renderContent(
                   />
                 )}
                 {questionAndAnswer?.answer && (
-                  <div className="mb-4 text-xl collapse-content opacity-80">
+                  <div className="collapse-content mb-4 text-xl opacity-80">
                     <div
                       tabIndex={0}
                       className="text-lg"
@@ -235,7 +235,7 @@ function renderActionButton(
     return (
       <div
         className={clsx(
-          "p-4 lg:p-0 lg:py-10 justify-center sm:justify-start",
+          "justify-center p-4 sm:justify-start lg:p-0 lg:py-10",
           { "flex sm:hidden": device === "mobile" },
           { "hidden sm:flex": device === "desktop" }
         )}
@@ -288,7 +288,7 @@ function renderImages(
                     className={clsx(
                       "h-full w-full",
                       {
-                        "xl:absolute xl:inset-0 xl:right-0 object-cover":
+                        "object-cover xl:absolute xl:inset-0 xl:right-0":
                           imageHeight === null || imageHeight === "auto",
                       },
                       {
@@ -338,7 +338,7 @@ function containerFeatures(
   return (
     <Container>
       <div
-        className="my-20 grid grid-cols-1 rounded p-4 md:grid-cols-2 md:p-10 bg-[#968D7E]"
+        className="my-20 grid grid-cols-1 rounded bg-[#968D7E] p-4 md:grid-cols-2 md:p-10"
         style={{ backgroundColor }}
       >
         {featuresServices?.map((feature: Feature, index) => {
@@ -362,7 +362,7 @@ function containerFeatures(
               <div className="flex flex-col p-10 text-center">
                 {feature.item.image ? (
                   <img
-                    className="max-w-[320px] mx-auto"
+                    className="mx-auto max-w-[320px]"
                     src={getAssetUrl(feature.item.image)}
                     alt={feature.item.title}
                     loading="lazy"

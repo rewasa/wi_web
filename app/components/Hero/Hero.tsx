@@ -11,56 +11,59 @@ export type HeroProps = {
 };
 export const Hero = (props: HeroProps) => {
   return (
-    <div className="md:flex items-center h-full">
+    <div className="h-full items-center md:flex">
       <div
         role="contentinfo"
-        className="w-full lg:w-2/3 m-4 lg:pl-20 lg:mr-20 container mx-auto px-4"
+        className="container m-4 mx-auto w-full px-4 lg:mr-20 lg:w-2/3 lg:pl-20"
       >
         <p
           tabIndex={0}
-          className="invisible lg:visible text-secondary uppercase text-xl mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="invisible mb-4 bg-gradient-to-r from-primary to-[#A28F77] bg-clip-text text-xl uppercase text-secondary text-transparent lg:visible lg:text-right"
         >
           Wasescha Immobilien
         </p>
         <h1
           tabIndex={0}
-          className="text-3xl lg:text-6xl font-black mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="mb-2 bg-gradient-to-r from-primary to-[#A28F77] bg-clip-text text-3xl font-black text-transparent lg:text-right lg:text-6xl"
         >
           {props?.title}
         </h1>
         <p
           tabIndex={0}
-          className="text-3xl lg:text-5xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right"
+          className="mb-8 bg-gradient-to-r from-primary to-[#A28F77] bg-clip-text text-3xl text-transparent lg:text-right lg:text-5xl"
         >
           Dein Zuhause, unsere Expertise
         </p>
         <div
           tabIndex={0}
-          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          className="mb-8 bg-gradient-to-r from-primary to-[#A28F77] bg-clip-text text-xl text-transparent lg:pl-36 lg:text-right"
           dangerouslySetInnerHTML={{ __html: props.text1 as string }}
         ></div>
         <div
           tabIndex={0}
-          className="text-xl mb-8 bg-clip-text text-transparent bg-gradient-to-r from-primary to-[#A28F77] lg:text-right lg:pl-36"
+          className="mb-8 bg-gradient-to-r from-primary to-[#A28F77] bg-clip-text text-xl text-transparent lg:pl-36 lg:text-right"
           dangerouslySetInnerHTML={{ __html: props.text2 as string }}
         ></div>
-        <div className="bg-white lg:mt-16 py-4 px-4 flex flex-col sm:flex-row justify-start sm:justify-between items-start sm:items-center">
-          <div className="flex py-2 mx-auto">
-            <Link to={"/marktwertrechner"} className="btn btn-lg btn-secondary">
-              Kostenlose Schätzung
+        <div className="flex flex-col items-start justify-start bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
+          <div className="mx-auto flex py-2">
+            <Link
+              to={"/angebote/easy-verkauf/"}
+              className="btn btn-secondary btn-lg"
+            >
+              Easy-Verkauf
             </Link>
           </div>
-          <div className="invisible xl:visible sm:flex">
+          <div className="invisible sm:flex xl:visible">
             <Link
               to={"/kontakt-wo-sind-wir"}
-              className="btn btn-lg btn-outline"
+              className="btn btn-outline btn-lg"
             >
               Kontakt
             </Link>
           </div>
         </div>
       </div>
-      <div className="w-full lg:w-2/3 h-full">
+      <div className="h-full w-full lg:w-2/3">
         {props?.backgroundImage?.id && (
           <ImageLoader
             assetId={props.backgroundImage.id}

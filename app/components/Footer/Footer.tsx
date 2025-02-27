@@ -38,9 +38,6 @@ export const Footer = () => {
         </div>
         <div>
           <h3 className="pb-6 font-bold">Benefits</h3>
-          <Link to="/marktwertrechner/" className="link link-hover">
-            Marktwertrechner
-          </Link>
           <Link to="/partner" className="link link-hover">
             Unsere Partner
           </Link>
