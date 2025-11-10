@@ -47,10 +47,10 @@ export const Hero = (props: HeroProps) => {
         <div className="flex flex-col items-start justify-start bg-white px-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
           <div className="mx-auto flex py-2">
             <Link
-              to={"/angebote/easy-verkauf/"}
+              to={"/angebote/weitere-angebote/eigenheim-darlehen/"}
               className="btn btn-secondary btn-lg"
             >
-              Easy-Verkauf
+              Projektfinanzierung durch Eigenheim
             </Link>
           </div>
           <div className="invisible sm:flex xl:visible">

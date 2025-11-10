@@ -23,33 +23,30 @@ type NavbarProps = {
 export const menu = [
   {
     title: "Angebote",
+    link: "#",
     subMenu: [
-      { title: "EASY-Verkauf", link: "/angebote/easy-verkauf/" },
+      {
+        title: "Projektfinanzierung durch Eigenheim",
+        link: "/angebote/weitere-angebote/eigenheim-darlehen/",
+      },
+      {
+        title: "EASY-Verkauf",
+        link: "/angebote/easy-verkauf/",
+      },
       {
         title: "EXPERT-Verkauf",
         link: "/angebote/expert-verkauf/",
       },
       {
-        title: "Weitere Angebote",
-        link: "/angebote/weitere-angebote",
-        subMenu: [
-          {
-            title: "Eigenheim-Darlehen",
-            link: "/angebote/weitere-angebote/eigenheim-darlehen/",
-          },
-          {
-            title: "Immobilienrettung",
-            link: "/angebote/weitere-angebote/immobilienrettung/",
-          },
-          {
-            title: "Zwangsversteigerung",
-            link: "/angebote/weitere-angebote/zwangsversteigerung/",
-          },
-        ],
+        title: "Immobilienrettung",
+        link: "/angebote/weitere-angebote/immobilienrettung/",
+      },
+      {
+        title: "Zwangsversteigerung",
+        link: "/angebote/weitere-angebote/zwangsversteigerung/",
       },
     ],
   },
-  // { title: "Immobilien", link: "/immobilien/" },
   { title: "Über uns", link: "/ueber-uns/" },
   { title: "Kontakt", link: "/kontakt-wo-sind-wir/" },
 ];
@@ -109,8 +106,8 @@ export const Navbar = (props: NavbarProps) => {
             <a
               href="https://calendly.com/wiag"
               target="_blank"
-              className="btn btn-secondary"
               rel="noreferrer"
+              className="btn btn-secondary"
             >
               Kostenloses Beratungsgespräch
             </a>
@@ -157,7 +154,7 @@ function renderMenuList(menu: MenuProps) {
     if (item.subMenu?.length) {
       return (
         <>
-          <li tabIndex={0} key={item.title + index + 2}>
+          <li tabIndex={0} key={item.title + index}>
             <div className="hidden lg:flex">
               <span className="text-xl">{item.title}</span>
               <svg
@@ -173,60 +170,17 @@ function renderMenuList(menu: MenuProps) {
 
             <ul className="dropdown-content menu rounded-box invisible w-auto bg-base-100 p-2 shadow lg:visible">
               {item.subMenu.map((subItem, index) => {
-                if (subItem.subMenu?.length) {
-                  return (
-                    <li tabIndex={0} key={item.title + index + 3}>
-                      <NavLink to={subItem.link || ""}>
-                        <span className="text-xl">{subItem.title}</span>
-                        <svg
-                          className="fill-current"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                        </svg>
-                      </NavLink>
-                      <ul
-                        key={index + 17}
-                        className="invisible bg-base-100 p-2 lg:visible"
-                      >
-                        {subItem.subMenu.map((subSubItem, index) => {
-                          return (
-                            <>
-                              <li key={subSubItem.title + index}>
-                                <NavLink
-                                  to={subSubItem.link || ""}
-                                  style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                  }
-                                >
-                                  <span className="text-xl">
-                                    {subSubItem.title}
-                                  </span>
-                                </NavLink>
-                              </li>
-                            </>
-                          );
-                        })}
-                      </ul>
-                    </li>
-                  );
-                }
                 return (
-                  <>
-                    <li key={subItem.title + index + 3}>
-                      <NavLink
-                        to={subItem.link || ""}
-                        style={({ isActive }) =>
-                          isActive ? activeStyle : undefined
-                        }
-                      >
-                        <span className="text-xl">{subItem.title}</span>
-                      </NavLink>
-                    </li>
-                  </>
+                  <li key={subItem.title + index + 3}>
+                    <NavLink
+                      to={subItem.link || ""}
+                      style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
+                    >
+                      <span className="text-xl">{subItem.title}</span>
+                    </NavLink>
+                  </li>
                 );
               })}
             </ul>
@@ -234,44 +188,10 @@ function renderMenuList(menu: MenuProps) {
 
           {/* Mobile menu */}
           <div className="flex-inline mt-10 flex-wrap sm:mt-0 lg:hidden">
+            <li key={item.title + index + 1000}>
+              <span className="text-xl font-bold">{item.title}</span>
+            </li>
             {item.subMenu.map((subItem, index) => {
-              if (subItem.subMenu?.length) {
-                return (
-                  <div
-                    key={index + 100}
-                    className="flex-inline flex-wrap lg:hidden"
-                  >
-                    <li key={subItem.title + index + 1000}>
-                      <NavLink
-                        to={subItem.link || ""}
-                        style={({ isActive }) =>
-                          isActive ? activeStyle : undefined
-                        }
-                      >
-                        <span className="text-xl">{subItem.title}</span>
-                      </NavLink>
-                    </li>
-                    {subItem.subMenu.map((subSubItem, index) => {
-                      return (
-                        <>
-                          <li key={subSubItem.title + index + 20000}>
-                            <NavLink
-                              to={subSubItem.link || ""}
-                              style={({ isActive }) =>
-                                isActive ? activeStyle : undefined
-                              }
-                            >
-                              <span className="text-xl">
-                                {subSubItem.title}
-                              </span>
-                            </NavLink>
-                          </li>
-                        </>
-                      );
-                    })}
-                  </div>
-                );
-              }
               return (
                 <li key={subItem.title + index + 30000}>
                   <NavLink
@@ -290,7 +210,7 @@ function renderMenuList(menu: MenuProps) {
       );
     }
     return (
-      <li key={item.title + index + 50000}>
+      <li key={item.title + index}>
         <NavLink
           to={item.link || ""}
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
