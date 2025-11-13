@@ -50,7 +50,7 @@ export const Hero = (props: HeroProps) => {
               to={"/angebote/weitere-angebote/eigenheim-darlehen/"}
               className="btn btn-secondary btn-lg"
             >
-              Projektfinanzierung durch Eigenheim
+              Eigenheim-Darlehen
             </Link>
           </div>
           <div className="invisible sm:flex xl:visible">

@@ -26,7 +26,7 @@ export const menu = [
     link: "#",
     subMenu: [
       {
-        title: "Projektfinanzierung durch Eigenheim",
+        title: "Eigenheim-Darlehen",
         link: "/angebote/weitere-angebote/eigenheim-darlehen/",
       },
       {

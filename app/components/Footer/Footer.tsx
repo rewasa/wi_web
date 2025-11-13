@@ -7,8 +7,11 @@ export const Footer = () => {
       <footer className="footer p-10 text-base-content">
         <div>
           <h3 className="pb-6 font-bold">Angebote</h3>
-          <Link to="/angebote/weitere-angebote/eigenheim-darlehen/" className="link link-hover">
-            Projektfinanzierung durch Eigenheim
+          <Link
+            to="/angebote/weitere-angebote/eigenheim-darlehen/"
+            className="link link-hover"
+          >
+            Eigenheim-Darlehen
           </Link>
           <Link to="/angebote/easy-verkauf/" className="link link-hover">
             EASY-Verkauf
@@ -16,10 +19,16 @@ export const Footer = () => {
           <Link to="/angebote/expert-verkauf/" className="link link-hover">
             EXPERT-Verkauf
           </Link>
-          <Link to="/angebote/weitere-angebote/immobilienrettung/" className="link link-hover">
+          <Link
+            to="/angebote/weitere-angebote/immobilienrettung/"
+            className="link link-hover"
+          >
             Immobilienrettung
           </Link>
-          <Link to="/angebote/weitere-angebote/zwangsversteigerung/" className="link link-hover">
+          <Link
+            to="/angebote/weitere-angebote/zwangsversteigerung/"
+            className="link link-hover"
+          >
             Zwangsversteigerung
           </Link>
         </div>
