@@ -83,7 +83,38 @@ export interface CodeItem {
   code: string;
 }
 
+// In-memory cache so a flaky CMS (502 Bad Gateway) doesn't break every page render.
+// TTL is short — content changes propagate within a minute.
+const CACHE_TTL_MS = 60_000;
+let cache: { value: { pages: any; settings: any }; expiresAt: number } | null =
+  null;
+
 export async function loadPages() {
+  const now = Date.now();
+  if (cache && cache.expiresAt > now) {
+    return cache.value;
+  }
+
+  try {
+    const value = await loadPagesFromCms();
+    cache = { value, expiresAt: now + CACHE_TTL_MS };
+    return value;
+  } catch (err) {
+    console.error("[loadPages] CMS fetch failed:", (err as Error)?.message);
+    // Fall back to last-known-good cache even if expired — better stale than 500.
+    if (cache) {
+      console.warn("[loadPages] serving stale cache");
+      return cache.value;
+    }
+    // Absolute fallback: empty content. Prevents 500s on success/static pages.
+    return {
+      pages: { data: [] },
+      settings: { data: { scripts: [], footerLinks: [] } },
+    };
+  }
+}
+
+async function loadPagesFromCms() {
   const directus = await getDirectusClient();
   const pages = await directus.items("Pages").readByQuery({
     fields: [
