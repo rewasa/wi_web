@@ -25,18 +25,35 @@ export const links: LinksFunction = () => {
   ];
 };
 
+// Static Remix routes (file-based) that don't live in the CMS.
+// These must NOT be 404'd by the root loader's CMS-page check.
+const STATIC_ROUTES = [
+  "/",
+  "/kontakt",
+  "/kontakt/",
+  "/kontakt-wo-sind-wir",
+  "/kontakt-wo-sind-wir/",
+  "/kontakt-erfolgreich",
+  "/kontakt-erfolgreich/",
+  "/immobilien",
+  "/immobilien/",
+  "/healthcheck",
+];
+
 export async function loader(args: DataFunctionArgs) {
   const location = new URL(args.request.url);
   const { pages, settings } = await loadPages();
 
+  const isStaticRoute = STATIC_ROUTES.includes(location.pathname);
+
   const routePage =
-    location.pathname !== "/"
-      ? pages?.data?.find(
+    isStaticRoute || location.pathname === "/"
+      ? true
+      : pages?.data?.find(
           (page) =>
             page.status === "published" &&
             page.slug?.includes(location.pathname)
-        )
-      : true;
+        );
 
   return json({ pages, settings }, { status: routePage ? 200 : 404 });
 }
