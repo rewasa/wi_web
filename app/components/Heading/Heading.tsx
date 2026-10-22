@@ -13,7 +13,7 @@ export type HeadingProps = {
 
 export const Heading = (props: HeadingProps) => {
   const defaultClassNames = !props.classNames?.includes("text-")
-    ? "text-4xl"
+    ? "text-3xl sm:text-4xl"
     : "";
   return (
     <>
@@ -22,7 +22,7 @@ export const Heading = (props: HeadingProps) => {
           {props?.isMain ? (
             <h1
               className={clsx(
-                "font-bold pr-[50px]",
+                "break-words font-bold sm:pr-[50px]",
                 defaultClassNames,
                 props.classNames
               )}
