@@ -32,7 +32,7 @@ export const FeatureContainer = (props: FeatureContainerProps) => {
                 index % 2 === 0 ? "border-r-[#565555] md:border-r-2" : ""
               )}
             >
-              <div className="flex flex-col p-10 text-center">
+              <div className="flex min-w-0 flex-col break-words p-6 text-center sm:p-10">
                 {feature.image ? (
                   <img
                     className="w-max-[200px] mx-auto"
