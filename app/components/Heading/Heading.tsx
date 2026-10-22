@@ -13,7 +13,7 @@ export type HeadingProps = {
 
 export const Heading = (props: HeadingProps) => {
   const defaultClassNames = !props.classNames?.includes("text-")
-    ? "text-4xl"
+    ? "text-3xl sm:text-4xl"
     : "";
   return (
     <>
@@ -22,7 +22,7 @@ export const Heading = (props: HeadingProps) => {
           {props?.isMain ? (
             <h1
               className={clsx(
-                "font-bold pr-[50px]",
+                "min-w-0 break-words font-bold sm:pr-[50px]",
                 defaultClassNames,
                 props.classNames
               )}
@@ -31,14 +31,18 @@ export const Heading = (props: HeadingProps) => {
             </h1>
           ) : (
             <h2
-              className={clsx("font-bold", defaultClassNames, props.classNames)}
+              className={clsx(
+                "min-w-0 break-words font-bold",
+                defaultClassNames,
+                props.classNames
+              )}
             >
               {props.title}
             </h2>
           )}
           {props?.hasLogo && (
             <img
-              className="float-right w-[40px] md:w-[70px]"
+              className="float-right ml-2 w-[40px] shrink-0 md:w-[70px]"
               src={wi}
               alt="wasescha immobilien logo klein"
               loading="lazy"

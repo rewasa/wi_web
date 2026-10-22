@@ -1,4 +1,8 @@
-import type { DataFunctionArgs, LinksFunction } from "@remix-run/node";
+import type {
+  DataFunctionArgs,
+  LinksFunction,
+  V2_MetaFunction,
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 
 import {
@@ -17,6 +21,12 @@ import { ExternalScripts } from "remix-utils";
 import type { FooterLink, Page, Script } from "~/page.server";
 import { loadPages } from "~/page.server";
 import { PageContext } from "~/utils/pageContext";
+
+export const meta: V2_MetaFunction = () => [
+  { charset: "utf-8" },
+  { name: "viewport", content: "width=device-width,initial-scale=1" },
+  { title: "WASESCHA Immobilien AG" },
+];
 
 export const links: LinksFunction = () => {
   return [
