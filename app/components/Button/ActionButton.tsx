@@ -29,7 +29,7 @@ export const ActionButton = (props: ActionButtonProps) => {
           )}{" "}
           <button
             className={clsx(
-              "relative inline-flex items-center justify-center px-6 py-3 text-[1.2rem] md:text-lg font-medium tracking-tighter text-white bg-gray-800 group",
+              "relative inline-flex items-center justify-center mr-1 sm:mr-0 px-6 py-3 text-[1.2rem] md:text-lg font-medium tracking-tighter text-white bg-gray-800 group",
               className
             )}
             {...rest}

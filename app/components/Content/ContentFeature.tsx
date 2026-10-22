@@ -359,7 +359,7 @@ function containerFeatures(
               )}
               rel="noreferrer"
             >
-              <div className="flex flex-col p-10 text-center">
+              <div className="flex min-w-0 flex-col break-words p-6 text-center sm:p-10">
                 {feature.item.image ? (
                   <img
                     className="mx-auto max-w-[320px]"
